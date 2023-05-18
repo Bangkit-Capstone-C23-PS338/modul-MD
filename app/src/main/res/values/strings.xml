@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Promosee</string>
+    <string name="boarding_title_1">Get The Best Influencers!</string>
+    <string name="boarding_body_1">Explore various influencers to promote your product!</string>
+    <string name="boarding_title_2">Get Quality Content!</string>
+    <string name="boarding_body_2">Create promotion for contents with a verified quality!</string>
+    <string name="boarding_title_3">Increase Selling Engagement!</string>
+    <string name="boarding_body_3">Keep track of the promotion progress for the development of your product!</string>
+    <string name="continue_button_text">Continue to Login</string>
 </resources>

@@ -16,3 +16,10 @@ data class LoginResponse(
 	@field:SerializedName("username")
 	val username: String? = null
 )
+
+data class RegisterResponse(
+
+	@field:SerializedName("message")
+	val message: String? = null,
+
+)

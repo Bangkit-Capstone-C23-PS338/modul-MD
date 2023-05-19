@@ -12,6 +12,7 @@ import com.example.promosee.databinding.ActivityLoginBinding
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.model.Result
 import com.example.promosee.view.MainActivity
+import com.example.promosee.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -35,6 +36,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction(){
+        binding.noaccount.setOnClickListener {
+            val intentToRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intentToRegister)
+        }
+
         binding.btnLogin.setOnClickListener{
             val tvEmail = binding.editTextTextEmailAddress3.text.toString()
             val tvPassword = binding.editTextTextPassword.text.toString()

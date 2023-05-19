@@ -11,13 +11,28 @@
     <string name="register_company">Register as a Company</string>
     <string name="register_influencer">Register as an Influencer</string>
 
-    <string name="emailhint">Masukkan email</string>
-    <string name="password">password</string>
-    <string name="passwordhint">Masukkan password</string>
+    <string name="emailhint">Enter email</string>
+    <string name="password">Password</string>
+    <string name="passwordhint">Enter password</string>
     <string name="no_acc">Belum punya akun? Sign up</string>
     <string name="forgetpass">Lupa password ?</string>
     <string name="email_empty">email tidak boleh kosong</string>
     <string name="pass_empty">password tidak boleh kosong</string>
     <string name="loginSuccess">Login berhasil</string>
     <string name="loginFailed">Login Gagal\n</string>
+    <string name="company_register">Company Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password_hint">Enter password again</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter username</string>
+    <string name="categories">Categories</string>
+    <string name="food">Food</string>
+    <string name="sports">Sports</string>
+    <string name="health">Health</string>
+    <string name="technology">Technology</string>
+    <string name="choose_categories">Choose Categories</string>
+    <string name="influencer_register">Influencer Register</string>
 </resources>

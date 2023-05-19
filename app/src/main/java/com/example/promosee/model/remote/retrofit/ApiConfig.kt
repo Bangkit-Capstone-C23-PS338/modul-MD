@@ -10,7 +10,7 @@ class ApiConfig {
     companion object {
 
         var TOKEN = ""
-        var URL = "https://promoseecloudrun-24yozpy7dq-et.a.run.app"
+        var URL = "https://promoseecloudrun-24yozpy7dq-et.a.run.app/"
 
         fun getApiService(): ApiService {
             val loggingInterceptor = if(BuildConfig.DEBUG) {

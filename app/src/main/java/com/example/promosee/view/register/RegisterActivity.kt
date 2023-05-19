@@ -1,4 +1,4 @@
-package com.example.promosee.ui.register
+package com.example.promosee.view.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

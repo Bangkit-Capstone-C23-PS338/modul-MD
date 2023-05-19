@@ -1,4 +1,4 @@
-package com.example.promosee.ui.register
+package com.example.promosee.view.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

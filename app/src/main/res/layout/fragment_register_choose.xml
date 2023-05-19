@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical"
     android:padding="10dp"
-    tools:context=".ui.register.RegisterChooseFragment">
+    tools:context=".view.register.RegisterChooseFragment">
 
     <ImageView
         android:id="@+id/img_office"

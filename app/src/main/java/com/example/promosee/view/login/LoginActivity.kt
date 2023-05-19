@@ -1,4 +1,4 @@
-package com.example.promosee.view
+package com.example.promosee.view.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

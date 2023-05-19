@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.promosee.databinding.ActivityBoardingBinding
+import com.example.promosee.view.login.LoginActivity
 
 class BoardingActivity : AppCompatActivity() {
 

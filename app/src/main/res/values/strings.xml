@@ -12,4 +12,8 @@
     <string name="passwordhint">Masukkan password</string>
     <string name="no_acc">Belum punya akun? Sign up</string>
     <string name="forgetpass">Lupa password ?</string>
+    <string name="email_empty">email tidak boleh kosong</string>
+    <string name="pass_empty">password tidak boleh kosong</string>
+    <string name="loginSuccess">Login berhasil</string>
+    <string name="loginFailed">Login Gagal\n</string>
 </resources>

@@ -7,4 +7,9 @@
     <string name="boarding_title_3">Increase Selling Engagement!</string>
     <string name="boarding_body_3">Keep track of the promotion progress for the development of your product!</string>
     <string name="continue_button_text">Continue to Login</string>
+    <string name="emailhint">Masukkan email</string>
+    <string name="password">password</string>
+    <string name="passwordhint">Masukkan password</string>
+    <string name="no_acc">Belum punya akun? Sign up</string>
+    <string name="forgetpass">Lupa password ?</string>
 </resources>

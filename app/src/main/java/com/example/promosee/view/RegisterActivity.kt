@@ -1,11 +1,12 @@
-package com.example.promosee
+package com.example.promosee.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.promosee.R
 
-class BoardingActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_boarding)
+        setContentView(R.layout.activity_register)
     }
 }

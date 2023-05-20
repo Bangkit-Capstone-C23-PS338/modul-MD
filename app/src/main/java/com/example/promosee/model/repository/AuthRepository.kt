@@ -4,9 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.promosee.model.Result
+import com.example.promosee.model.local.preference.CompanyModel
+import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.LoginResponse
+import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.request.User
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
@@ -33,6 +36,47 @@ class AuthRepository(
                 // menyimpan data ke data-store
                 pref.saveUser(userInfo)
                 ApiConfig.TOKEN = response.accessToken ?: ""
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("AuthRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun registerInfluencer(influencer: InfluencerModel) : LiveData<Result<RegisterResponse>> = liveData {
+        emit(Result.Loading)
+        try{
+            val response = apiService.influencerRegister(influencer)
+            if(response == null){
+                emit(Result.Error("Register gagal"))
+            }else{
+                Log.d("Cek register influencer", response.message)
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("AuthRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun registerCompany(company: CompanyModel) : LiveData<Result<RegisterResponse>> = liveData {
+        emit(Result.Loading)
+        try{
+            val response = apiService.companyRegister(company)
+            if(response == null){
+                emit(Result.Error("Register gagal"))
+            }else{
                 emit(Result.Success(response))
             }
         }catch (e : Exception){

@@ -13,7 +13,6 @@ import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.request.User
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
-import com.google.gson.annotations.SerializedName
 
 class AuthRepository(
     private val apiService: ApiService, private val pref: UserPreference

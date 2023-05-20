@@ -10,16 +10,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register_company">Register as a Company</string>
     <string name="register_influencer">Register as an Influencer</string>
-
     <string name="emailhint">Enter email</string>
     <string name="password">Password</string>
     <string name="passwordhint">Enter password</string>
-    <string name="no_acc">Belum punya akun? Sign up</string>
-    <string name="forgetpass">Lupa password ?</string>
-    <string name="email_empty">email tidak boleh kosong</string>
-    <string name="pass_empty">password tidak boleh kosong</string>
-    <string name="loginSuccess">Login berhasil</string>
-    <string name="loginFailed">Login Gagal\n</string>
+    <string name="no_acc">Don\'t have any account yet? Sign up</string>
+    <string name="forgetpass">Forgot Password ?</string>
+    <string name="email_empty">email can\'t be empty</string>
+    <string name="pass_empty">password can\'t be empty</string>
+    <string name="loginSuccess">Login successful</string>
+    <string name="loginFailed">Login Failed</string>
     <string name="company_register">Company Register</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login">Login</string>
@@ -41,4 +40,6 @@
     <string name="register_failed">Register failed</string>
     <string name="account_registered">Account registered</string>
     <string name="userLogin">User Login</string>
+    <string name="tvEmail">Email</string>
+    <string name="loginBtn">Login</string>
 </resources>

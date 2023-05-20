@@ -8,6 +8,7 @@ import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
+import com.example.promosee.view.splash.SplashViewModel
 
 class ViewModelFactory(
     private val authRepository: AuthRepository,
@@ -17,9 +18,10 @@ class ViewModelFactory(
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
                 return LoginViewModel(authRepository) as T
-            }
-            else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+            }else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
                 return RegisterViewModel(authRepository) as T
+            }else if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
+                return SplashViewModel(preference) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

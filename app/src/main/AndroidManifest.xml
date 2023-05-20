@@ -24,7 +24,7 @@
             android:name=".view.BoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".view.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.company.mainCompany.MainActivityCompany"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -35,4 +35,5 @@
     <string name="technology">Technology</string>
     <string name="choose_categories">Choose Categories</string>
     <string name="influencer_register">Influencer Register</string>
+    <string name="userLogin">User Login</string>
 </resources>

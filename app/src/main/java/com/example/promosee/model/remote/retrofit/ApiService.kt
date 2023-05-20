@@ -21,4 +21,16 @@ interface ApiService {
         @Query("password") password: String
     ) : LoginResponse
 
+    @POST("register/businessowner")
+    suspend fun companyRegister(
+        @Query("username") username: String,
+        @Query("password") password: String
+    ) : LoginResponse
+
+    @POST("register/influencer")
+    suspend fun influencerRegister(
+        @Query("username") username: String,
+        @Query("password") password: String
+    ) : LoginResponse
+
 }

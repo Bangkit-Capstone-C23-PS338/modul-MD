@@ -1,6 +1,10 @@
 package com.example.promosee.model.remote.retrofit
 
+import com.example.promosee.model.local.preference.CompanyModel
+import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.LoginResponse
+import com.example.promosee.model.remote.reponse.RegisterResponse
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -23,14 +27,12 @@ interface ApiService {
 
     @POST("register/businessowner")
     suspend fun companyRegister(
-        @Query("username") username: String,
-        @Query("password") password: String
-    ) : LoginResponse
+        @Body business_owner: CompanyModel,
+    ) : RegisterResponse
 
     @POST("register/influencer")
     suspend fun influencerRegister(
-        @Query("username") username: String,
-        @Query("password") password: String
-    ) : LoginResponse
+        @Body influencer: InfluencerModel,
+    ) : RegisterResponse
 
 }

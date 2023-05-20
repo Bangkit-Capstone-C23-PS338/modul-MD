@@ -7,6 +7,7 @@ import com.example.promosee.injection.Injection
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.login.LoginViewModel
+import com.example.promosee.view.register.RegisterViewModel
 
 class ViewModelFactory(
     private val authRepository: AuthRepository,
@@ -16,6 +17,9 @@ class ViewModelFactory(
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
                 return LoginViewModel(authRepository) as T
+            }
+            else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+                return RegisterViewModel(authRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -35,4 +35,9 @@
     <string name="technology">Technology</string>
     <string name="choose_categories">Choose Categories</string>
     <string name="influencer_register">Influencer Register</string>
+    <string name="username_empty">Username can\'t be empty</string>
+    <string name="minimum_of_8_characters">Must be a minimum of 8 characters</string>
+    <string name="pass_must_match">Confirmation must be the same as the password</string>
+    <string name="register_failed">Register failed</string>
+    <string name="account_registered">Account registered</string>
 </resources>

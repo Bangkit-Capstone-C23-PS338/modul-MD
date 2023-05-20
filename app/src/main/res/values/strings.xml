@@ -14,8 +14,8 @@
     <string name="emailhint">Enter email</string>
     <string name="password">Password</string>
     <string name="passwordhint">Enter password</string>
-    <string name="no_acc">Belum punya akun? Sign up</string>
-    <string name="forgetpass">Lupa password ?</string>
+    <string name="no_acc">Don\'t have any account yet? Sign up</string>
+    <string name="forgetpass">Forgot Password ?</string>
     <string name="email_empty">email tidak boleh kosong</string>
     <string name="pass_empty">password tidak boleh kosong</string>
     <string name="loginSuccess">Login berhasil</string>
@@ -36,4 +36,6 @@
     <string name="choose_categories">Choose Categories</string>
     <string name="influencer_register">Influencer Register</string>
     <string name="userLogin">User Login</string>
+    <string name="tvEmail">Email</string>
+    <string name="loginBtn">Login</string>
 </resources>

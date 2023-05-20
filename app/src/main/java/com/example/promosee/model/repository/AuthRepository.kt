@@ -7,8 +7,10 @@ import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.LoginResponse
+import com.example.promosee.model.remote.request.User
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
+import com.google.gson.annotations.SerializedName
 
 class AuthRepository(
     private val apiService: ApiService, private val pref: UserPreference
@@ -17,7 +19,8 @@ class AuthRepository(
     fun login(username: String, password: String) : LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try{
-            val response = apiService.userLogin(username,password)
+            val user = User(username = username, password)
+            val response = apiService.userLogin(user)
             if(response == null){
                 emit(Result.Error("Login gagal"))
             }else{

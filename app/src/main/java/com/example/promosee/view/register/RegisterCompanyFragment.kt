@@ -13,7 +13,6 @@ import com.example.promosee.R
 import com.example.promosee.databinding.FragmentRegisterCompanyBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.CompanyModel
-import com.example.promosee.view.MainActivity
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.login.LoginActivity
 

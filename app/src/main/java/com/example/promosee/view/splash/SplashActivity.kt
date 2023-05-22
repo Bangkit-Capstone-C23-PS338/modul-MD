@@ -12,6 +12,7 @@ import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.BoardingActivity
 import com.example.promosee.view.company.mainCompany.MainActivityCompany
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.MainCom
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -44,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
             // pengecekan token dan authorisasi
             if(user.access_token.isNotEmpty()){
                 Handler(Looper.getMainLooper()).postDelayed({
-                    val intent = Intent(this@SplashActivity, MainActivityCompany::class.java)
+                    val intent = Intent(this@SplashActivity, MainCom::class.java)
                     startActivity(intent)
                     finish()
                 }, DURATION)

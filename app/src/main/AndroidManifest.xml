@@ -15,6 +15,10 @@
         android:theme="@style/Theme.Promosee"
         tools:targetApi="31">
         <activity
+            android:name=".view.company.mainCompany.MainCom"
+            android:exported="false"
+            android:label="@string/title_activity_main_com" />
+        <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity

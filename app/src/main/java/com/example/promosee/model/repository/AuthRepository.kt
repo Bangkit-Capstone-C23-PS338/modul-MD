@@ -17,7 +17,6 @@ import com.example.promosee.model.remote.retrofit.ApiService
 class AuthRepository(
     private val apiService: ApiService, private val pref: UserPreference
 ) {
-
     fun login(username: String, password: String) : LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try{

@@ -53,4 +53,10 @@
     <string name="empty_name">Name can\'t be empty</string>
     <string name="cart">cart</string>
     <string name="views_after_appbar">Views after appbar</string>
+    <string name="search_page_title">Promosee-kan ke influencer pilihanmu!</string>
+    <string name="userphoto">user photo</string>
+    <string name="card_name">Lee Ji Eun</string>
+    <string name="follower_card">218.2K Followers</string>
+    <string name="cost">500ribu - 1juta</string>
+    <string name="card_book">Booking</string>
 </resources>

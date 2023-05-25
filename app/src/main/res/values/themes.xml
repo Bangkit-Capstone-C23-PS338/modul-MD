@@ -28,4 +28,10 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
+
+    <style name="lightStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Change the color of the status bar -->
+        <item name="android:statusBarColor">@color/md_theme_light_onPrimary</item>
+
+    </style>
 </resources>

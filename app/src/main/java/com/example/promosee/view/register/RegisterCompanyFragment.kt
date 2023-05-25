@@ -57,13 +57,13 @@ class RegisterCompanyFragment : Fragment() {
                     if(checkboxFood.isChecked){
                         listCategories.add("food")
                     }
-                    else if(checkboxHealth.isChecked){
+                    if(checkboxHealth.isChecked){
                         listCategories.add("health")
                     }
-                    else if(checkboxSports.isChecked){
+                    if(checkboxSports.isChecked){
                         listCategories.add("sports")
                     }
-                    else if(checkboxTech.isChecked){
+                    if(checkboxTech.isChecked){
                         listCategories.add("technology")
                     }
                     val listFixCategories: List<String> = listCategories
@@ -72,7 +72,7 @@ class RegisterCompanyFragment : Fragment() {
                         editTextTextUsername.text.toString(),
                         editTextTextEmailAddress3.text.toString(),
                         editTextTextPassword.text.toString(),
-                        editTextTextUsername.text.toString(),
+                        editTextTextName.text.toString(),
                         listFixCategories
                     )
                     registerViewModel.setCompany(company)
@@ -119,6 +119,10 @@ class RegisterCompanyFragment : Fragment() {
         binding.apply {
             if(editTextTextUsername.text?.isEmpty() as Boolean){
                 usernameEditTextLayout.error = getString(R.string.username_empty)
+                isValidated = false
+            }
+            if(editTextTextName.text?.isEmpty() as Boolean){
+                nameEditTextLayout.error = getString(R.string.empty_name)
                 isValidated = false
             }
             if(editTextTextPassword.text?.isEmpty() as Boolean){

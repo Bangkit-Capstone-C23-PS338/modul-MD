@@ -3,6 +3,7 @@ package com.example.promosee.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,10 +19,12 @@ class GridAdapter(private val dataList: List<InfluencerModel>) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
         val data = dataList[position]
-        holder.avatarItem.setImageResource(R.drawable.iu)
+        holder.avatarItem.setImageResource(R.drawable.nanami_mami)
         holder.nameItem.text = data.username
         holder.Follower.text = "218.2K Followers"
         holder.price.text = "500ribu - 1juta"
+        holder.verifId.setImageResource(R.drawable.baseline_verified_24)
+
         // Bind the data to the grid item layout components
         // holder.textView.text = data.text
     }
@@ -35,5 +38,7 @@ class GridAdapter(private val dataList: List<InfluencerModel>) : RecyclerView.Ad
         val nameItem: TextView = itemView.findViewById(R.id.cardName)
         val Follower: TextView = itemView.findViewById(R.id.follower_Card)
         val price: TextView = itemView.findViewById(R.id.card_price)
+        val verifId: ImageView = itemView.findViewById(R.id.verivied)
+        val BookBtn: Button = itemView.findViewById(R.id.book_card_btn)
     }
 }

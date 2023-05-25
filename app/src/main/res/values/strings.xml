@@ -15,8 +15,8 @@
     <string name="passwordhint">Enter password</string>
     <string name="no_acc">Don\'t have any account yet? Sign up</string>
     <string name="forgetpass">Forgot Password ?</string>
-    <string name="email_empty">email can\'t be empty</string>
-    <string name="pass_empty">password can\'t be empty</string>
+    <string name="email_empty">Email can\'t be empty</string>
+    <string name="pass_empty">Password can\'t be empty</string>
     <string name="loginSuccess">Login successful</string>
     <string name="loginFailed">Login Failed</string>
     <string name="company_register">Company Register</string>
@@ -48,4 +48,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
     <string name="title_search">search</string>
+    <string name="enter_company_name">Enter company name</string>
+    <string name="name">Name</string>
+    <string name="empty_name">Name can\'t be empty</string>
+    <string name="cart">cart</string>
+    <string name="views_after_appbar">Views after appbar</string>
 </resources>

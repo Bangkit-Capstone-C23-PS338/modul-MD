@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:background="@color/md_theme_light_onPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="16dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -70,9 +71,10 @@
 
         <!-- Scrollable content -->
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_gravity="center_horizontal"
             android:id="@+id/recyclerViewRecom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </androidx.core.widget.NestedScrollView>
 

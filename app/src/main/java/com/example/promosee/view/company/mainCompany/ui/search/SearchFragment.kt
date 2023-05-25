@@ -1,11 +1,9 @@
 package com.example.promosee.view.company.mainCompany.ui.search
 
-import android.content.res.Resources.Theme
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,7 +11,6 @@ import com.example.promosee.R
 import com.example.promosee.adapter.GridAdapter
 import com.example.promosee.adapter.GridSpacingItemDecoration
 import com.example.promosee.databinding.FragmentSearchBinding
-import com.example.promosee.model.dummy.InfluencerDummy
 import com.example.promosee.model.local.preference.InfluencerModel
 
 class SearchFragment : Fragment() {
@@ -31,8 +28,6 @@ class SearchFragment : Fragment() {
     ): View {
         val dashboardViewModel =
             ViewModelProvider(this).get(SearchViewModel::class.java)
-
-        requireActivity().setTheme(R.style.lightStatusBar)
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -84,15 +79,18 @@ class SearchFragment : Fragment() {
 
     private fun addInfluencerData(influencerModels: List<InfluencerModel>) {
 
-        val gridLayoutManager = GridLayoutManager(requireContext(), 2) // Specify the number of columns in the grid
+        // membuat jumlah kolom dalam grid
+        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerViewRecom.layoutManager = gridLayoutManager
 
-        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.spacing_5dp) // Define your desired spacing in pixels
-        val includeEdge = true // Set to true if you want spacing at the edges, false otherwise
+        // membuat jarak antar item dengan satuan dp
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.spacing_5dp)
+        val includeEdge = false
 
+        // mengset jarak antar item
         binding.recyclerViewRecom.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, includeEdge))
 
-
+        // memasukkan data ke adapter
         val adapter = GridAdapter(influencerModels)
         binding.recyclerViewRecom.adapter = adapter
 

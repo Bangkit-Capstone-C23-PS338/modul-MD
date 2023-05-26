@@ -15,6 +15,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/expired"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/expired"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"

@@ -59,4 +59,5 @@
     <string name="follower_card">218.2K Followers</string>
     <string name="cost">500ribu - 1juta</string>
     <string name="card_book">Booking</string>
+    <string name="expired">Session is Expired</string>
 </resources>

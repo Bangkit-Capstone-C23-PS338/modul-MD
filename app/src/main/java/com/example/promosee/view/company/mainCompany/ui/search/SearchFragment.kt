@@ -50,20 +50,27 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val catDum = listOf<String>("kpop")
 
         searchViewModel.getInfluencrs().observe(requireActivity()){result ->
             when(result){
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.expired.visibility = View.GONE
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.expired.visibility = View.GONE
                     Log.e("test data", result.data.influencers.toString())
                     val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
                     addInfluencerData(allInfluencer)
                 }
-                is Result.Error -> {}
+                is Result.Error -> {
+                    Log.e("error msg", result.error)
+                    if(result.error.trim() == "HTTP 401"){
+                        binding.progressBar.visibility = View.GONE
+                        binding.expired.visibility = View.VISIBLE
+                    }
+                }
             }
 
         }

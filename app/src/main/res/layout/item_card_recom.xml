@@ -84,11 +84,11 @@
                     android:layout_marginTop="4dp"
                     app:cornerRadius="5dp"
                     android:enabled="true"
-                    android:textSize="9dp"
+                    android:textSize="10sp"
                     android:text="@string/card_book"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_height="32dp"
+                    android:layout_height="40dp"
                     android:layout_width="match_parent" />
 
             </TableLayout>

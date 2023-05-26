@@ -1,6 +1,8 @@
 package com.example.promosee.view.company.mainCompany.ui.search
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +13,18 @@ import com.example.promosee.R
 import com.example.promosee.adapter.GridAdapter
 import com.example.promosee.adapter.GridSpacingItemDecoration
 import com.example.promosee.databinding.FragmentSearchBinding
+import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.remote.reponse.InfluencersItem
+import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
+import com.example.promosee.view.login.LoginViewModel
 
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
+    private lateinit var searchViewModel: SearchViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,58 +32,80 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(SearchViewModel::class.java)
+        // melakukan setup pada viewmodel
+        setupViewModel()
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-        }
-
+        searchViewModel.text.observe(viewLifecycleOwner) {}
         return root
+    }
+
+    private fun setupViewModel() {
+        searchViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.getInstance(requireActivity().application)
+        )[SearchViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val catDum = listOf<String>("kpop")
-        val dummyInfluecers: List<InfluencerModel> = listOf(
-            InfluencerModel(
-                username = "Lee Je Eun",
-                email = "ben@gmail.com",
-                password = "123",
-                categories = catDum,
-            ),
-            InfluencerModel(
-                username = "Lee Je Eun",
-                email = "ben@gmail.com",
-                password = "123",
-                categories = catDum,
-            ),
-            InfluencerModel(
-                username = "Lee Je Eun",
-                email = "ben@gmail.com",
-                password = "123",
-                categories = catDum,
-            ),
-            InfluencerModel(
-                username = "Lee Je Eun",
-                email = "ben@gmail.com",
-                password = "123",
-                categories = catDum,
-            ),
-            InfluencerModel(
-                username = "Lee Je Eun",
-                email = "ben@gmail.com",
-                password = "123",
-                categories = catDum,
-            )
-        )
 
-        addInfluencerData(dummyInfluecers)
+        searchViewModel.getInfluencrs().observe(requireActivity()){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e("test data", result.data.influencers.toString())
+                    val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
+                    addInfluencerData(allInfluencer)
+                }
+                is Result.Error -> {}
+            }
+
+        }
+
+
+//        val dummyInfluecers: List<InfluencerModel> = listOf(
+//            InfluencerModel(
+//                username = "Lee Je Eun",
+//                email = "ben@gmail.com",
+//                password = "123",
+//                categories = catDum,
+//            ),
+//            InfluencerModel(
+//                username = "Lee Je Eun",
+//                email = "ben@gmail.com",
+//                password = "123",
+//                categories = catDum,
+//            ),
+//            InfluencerModel(
+//                username = "Lee Je Eun",
+//                email = "ben@gmail.com",
+//                password = "123",
+//                categories = catDum,
+//            ),
+//            InfluencerModel(
+//                username = "Lee Je Eun",
+//                email = "ben@gmail.com",
+//                password = "123",
+//                categories = catDum,
+//            ),
+//            InfluencerModel(
+//                username = "Lee Je Eun",
+//                email = "ben@gmail.com",
+//                password = "123",
+//                categories = catDum,
+//            )
+//        )
+
+//        addInfluencerDataold(dummyInfluecers)
     }
 
-    private fun addInfluencerData(influencerModels: List<InfluencerModel>) {
+    private fun addInfluencerData(allInfluencer: List<InfluencersItem>) {
 
         // membuat jumlah kolom dalam grid
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
@@ -91,11 +119,24 @@ class SearchFragment : Fragment() {
         binding.recyclerViewRecom.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, includeEdge))
 
         // memasukkan data ke adapter
-        val adapter = GridAdapter(influencerModels)
+        val adapter = GridAdapter(allInfluencer)
         binding.recyclerViewRecom.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : GridAdapter.OnItemClickCallback {
+            override fun onItemClicked(influencerData: InfluencersItem) {
+//                showSelectedUsers(username)
+                Log.e("test item", influencerData.igUsername.toString())
+                showSelectedInfluencer(influencerData)
+            }
+        })
 
     }
 
+    private fun showSelectedInfluencer(influencerData: InfluencersItem) {
+        val moveIntent = Intent(requireContext(), InfluencerDetailActivity::class.java)
+        moveIntent.putExtra("username",influencerData.username)
+        startActivity(moveIntent)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.repository.AuthRepository
+import com.example.promosee.model.repository.CompanyRepository
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -16,6 +17,12 @@ object Injection {
         val apiService = ApiConfig.getApiService()
         val userPreference = UserPreference.getInstance(context.dataStore)
         return AuthRepository.getInstance(apiService,userPreference)
+    }
+
+    fun companyRepository(context: Context): CompanyRepository{
+        val apiService = ApiConfig.getApiService()
+        val userPreference = UserPreference.getInstance(context.dataStore)
+        return CompanyRepository.getInstance(apiService,userPreference)
     }
 
     fun providePreferences(context: Context): UserPreference {

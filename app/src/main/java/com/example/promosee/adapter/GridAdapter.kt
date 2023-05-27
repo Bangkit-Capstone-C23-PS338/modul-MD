@@ -9,8 +9,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.remote.reponse.InfluencersItem
 
-class GridAdapter(private val dataList: List<InfluencerModel>) : RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
+class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun onItemClicked(username: InfluencersItem)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card_recom, parent, false)
@@ -19,14 +30,17 @@ class GridAdapter(private val dataList: List<InfluencerModel>) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
         val data = dataList[position]
-        holder.avatarItem.setImageResource(R.drawable.iu)
-        holder.verified.setImageResource(R.drawable.baseline_verified_24)
+        holder.avatarItem.setImageResource(R.drawable.nanami_mami)
         holder.nameItem.text = data.username
-        holder.Follower.text = "218.2K Followers"
+        holder.Follower.text = data.igFollowers.toString()
         holder.price.text = "500ribu - 1juta"
-        holder.button.isEnabled = true
-        // Bind the data to the grid item layout components
-        // holder.textView.text = data.text
+        holder.verifId.setImageResource(R.drawable.baseline_verified_24)
+        holder.itemView.setOnClickListener{
+            onItemClickCallback.onItemClicked(dataList[position])
+        }
+        holder.buttonBook.setOnClickListener{
+            onItemClickCallback.onItemClicked(dataList[position])
+        }
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +52,7 @@ class GridAdapter(private val dataList: List<InfluencerModel>) : RecyclerView.Ad
         val nameItem: TextView = itemView.findViewById(R.id.cardName)
         val Follower: TextView = itemView.findViewById(R.id.follower_Card)
         val price: TextView = itemView.findViewById(R.id.card_price)
-        val verified: ImageView = itemView.findViewById(R.id.verivied)
-        val button: Button = itemView.findViewById(R.id.btn_book)
+        val verifId: ImageView = itemView.findViewById(R.id.verivied)
+        val buttonBook: Button = itemView.findViewById(R.id.book_card_btn)
     }
 }

@@ -7,13 +7,16 @@ import com.example.promosee.injection.Injection
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
+import com.example.promosee.model.repository.CompanyRepository
+import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
 import com.example.promosee.view.splash.SplashViewModel
 
 class ViewModelFactory(
     private val authRepository: AuthRepository,
-    private val preference: UserPreference
+    private val preference: UserPreference,
+    private val companyRepository: CompanyRepository
 ) : ViewModelProvider.NewInstanceFactory() {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -23,6 +26,8 @@ class ViewModelFactory(
                 return RegisterViewModel(authRepository) as T
             }else if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
                 return SplashViewModel(preference) as T
+            }else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+                return SearchViewModel(companyRepository) as T
             }
             else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
                 return HomeViewModel(preference) as T
@@ -37,7 +42,8 @@ class ViewModelFactory(
             instance ?: synchronized(this) {
                 instance ?: ViewModelFactory(
                     Injection.authRepository(context),
-                    Injection.providePreferences(context)
+                    Injection.providePreferences(context),
+                    Injection.companyRepository(context)
                 )
             }.also { instance = it }
     }

@@ -39,11 +39,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-
         splashViewModel.getUser().observe(this){user ->
             ApiConfig.TOKEN = user.access_token
             // pengecekan token dan authorisasi
-            if(user.access_token.isNotEmpty()){
+            if(user.userid.isNotEmpty()){
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent(this@SplashActivity, MainCom::class.java)
                     startActivity(intent)
@@ -60,6 +59,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val DURATION = 2000L
+        const val DURATION = 2500L
     }
 }

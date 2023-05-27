@@ -39,14 +39,16 @@ interface ApiService {
         @Body business_owner: CompanyModel,
     ) : RegisterResponse
 
+    @POST("register/influencer")
+    suspend fun influencerRegister(
+        @Body influencer: InfluencerModel,
+    ) : RegisterResponse
+
+
     @GET("getinfluencers")
     suspend fun getInfluencers(
         @Header("Authorization") token: String,
     ): GetInfluencersResponse
 
-    @POST("register/influencer")
-    suspend fun influencerRegister(
-        @Body influencer: InfluencerModel,
-    ) : RegisterResponse
 
 }

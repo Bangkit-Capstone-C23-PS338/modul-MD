@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,8 +15,7 @@
             android:layout_height="wrap_content"
             style="@style/Widget.Material3.Chip.Suggestion"
             app:chipStrokeWidth="0dp"
-            android:backgroundTint="#FFAD7E"
-            android:textColor="#A73200"
+            app:chipBackgroundColor="#FFAD7E"
             android:text="@string/waiting_for_confirmation"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/img"
+            android:id="@+id/img_avatar"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/iu"
@@ -46,7 +46,7 @@
             android:textSize="20sp"
             android:text="@string/iu"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintStart_toEndOf="@id/img_avatar"
             app:layout_constraintTop_toBottomOf="@id/status_chip"/>
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/shampoo_conditioner"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintStart_toEndOf="@id/img_avatar"
             app:layout_constraintTop_toBottomOf="@id/username"/>
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="\@dlwlrma"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintStart_toEndOf="@id/img_avatar"
             app:layout_constraintTop_toBottomOf="@id/product_name"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

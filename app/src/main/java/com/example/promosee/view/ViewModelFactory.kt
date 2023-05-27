@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.injection.Injection
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
+import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginViewModel
@@ -27,6 +28,9 @@ class ViewModelFactory(
                 return SplashViewModel(preference) as T
             }else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
                 return SearchViewModel(companyRepository) as T
+            }
+            else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+                return HomeViewModel(preference) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

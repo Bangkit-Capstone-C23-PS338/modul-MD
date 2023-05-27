@@ -35,16 +35,12 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
         holder.Follower.text = data.igFollowers.toString()
         holder.price.text = "500ribu - 1juta"
         holder.verifId.setImageResource(R.drawable.baseline_verified_24)
-
         holder.itemView.setOnClickListener{
             onItemClickCallback.onItemClicked(dataList[position])
         }
         holder.buttonBook.setOnClickListener{
             onItemClickCallback.onItemClicked(dataList[position])
         }
-
-        // Bind the data to the grid item layout components
-        // holder.textView.text = data.text
     }
 
     override fun getItemCount(): Int {
@@ -58,8 +54,5 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
         val price: TextView = itemView.findViewById(R.id.card_price)
         val verifId: ImageView = itemView.findViewById(R.id.verivied)
         val buttonBook: Button = itemView.findViewById(R.id.book_card_btn)
-
-
-
     }
 }

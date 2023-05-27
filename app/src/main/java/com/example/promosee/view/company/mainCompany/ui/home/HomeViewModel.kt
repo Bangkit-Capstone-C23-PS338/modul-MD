@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
+import com.example.promosee.model.repository.CompanyRepository
 
-class HomeViewModel(private val pref: UserPreference) : ViewModel() {
+class HomeViewModel(private val pref: UserPreference, private val companyRepository: CompanyRepository) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
@@ -17,5 +18,7 @@ class HomeViewModel(private val pref: UserPreference) : ViewModel() {
     fun getUser(): LiveData<UserModel> {
         return pref.getUser().asLiveData()
     }
+
+    fun getInfluencers() =  companyRepository.getInfluencers()
 
 }

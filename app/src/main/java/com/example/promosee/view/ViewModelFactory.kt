@@ -30,7 +30,7 @@ class ViewModelFactory(
                 return SearchViewModel(companyRepository) as T
             }
             else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-                return HomeViewModel(preference) as T
+                return HomeViewModel(preference, companyRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

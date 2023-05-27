@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
         val dashboardViewModel =
             ViewModelProvider(this).get(SearchViewModel::class.java)
 
-        requireActivity().setTheme(R.style.lightStatusBar)
+//        requireActivity().setTheme(R.style.lightStatusBar)
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root

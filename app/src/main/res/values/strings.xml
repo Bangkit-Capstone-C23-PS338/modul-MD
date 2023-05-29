@@ -60,4 +60,8 @@
     <string name="cost">500ribu - 1juta</string>
     <string name="card_book">Booking</string>
     <string name="expired">Session is Expired</string>
+    <string name="influencer_name">Alif Cepmek</string>
+    <string name="influe_rate">Rating : 4.5</string>
+    <string name="comment">see review</string>
+    <string name="rate_card">Rate Card</string>
 </resources>

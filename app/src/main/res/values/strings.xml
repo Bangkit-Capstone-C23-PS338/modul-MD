@@ -59,9 +59,22 @@
     <string name="follower_card">218.2K Followers</string>
     <string name="cost">500ribu - 1juta</string>
     <string name="card_book">Booking</string>
-    <string name="expired">Session is Expired</string>
-    <string name="influencer_name">Alif Cepmek</string>
-    <string name="influe_rate">Rating : 4.5</string>
-    <string name="comment">see review</string>
-    <string name="rate_card">Rate Card</string>
+    <string name="hello_user">Hello, %s!</string>
+    <string name="look_for_your_favorite_influencer">Look for your favorite influencer</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="see_more"><![CDATA[See More >]]></string>
+    <string name="new_sales">New sales</string>
+    <string name="_858">858</string>
+    <string name="my_order">My Order</string>
+    <string name="reccomendation">Reccomendation</string>
+    <string name="order_status">Order Status</string>
+    <string name="december_2023">December 2023</string>
+    <string name="waiting_for_confirmation">Waiting for Confirmation</string>
+    <string name="done">Done</string>
+    <string name="failed">Failed</string>
+    <string name="processing">Processing</string>
+    <string name="iu">IU</string>
+    <string name="shampoo_conditioner"><![CDATA[Shampoo & Conditioner]]></string>
+    <string name="waiting_for_long">Waiting for long</string>
+    <string name="expired">Session Expired</string>
 </resources>

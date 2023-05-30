@@ -12,6 +12,7 @@ import com.example.promosee.databinding.ActivityLoginBinding
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.model.Result
 import com.example.promosee.view.company.mainCompany.MainActivityCompany
+import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -72,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 // intent ke halaman utama, dan meriset intent
-                                val intent = Intent(this@LoginActivity, MainActivityCompany::class.java)
+                                val intent = Intent(this@LoginActivity, MainCom::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                             }

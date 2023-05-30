@@ -37,7 +37,7 @@ class AuthRepository(
                 emit(Result.Success(response))
             }
         }catch (e : Exception){
-            Log.d("AuthRepository", "findUser: ${e.message.toString()}")
+            Log.e("AuthRepository", "findUser: ${e.message.toString()}")
             val message = e.message.toString()
             if (message == "") {
                 emit(Result.Error("Whoops, Something went wrong"))

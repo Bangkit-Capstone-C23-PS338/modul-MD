@@ -7,6 +7,14 @@ class InfluencerDetailViewModel(
     private val companyRepository: CompanyRepository
 ): ViewModel() {
 
+    private lateinit var username : String
+
+    fun setUsername(Username : String){
+        username = Username
+    }
+
+    fun getInfluencrProducts() =  companyRepository.getInfluencerProduct(username)
+
 
 
 }

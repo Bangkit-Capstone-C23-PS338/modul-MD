@@ -10,8 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
+import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 
-class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(private val products: List<ProductsItemInfluencer>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
@@ -21,14 +22,18 @@ class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
         holder.logo.setImageResource(R.drawable.full_insta_logo)
         holder.infoAcc.setImageResource(R.drawable.baseline_info_24)
-        holder.title.setText(R.string.product_name)
-        holder.desc.setText(R.string.desc)
-        holder.criteriaDetail.setText(R.string.todo)
-        holder.projectPrice.setText(R.string.product_price)
+        holder.title.text = products[position].name
+        holder.desc.text = products[position].description
+
+        var todo = ""
+        products[position].toDo?.forEach {todo+="- $it\n"}
+        holder.criteriaDetail.text = todo
+
+        holder.projectPrice.text = products[position].price.toString()
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return products.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

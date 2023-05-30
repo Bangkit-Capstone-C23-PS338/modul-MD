@@ -49,9 +49,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAction() {
-        homeViewModel.getUser().observe(requireActivity()){ user ->
-            binding.helloUser.text = getString(R.string.hello_user, user.username)
-        }
+//        homeViewModel.getUser().observe(requireActivity()){ user ->
+//            binding.helloUser.text = getString(R.string.hello_user, user.username)
+//        }
         addOrdersData(DummyOrders.listOrders)
 //        homeViewModel.getInfluencers().observe(requireActivity()){result ->
 //            when(result){

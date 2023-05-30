@@ -31,6 +31,14 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </TableLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -106,9 +114,14 @@
                 android:paddingTop="20dp"
                 android:text="@string/rate_card"/>
 
-
-
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/influ_prod"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal" />
 
         </TableLayout>
 

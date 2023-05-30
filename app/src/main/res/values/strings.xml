@@ -77,4 +77,15 @@
     <string name="shampoo_conditioner"><![CDATA[Shampoo & Conditioner]]></string>
     <string name="waiting_for_long">Waiting for long</string>
     <string name="expired">Session Expired</string>
+    <string name="influencer_name">Benhard Sim</string>
+    <string name="influe_rate">4.5</string>
+    <string name="comment">Reviews</string>
+    <string name="rate_card">Rate Card</string>
+    <string name="product_name">Paket A</string>
+    <string name="todo">- 2x Instagram Story\n- 1x Post Feed</string>
+    <string name="product_price">Rp 100000</string>
+    <string name="desc">"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. "</string>
+    <string name="check_acc">Order paket</string>
+
+
 </resources>

@@ -25,11 +25,10 @@ class ViewModelFactory(
             }else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
                 return RegisterViewModel(authRepository) as T
             }else if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
-                return SplashViewModel(preference) as T
+                return SplashViewModel(preference,authRepository) as T
             }else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
                 return SearchViewModel(companyRepository) as T
-            }
-            else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            }else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
                 return HomeViewModel(preference, companyRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

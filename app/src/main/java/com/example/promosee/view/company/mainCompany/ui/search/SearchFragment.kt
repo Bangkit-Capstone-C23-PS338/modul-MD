@@ -19,6 +19,7 @@ import com.example.promosee.model.remote.reponse.InfluencersItem
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
 import com.example.promosee.view.login.LoginViewModel
+import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 
 class SearchFragment : Fragment() {
 
@@ -32,8 +33,6 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(SearchViewModel::class.java)
 
         // melakukan setup pada viewmodel
         setupViewModel()
@@ -139,7 +138,6 @@ class SearchFragment : Fragment() {
                 showSelectedInfluencer(influencerData)
             }
         })
-
     }
 
     private fun showSelectedInfluencer(influencerData: InfluencersItem) {

@@ -43,6 +43,7 @@ class SplashActivity : AppCompatActivity() {
             ApiConfig.TOKEN = user.access_token
             // pengecekan token dan authorisasi
             if(user.userid.isNotEmpty()){
+                generateNewToken(user.username,"234")
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent(this@SplashActivity, MainCom::class.java)
                     startActivity(intent)
@@ -56,6 +57,10 @@ class SplashActivity : AppCompatActivity() {
                 }, DURATION)
             }
         }
+    }
+
+    private fun generateNewToken(username: String, pass: String){
+
     }
 
     companion object{

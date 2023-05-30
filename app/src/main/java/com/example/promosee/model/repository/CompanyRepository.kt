@@ -15,8 +15,7 @@ class CompanyRepository(
 ) {
 
     fun getInfluencers(): LiveData<Result<GetInfluencersResponse>> = liveData {
-        val token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXJqb25pX3MiLCJ0eXBlIjoiYnVzaW5lc3Nfb3duZXIiLCJqdGkiOiJiNmM1NDViZjU1YjBlZWY4IiwiZXhwIjoxNjg1MjEwODk5fQ.3mnu_-2QKbdCpVn6GtVLg4bbXVJWeu2inMrHs_uD07Q"
-        Log.e("test repo", "sebelum masuk try")
+        val token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrdWVidW5nYTY5IiwidHlwZSI6ImJ1c2luZXNzX293bmVyIiwianRpIjoiZWIyYzNiYzFmMjUxNjJkOCIsImV4cCI6MTY4NTQzNTc0NX0.FWmnGdlVlaH57R7cLIs9CYUK8bu2ab7hiokEz3v_U-Q"
         emit(Result.Loading)
         try{
             val response = apiService.getInfluencers(token)

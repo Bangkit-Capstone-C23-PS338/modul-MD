@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import com.example.promosee.R
 import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.UserPreference
+import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
@@ -14,9 +15,9 @@ class CompanyRepository(
     private val apiService: ApiService, private val pref: UserPreference
 ) {
 
+    // mengambil data untuk ditampilkan pada GRID list
     fun getInfluencers(): LiveData<Result<GetInfluencersResponse>> = liveData {
-        val token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXJqb25pX3MiLCJ0eXBlIjoiYnVzaW5lc3Nfb3duZXIiLCJqdGkiOiJiNmM1NDViZjU1YjBlZWY4IiwiZXhwIjoxNjg1MjEwODk5fQ.3mnu_-2QKbdCpVn6GtVLg4bbXVJWeu2inMrHs_uD07Q"
-        Log.e("test repo", "sebelum masuk try")
+        val token = "Bearer ${ApiConfig.TOKEN}"
         emit(Result.Loading)
         try{
             val response = apiService.getInfluencers(token)
@@ -37,6 +38,31 @@ class CompanyRepository(
             }
         }
     }
+
+    // menampilkan data untuk melihat daftar produk dari influencer yang dipilih
+    fun getInfluencerProduct(username: String): LiveData<Result<GetInfluencerProductReponse>> = liveData {
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        emit(Result.Loading)
+        try{
+            val response = apiService.getInfluencerProducts(token,username)
+            if(response == null){
+                emit(Result.Error("Failed to fetch influencer products "))
+            }else{
+                Log.e("test product", "data masuk")
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+
 
 
     companion object {

@@ -8,6 +8,7 @@ import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
+import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailViewModel
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
@@ -25,12 +26,13 @@ class ViewModelFactory(
             }else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
                 return RegisterViewModel(authRepository) as T
             }else if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
-                return SplashViewModel(preference) as T
+                return SplashViewModel(preference,authRepository) as T
             }else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
                 return SearchViewModel(companyRepository) as T
-            }
-            else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            }else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
                 return HomeViewModel(preference, companyRepository) as T
+            }else if (modelClass.isAssignableFrom(InfluencerDetailViewModel::class.java)) {
+                return InfluencerDetailViewModel(companyRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

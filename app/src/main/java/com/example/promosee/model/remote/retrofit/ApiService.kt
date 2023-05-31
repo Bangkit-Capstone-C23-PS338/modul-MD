@@ -2,6 +2,7 @@ package com.example.promosee.model.remote.retrofit
 
 import com.example.promosee.model.local.preference.CompanyModel
 import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
@@ -13,26 +14,15 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
 
 interface ApiService {
 
-//    @POST("login")
-//    suspend fun userLogin(
-//        @Field("username") username: String,
-//        @Field("password") password: String
-//    ) : LoginResponse
-
     @POST("login")
     suspend fun userLogin(@Body user: User): LoginResponse
-
-//    @POST("login")
-//    suspend fun userLogin(
-//        @Query("username") username: String,
-//        @Query("password") password: String
-//    ) : LoginResponse
 
     @POST("register/businessowner")
     suspend fun companyRegister(
@@ -49,6 +39,12 @@ interface ApiService {
     suspend fun getInfluencers(
         @Header("Authorization") token: String,
     ): GetInfluencersResponse
+
+    @GET("influencers/{username}/products")
+    suspend fun getInfluencerProducts(
+        @Header("Authorization") token: String,
+        @Path("username") username: String
+    ): GetInfluencerProductReponse
 
 
 }

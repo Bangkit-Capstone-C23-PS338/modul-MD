@@ -2,6 +2,7 @@ package com.example.promosee.model.remote.reponse
 
 import com.google.gson.annotations.SerializedName
 
+
 data class GetInfluencersResponse(
 
 	@field:SerializedName("influencers")
@@ -60,4 +61,34 @@ data class InfluencersItem(
 
 	@field:SerializedName("products")
 	val products: List<ProductsItem?>? = null
+)
+
+data class GetInfluencerProductReponse(
+
+	@field:SerializedName("products")
+	val products: List<ProductsItemInfluencer?>? = null
+)
+
+data class ProductsItemInfluencer(
+
+	@field:SerializedName("social_media_type")
+	val socialMediaType: String? = null,
+
+	@field:SerializedName("price")
+	val price: Any? = null,
+
+	@field:SerializedName("product_id")
+	val productId: Int? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("description")
+	val description: String? = null,
+
+	@field:SerializedName("to_do")
+	val toDo: List<String?>? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
 )

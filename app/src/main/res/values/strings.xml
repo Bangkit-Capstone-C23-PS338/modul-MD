@@ -76,6 +76,7 @@
     <string name="iu">IU</string>
     <string name="shampoo_conditioner"><![CDATA[Shampoo & Conditioner]]></string>
     <string name="waiting_for_long">Waiting for long</string>
+
     <string name="payment">Payment</string>
     <string name="total_payment">Total Payment</string>
     <string name="rp_100_000">Rp 100.000</string>
@@ -105,4 +106,18 @@
     <string name="enter_receiver_address">Enter receiver address</string>
     <string name="courier">Courier</string>
     <string name="choose_a_courier">Choose a courier</string>
+
+    <string name="expired">Session Expired</string>
+    <string name="influencer_name">Benhard Sim</string>
+    <string name="influe_rate">Rating: 4.5</string>
+    <string name="comment">Reviews</string>
+    <string name="rate_card">Rate Card</string>
+    <string name="product_name">Paket A</string>
+    <string name="todo">- 2x Instagram Story\n- 1x Post Feed</string>
+    <string name="product_price">Rp 100000</string>
+    <string name="desc">"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. "</string>
+    <string name="check_acc">Order paket</string>
+    <string name="productFail">product failed to fetch</string>
+    <string name="no_product">No Products</string>
+
 </resources>

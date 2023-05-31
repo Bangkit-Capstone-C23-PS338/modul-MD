@@ -16,7 +16,9 @@ class HomeViewModel(private val pref: UserPreference, private val companyReposit
     val text: LiveData<String> = _text
 
     fun getUser(): LiveData<UserModel> {
-        return pref.getUser().asLiveData()
+        val user =  pref.getUser().asLiveData()
+        _text.value = user.value?.username
+        return user
     }
 
     fun getInfluencers() =  companyRepository.getInfluencers()

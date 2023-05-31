@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 data class OrderModel (
-    val id: Int,
+    val id: Int, // incremental
     val companyUsername: String,
     val influencerUsername: String,
     val status: String,
@@ -14,13 +14,15 @@ data class OrderModel (
     val productUrl: String,
     val productType: String,
     val brief: String,
-    val promotionPackage: String,
-    val promotionMedia: String,
+    val promotionPackage: String,// dari model product
+    val promotionMedia: String, // dari model product
     val orderCourier: String,
+    val senderAddress: String,
     val orderAddress: String,
     val orderPaymentDate: String,
     val paymentMethod: String,
-    val totalPayment: Int
+    val totalPayment: Int // dari model product
+    // val package: Product
 )
 
 object DummyOrders{
@@ -38,6 +40,7 @@ object DummyOrders{
         "Paket A",
         "Instagram",
         "SiLambat",
+        "Jl. Prof Soedarto No.4",
         "Jl. Prof Soedarto No.5",
         "01-01-2023",
         "BCA",
@@ -57,6 +60,7 @@ object DummyOrders{
         "Paket A",
         "Instagram",
         "SiLambat",
+        "Jl. Prof Soedarto No.4",
         "Jl. Prof Soedarto No.5",
         "01-01-2023",
         "BCA",
@@ -76,6 +80,7 @@ object DummyOrders{
         "Paket A",
         "Instagram",
         "SiLambat",
+        "Jl. Prof Soedarto No.4",
         "Jl. Prof Soedarto No.5",
         "01-01-2023",
         "BCA",
@@ -95,6 +100,7 @@ object DummyOrders{
         "Paket A",
         "Instagram",
         "SiLambat",
+        "Jl. Prof Soedarto No.4",
         "Jl. Prof Soedarto No.5",
         "01-01-2023",
         "BCA",

@@ -96,7 +96,7 @@
     <string name="instagram">Instagram</string>
     <string name="product_detail">Product Detail</string>
     <string name="enter_product_name">Enter product name</string>
-    <string name="product_name">Product Name</string>
+    <string name="products_name">Product Name</string>
     <string name="product_link">Product Link</string>
     <string name="enter_product_link">Enter product link</string>
     <string name="sender_address">Sender Address</string>

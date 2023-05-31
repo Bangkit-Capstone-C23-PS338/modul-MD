@@ -48,10 +48,10 @@ class LoginActivity : AppCompatActivity() {
 
             when{
                 tvEmail.isEmpty() -> {
-                    binding.editTextTextEmailAddress3.error = getString(R.string.email_empty)
+                    binding.usernameEditTextLayout.error = getString(R.string.username_empty)
                 }
                 tvPassword.isEmpty() -> {
-                    binding.editTextTextPassword.error = getString(R.string.pass_empty)
+                    binding.passwordEditTextLayout.error = getString(R.string.pass_empty)
                 }
                 valid -> {
                     binding.progressBar.visibility = View.VISIBLE

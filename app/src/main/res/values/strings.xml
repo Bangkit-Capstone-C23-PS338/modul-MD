@@ -13,7 +13,7 @@
     <string name="emailhint">Enter email</string>
     <string name="password">Password</string>
     <string name="passwordhint">Enter password</string>
-    <string name="no_acc">Don\'t have any account yet? Sign up</string>
+    <string name="no_acc">Sign up</string>
     <string name="forgetpass">Forgot Password ?</string>
     <string name="email_empty">Email can\'t be empty</string>
     <string name="pass_empty">Password can\'t be empty</string>
@@ -86,7 +86,7 @@
     <string name="influencer">Influencer</string>
     <string name="instragramnya_iu">\@dlwlrma</string>
     <string name="detail">Detail</string>
-    <string name="order_date">Order Date</string>
+    <string name="posting_date">Posting Date</string>
     <string name="choose_a_date">Choose a Date</string>
     <string name="product_type">Product Type</string>
     <string name="enter_product_type">Enter product type</string>
@@ -119,5 +119,6 @@
     <string name="check_acc">Order paket</string>
     <string name="productFail">product failed to fetch</string>
     <string name="no_product">No Products</string>
+    <string name="don_t_have_any_account_yet">Don\'t have any account yet?</string>
 
 </resources>

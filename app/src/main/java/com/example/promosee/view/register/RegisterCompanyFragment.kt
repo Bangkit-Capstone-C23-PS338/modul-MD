@@ -76,7 +76,7 @@ class RegisterCompanyFragment : Fragment() {
                         listFixCategories
                     )
                     registerViewModel.setCompany(company)
-                    registerViewModel.registerCompany().observe(requireActivity()){result ->
+                    registerViewModel.registerCompany().observe(viewLifecycleOwner){result ->
                         when(result){
                             is Result.Loading -> {
                                 binding.progressBar.visibility = View.VISIBLE

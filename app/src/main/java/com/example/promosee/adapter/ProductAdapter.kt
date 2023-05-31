@@ -1,5 +1,6 @@
 package com.example.promosee.adapter
 
+import android.content.Intent
 import android.provider.Settings.Secure.getString
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 
 class ProductAdapter(private val products: List<ProductsItemInfluencer>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
@@ -30,6 +33,10 @@ class ProductAdapter(private val products: List<ProductsItemInfluencer>): Recycl
         holder.criteriaDetail.text = todo
 
         holder.projectPrice.text = products[position].price.toString()
+        holder.checkBtn.setOnClickListener {
+            val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
+            holder.itemView.context.startActivity(intentToOrder)
+        }
     }
 
     override fun getItemCount(): Int {

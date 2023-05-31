@@ -43,10 +43,6 @@ class InfluencerDetailActivity : AppCompatActivity() {
     private fun setUpAction() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
-        binding.btnReview.setOnClickListener {
-            val intentToOrder = Intent(this@InfluencerDetailActivity, OrderActivity::class.java)
-            startActivity(intentToOrder)
-        }
         if(username != null){
 
             binding.usernameHead.text = username

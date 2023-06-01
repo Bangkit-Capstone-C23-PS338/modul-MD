@@ -27,6 +27,14 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    suspend fun removeUser(){
+        dataStore.edit { preferences ->
+            preferences[USERNAME_KEY] = ""
+            preferences[TOKEN_KEY] = ""
+            preferences[USERID_KEY] = ""
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: UserPreference? = null

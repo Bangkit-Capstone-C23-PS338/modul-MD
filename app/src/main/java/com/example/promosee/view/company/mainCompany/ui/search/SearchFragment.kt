@@ -1,11 +1,15 @@
 package com.example.promosee.view.company.mainCompany.ui.search
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -39,8 +43,26 @@ class SearchFragment : Fragment() {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        searchViewModel.text.observe(viewLifecycleOwner) {}
+//        searchViewModel.text.observe(viewLifecycleOwner) {}
         return root
+    }
+
+    // untuk searching -- API blm jadi --
+    private fun searchQueue() {
+        val searchInfluencer = binding.searchInflu
+        searchInfluencer.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                binding.recyclerViewRecom.adapter = null
+
+
+//                addInfluencerData
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
     }
 
     private fun setupViewModel() {
@@ -52,6 +74,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        searchQueue()
 
         searchViewModel.getInfluencrs().observe(viewLifecycleOwner){result ->
             when(result){
@@ -76,42 +101,6 @@ class SearchFragment : Fragment() {
             }
 
         }
-
-
-//        val dummyInfluecers: List<InfluencerModel> = listOf(
-//            InfluencerModel(
-//                username = "Lee Je Eun",
-//                email = "ben@gmail.com",
-//                password = "123",
-//                categories = catDum,
-//            ),
-//            InfluencerModel(
-//                username = "Lee Je Eun",
-//                email = "ben@gmail.com",
-//                password = "123",
-//                categories = catDum,
-//            ),
-//            InfluencerModel(
-//                username = "Lee Je Eun",
-//                email = "ben@gmail.com",
-//                password = "123",
-//                categories = catDum,
-//            ),
-//            InfluencerModel(
-//                username = "Lee Je Eun",
-//                email = "ben@gmail.com",
-//                password = "123",
-//                categories = catDum,
-//            ),
-//            InfluencerModel(
-//                username = "Lee Je Eun",
-//                email = "ben@gmail.com",
-//                password = "123",
-//                categories = catDum,
-//            )
-//        )
-
-//        addInfluencerDataold(dummyInfluecers)
     }
 
     private fun addInfluencerData(allInfluencer: List<InfluencersItem>) {

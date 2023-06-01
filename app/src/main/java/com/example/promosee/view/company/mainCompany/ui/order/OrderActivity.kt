@@ -21,7 +21,8 @@ class OrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        // bacn button
+        binding.backButton.setOnClickListener{ finish() }
         setupAction()
     }
 

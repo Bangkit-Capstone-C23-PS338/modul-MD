@@ -13,7 +13,7 @@
     <string name="emailhint">Enter email</string>
     <string name="password">Password</string>
     <string name="passwordhint">Enter password</string>
-    <string name="no_acc">Sign up</string>
+    <string name="no_acc">Don\'t have any account yet? Sign up</string>
     <string name="forgetpass">Forgot Password ?</string>
     <string name="email_empty">Email can\'t be empty</string>
     <string name="pass_empty">Password can\'t be empty</string>
@@ -86,7 +86,7 @@
     <string name="influencer">Influencer</string>
     <string name="instragramnya_iu">\@dlwlrma</string>
     <string name="detail">Detail</string>
-    <string name="posting_date">Posting Date</string>
+    <string name="order_date">Order Date</string>
     <string name="choose_a_date">Choose a Date</string>
     <string name="product_type">Product Type</string>
     <string name="enter_product_type">Enter product type</string>
@@ -96,7 +96,7 @@
     <string name="instagram">Instagram</string>
     <string name="product_detail">Product Detail</string>
     <string name="enter_product_name">Enter product name</string>
-    <string name="products_name">Product Name</string>
+    <string name="product_names">Product Name</string>
     <string name="product_link">Product Link</string>
     <string name="enter_product_link">Enter product link</string>
     <string name="sender_address">Sender Address</string>
@@ -119,6 +119,18 @@
     <string name="check_acc">Order paket</string>
     <string name="productFail">product failed to fetch</string>
     <string name="no_product">No Products</string>
-    <string name="don_t_have_any_account_yet">Don\'t have any account yet?</string>
+    <string name="don_t_have_any_account_yet">No Account</string>
+    <string name="company_name">PT Sinar Jaya Abadi</string>
+    <string name="review_date">15 Oct 2022</string>
+    <string name="komentar">Comment</string>
+    <string name="rating_title">Overall Rating</string>
+    <string name="review_head">Reviews</string>
+    <string name="rating">5</string>
+    <string name="profile_head">Profile</string>
+    <string name="email_com">benhardsim@gmail.com</string>
+    <string name="telp_com">+62123333231</string>
+    <string name="acc_title">Account</string>
+    <string name="other_title">Other</string>
+    <string name="logout">Logout</string>
 
 </resources>

@@ -14,7 +14,6 @@ import com.example.promosee.model.remote.retrofit.ApiService
 class CompanyRepository(
     private val apiService: ApiService, private val pref: UserPreference
 ) {
-
     // mengambil data untuk ditampilkan pada GRID list
     fun getInfluencers(): LiveData<Result<GetInfluencersResponse>> = liveData {
         val token = "Bearer ${ApiConfig.TOKEN}"
@@ -61,6 +60,9 @@ class CompanyRepository(
             }
         }
     }
+
+//    fun getInfluencerItem(username: String):
+
 
 
 

@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="24dp"
             android:layout_marginBottom="96dp">
-            
+
             <TextView
                 android:id="@+id/label_influencer"
                 android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
                 android:id="@+id/label_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/posting_date"
+                android:text="@string/order_date"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
@@ -284,7 +284,7 @@
                 android:id="@+id/label_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/products_name"
+                android:text="@string/product_names"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
@@ -499,8 +499,8 @@
     <ProgressBar
         android:layout_gravity="center"
         android:id="@+id/progress_bar"
+        android:visibility="gone"
         style="?android:attr/progressBarStyle"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

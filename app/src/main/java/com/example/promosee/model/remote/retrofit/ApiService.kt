@@ -5,6 +5,7 @@ import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
+import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.request.User
 import com.google.gson.annotations.SerializedName
@@ -34,7 +35,6 @@ interface ApiService {
         @Body influencer: InfluencerModel,
     ) : RegisterResponse
 
-
     @GET("getinfluencers")
     suspend fun getInfluencers(
         @Header("Authorization") token: String,
@@ -46,5 +46,9 @@ interface ApiService {
         @Path("username") username: String
     ): GetInfluencerProductReponse
 
+    @POST("logout")
+    suspend fun userLogout(
+        @Header("Authorization") token: String,
+    ): LogoutResponse
 
 }

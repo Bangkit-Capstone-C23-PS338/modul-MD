@@ -9,6 +9,7 @@ import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailViewModel
+import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
@@ -33,6 +34,8 @@ class ViewModelFactory(
                 return HomeViewModel(preference, companyRepository) as T
             }else if (modelClass.isAssignableFrom(InfluencerDetailViewModel::class.java)) {
                 return InfluencerDetailViewModel(companyRepository) as T
+            }else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+                return ProfileViewModel(authRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

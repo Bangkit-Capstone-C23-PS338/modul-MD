@@ -53,7 +53,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchViewModel.getInfluencrs().observe(requireActivity()){result ->
+        searchViewModel.getInfluencrs().observe(viewLifecycleOwner){result ->
             when(result){
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

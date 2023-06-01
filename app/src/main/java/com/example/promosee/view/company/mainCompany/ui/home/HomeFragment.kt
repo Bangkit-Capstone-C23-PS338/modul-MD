@@ -34,7 +34,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,24 +50,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAction() {
-//        homeViewModel.getUser().observe(requireActivity()){ user ->
-//            binding.helloUser.text = getString(R.string.hello_user, user.username)
-//        }
+
+        homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
+            binding.helloUser.text = getString(R.string.hello_user, user.username)
+        }
+
         addOrdersData(DummyOrders.listOrders)
-//        homeViewModel.getInfluencers().observe(requireActivity()){result ->
-//            when(result){
-//                is Result.Loading -> {
-//                    binding.progressBar.visibility = View.VISIBLE
-//                }
-//                is Result.Success -> {
-//                    binding.progressBar.visibility = View.GONE
-//                    Log.e("test data", result.data.influencers.toString())
-//                    val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
-//                    addInfluencerData(allInfluencer)
-//                }
-//                is Result.Error -> {}
-//            }
-//        }
+        homeViewModel.getInfluencers().observe(viewLifecycleOwner){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e("test data", result.data.influencers.toString())
+                    val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
+                    addInfluencerData(allInfluencer)
+                }
+                is Result.Error -> {}
+            }
+        }
 
     }
     private fun setupViewModel() {

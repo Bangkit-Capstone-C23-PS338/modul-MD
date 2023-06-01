@@ -75,7 +75,7 @@ class RegisterInfluencerFragment : Fragment() {
                         listFixCategories
                     )
                     registerViewModel.setInfluencer(influencer)
-                    registerViewModel.registerInfluencer().observe(requireActivity()){result ->
+                    registerViewModel.registerInfluencer().observe(viewLifecycleOwner){result ->
                         when(result){
                             is Result.Loading -> {
                                 binding.progressBar.visibility = View.VISIBLE

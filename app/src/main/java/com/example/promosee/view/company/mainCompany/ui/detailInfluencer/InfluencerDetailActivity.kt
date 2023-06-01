@@ -16,6 +16,7 @@ import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.MainCom
+import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 import com.example.promosee.view.login.LoginViewModel
 
 class InfluencerDetailActivity : AppCompatActivity() {
@@ -42,7 +43,6 @@ class InfluencerDetailActivity : AppCompatActivity() {
     private fun setUpAction() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
-
         if(username != null){
 
             binding.usernameHead.text = username

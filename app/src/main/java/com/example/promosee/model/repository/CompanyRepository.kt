@@ -61,6 +61,9 @@ class CompanyRepository(
         }
     }
 
+//    fun getInfluencerItem(username: String):
+
+
 
 
 

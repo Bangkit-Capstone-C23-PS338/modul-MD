@@ -119,5 +119,18 @@
     <string name="check_acc">Order paket</string>
     <string name="productFail">product failed to fetch</string>
     <string name="no_product">No Products</string>
+    <string name="don_t_have_any_account_yet">No Account</string>
+    <string name="company_name">PT Sinar Jaya Abadi</string>
+    <string name="review_date">15 Oct 2022</string>
+    <string name="komentar">Comment</string>
+    <string name="rating_title">Overall Rating</string>
+    <string name="review_head">Reviews</string>
+    <string name="rating">5</string>
+    <string name="profile_head">Profile</string>
+    <string name="email_com">benhardsim@gmail.com</string>
+    <string name="telp_com">+62123333231</string>
+    <string name="acc_title">Account</string>
+    <string name="other_title">Other</string>
+    <string name="logout">Logout</string>
 
 </resources>

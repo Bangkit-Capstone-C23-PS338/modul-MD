@@ -9,6 +9,7 @@ import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.LoginResponse
+import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.request.User
 import com.example.promosee.model.remote.retrofit.ApiConfig
@@ -75,6 +76,28 @@ class AuthRepository(
             if(response == null){
                 emit(Result.Error("Register gagal"))
             }else{
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("AuthRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun logout() : LiveData<Result<LogoutResponse>> = liveData {
+        emit(Result.Loading)
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        try{
+            val response = apiService.userLogout(token)
+            if(response == null){
+                emit(Result.Error("logout fail"))
+            }else{
+                pref.removeUser()
                 emit(Result.Success(response))
             }
         }catch (e : Exception){

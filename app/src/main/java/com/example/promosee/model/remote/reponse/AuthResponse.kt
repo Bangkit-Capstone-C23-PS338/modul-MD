@@ -21,3 +21,8 @@ data class RegisterResponse(
 	@field:SerializedName("message")
 	val message: String,
 )
+
+data class LogoutResponse(
+	@field:SerializedName("message")
+	val message: String,
+)

@@ -1,10 +1,12 @@
 package com.example.promosee.view.company.mainCompany.ui.order
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.promosee.databinding.ActivityOrderBinding
+import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.toShortDateFormat
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
 import com.google.android.material.datepicker.CalendarConstraints
@@ -23,13 +25,33 @@ class OrderActivity : AppCompatActivity() {
         setContentView(binding.root)
         // bacn button
         binding.backButton.setOnClickListener{ finish() }
+        setupView()
         setupAction()
+    }
+
+    private fun setupView() {
+        // get product from the detail page
+        val product = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableExtra(EXTRA_PRODUCT, ProductsItemInfluencer::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(EXTRA_PRODUCT)
+        }
+
+        val username = intent.getStringExtra(EXTRA_USERNAME)
+
+
+        binding.promotionMedia.text = product?.socialMediaType ?: ""
+        binding.promotionPackage.text = product?.name ?: ""
+        binding.price.text = product?.price.toString() ?: ""
+        binding.username.text = username
     }
 
     private fun setupAction() {
         binding.btnDetail.setOnClickListener {
             val intentToDetail = Intent(this@OrderActivity, InfluencerDetailActivity::class.java)
             intentToDetail.putExtra("username", binding.username.text.toString())
+            startActivity(intentToDetail)
         }
         binding.btnDate.setOnClickListener {
             // Makes only dates from today forward selectable.
@@ -60,5 +82,10 @@ class OrderActivity : AppCompatActivity() {
 
     private fun runValidation() {
 
+    }
+
+    companion object{
+        const val EXTRA_PRODUCT = "extra_product"
+        const val EXTRA_USERNAME = "extra_username"
     }
 }

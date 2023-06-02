@@ -15,11 +15,11 @@ data class OrderModel (
     val productUrl: String,
     val productType: String,
     val brief: String,
-    val orderCourier: String,
+    val orderCourier: String?,
     val senderAddress: String,
     val orderAddress: String,
-    val orderPaymentDate: String,
-    val paymentMethod: String,
+    val orderPaymentDate: String?,
+    val paymentMethod: String?,
     val selectedPackage: ProductsItem
 )
 

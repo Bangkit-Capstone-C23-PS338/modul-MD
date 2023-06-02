@@ -56,7 +56,6 @@ class InfluencerDetailActivity : AppCompatActivity() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
         if(username != null){
-
             binding.usernameHead.text = username
             binding.usernameTitle.text = username
 
@@ -100,10 +99,11 @@ class InfluencerDetailActivity : AppCompatActivity() {
 
 
     private fun addInfluencerProduct(products: List<ProductsItemInfluencer>) {
-
+        val username: String = intent.getStringExtra("username") as String
         // sambungan ke adapter
         binding.influProd.layoutManager = LinearLayoutManager(this)
         val adapter = ProductAdapter(products)
+        adapter.setUsername(username)
         binding.influProd.adapter = adapter
 
     }

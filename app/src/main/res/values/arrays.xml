@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="simple_items">
+    <string-array name="courier_items">
         <item>SiCepat</item>
         <item>JNE</item>
         <item>Promosee Express</item>
+        <item>AnterAja</item>
+    </string-array>
+
+    <string-array name="payment_items">
+        <item>BCA</item>
+        <item>BRI</item>
+        <item>BNI</item>
+        <item>GoPay</item>
+        <item>ShopeePay</item>
+        <item>DANA</item>
+        <item>OVO</item>
     </string-array>
 </resources>

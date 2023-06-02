@@ -1,6 +1,8 @@
 package com.example.promosee.model.remote.reponse
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 
 data class GetInfluencersResponse(
@@ -8,6 +10,7 @@ data class GetInfluencersResponse(
 	@field:SerializedName("influencers")
 	val influencers: List<InfluencersItem?>? = null
 )
+
 
 data class ProductsItem(
 
@@ -69,13 +72,14 @@ data class GetInfluencerProductReponse(
 	val products: List<ProductsItemInfluencer?>? = null
 )
 
+@Parcelize
 data class ProductsItemInfluencer(
 
 	@field:SerializedName("social_media_type")
 	val socialMediaType: String? = null,
 
 	@field:SerializedName("price")
-	val price: Any? = null,
+	val price: Int? = null,
 
 	@field:SerializedName("product_id")
 	val productId: Int? = null,
@@ -91,4 +95,4 @@ data class ProductsItemInfluencer(
 
 	@field:SerializedName("id")
 	val id: Int? = null
-)
+) : Parcelable

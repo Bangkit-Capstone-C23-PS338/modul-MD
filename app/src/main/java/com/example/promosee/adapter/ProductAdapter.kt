@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
+import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.remote.reponse.ProductsItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 
@@ -19,6 +21,11 @@ class ProductAdapter(
     private val products: List<ProductsItemInfluencer>,
     private val userType: String
 ): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+
+    private var username: String = ""
+    fun setUsername(newUsername: String){
+        username = newUsername
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
@@ -40,6 +47,8 @@ class ProductAdapter(
         if(userType == "bussiness"){
             holder.checkBtn.setOnClickListener {
                 val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
+                intentToOrder.putExtra(OrderActivity.EXTRA_PRODUCT, products[position])
+                intentToOrder.putExtra(OrderActivity.EXTRA_USERNAME, username)
                 holder.itemView.context.startActivity(intentToOrder)
             }
         }else{

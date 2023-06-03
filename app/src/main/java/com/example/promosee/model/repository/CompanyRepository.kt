@@ -5,10 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.promosee.R
 import com.example.promosee.model.Result
+import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
+import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderResponse
+import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
 
@@ -73,7 +78,7 @@ class CompanyRepository(
                 Log.e("test product", "data masuk")
                 emit(Result.Success(response))
             }
-        }catch (e : Exception){
+        }catch (e : Exception) {
             Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
             val message = e.message.toString()
             if (message == "") {
@@ -84,11 +89,31 @@ class CompanyRepository(
         }
     }
 
+    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
+        emit(Result.Loading)
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        try {
+            val response = apiService.createOrder(token, order, username)
+            if (response == null) {
+                emit(Result.Error("Order gagal"))
+            } else {
+                Log.d("Cek Order", response.message)
+                emit(Result.Success(response))
+            }
+        } catch (e: Exception) {
+            Log.d("CompanyRepository", " ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+
+
 //    fun getInfluencerItem(username: String):
-
-
-
-
 
     companion object {
         private val TAG = CompanyRepository::class.java.simpleName

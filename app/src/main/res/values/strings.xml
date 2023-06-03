@@ -13,7 +13,7 @@
     <string name="emailhint">Enter email</string>
     <string name="password">Password</string>
     <string name="passwordhint">Enter password</string>
-    <string name="no_acc">Don\'t have any account yet? Sign up</string>
+    <string name="no_acc">Sign up</string>
     <string name="forgetpass">Forgot Password ?</string>
     <string name="email_empty">Email can\'t be empty</string>
     <string name="pass_empty">Password can\'t be empty</string>
@@ -119,7 +119,7 @@
     <string name="check_acc">Order paket</string>
     <string name="productFail">product failed to fetch</string>
     <string name="no_product">No Products</string>
-    <string name="don_t_have_any_account_yet">No Account</string>
+    <string name="don_t_have_any_account_yet">Don\'t have any account yet?</string>
     <string name="company_name">PT Sinar Jaya Abadi</string>
     <string name="review_date">15 Oct 2022</string>
     <string name="komentar">Comment</string>
@@ -136,6 +136,8 @@
     <string name="email_influencer">bensim@gmail.com</string>
     <string name="telp_infuencer">+6266188108</string>
     <string name="my_product">My Product</string>
-    <string name="edit">Edit\n</string>
-
+    <string name="edit">Edit</string>
+    <string name="briefing">Briefing</string>
+    <string name="enter_briefing_for_influencer">Enter briefing for influencer</string>
+    <string name="choose_your_payment_method">Choose your payment method</string>
 </resources>

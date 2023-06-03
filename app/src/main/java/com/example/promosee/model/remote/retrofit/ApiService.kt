@@ -2,10 +2,12 @@ package com.example.promosee.model.remote.retrofit
 
 import com.example.promosee.model.local.preference.CompanyModel
 import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
@@ -64,5 +66,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("username") username: String
     ): getInfleuncerProfileResponse
+    @POST("add_influencer_order/{influencer_username}")
+    suspend fun createOrder(
+        @Header("Authorization") token: String,
+        @Body order: OrderModel,
+        @Path("influencer_username") influencerUsername: String
+    ): OrderResponse
 
 }

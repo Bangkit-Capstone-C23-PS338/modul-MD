@@ -40,8 +40,11 @@ class InfluencerDetailActivity : AppCompatActivity() {
         binding.ratingNumber.text = rating.toString()
         binding.backButton.setOnClickListener{ finish() }
         binding.btnReview.setOnClickListener{
-            val intent = Intent(this@InfluencerDetailActivity,ReviewsActivity::class.java)
-            startActivity(intent)
+            val moveIntent = Intent(this@InfluencerDetailActivity,ReviewsActivity::class.java)
+            val getIntent: Intent = intent
+            val username = getIntent.getStringExtra("username") as String
+            moveIntent.putExtra("username",username)
+            startActivity(moveIntent)
         }
     }
 
@@ -103,7 +106,7 @@ class InfluencerDetailActivity : AppCompatActivity() {
 
         // sambungan ke adapter
         binding.influProd.layoutManager = LinearLayoutManager(this)
-        val adapter = ProductAdapter(products)
+        val adapter = ProductAdapter(products, "bussiness")
         binding.influProd.adapter = adapter
 
     }

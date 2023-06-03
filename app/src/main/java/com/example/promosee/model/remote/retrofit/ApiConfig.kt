@@ -10,6 +10,7 @@ class ApiConfig {
     companion object {
 
         var TOKEN = ""
+        var USERNAME = ""
         var URL = "https://promoseecloudrun-24yozpy7dq-et.a.run.app/"
 
         fun getApiService(): ApiService {

@@ -15,7 +15,10 @@ import com.example.promosee.databinding.ItemOrderBinding
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 
-class ProductAdapter(private val products: List<ProductsItemInfluencer>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(
+    private val products: List<ProductsItemInfluencer>,
+    private val userType: String
+): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
@@ -33,10 +36,17 @@ class ProductAdapter(private val products: List<ProductsItemInfluencer>): Recycl
         holder.criteriaDetail.text = todo
 
         holder.projectPrice.text = products[position].price.toString()
-        holder.checkBtn.setOnClickListener {
-            val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
-            holder.itemView.context.startActivity(intentToOrder)
+
+        if(userType == "bussiness"){
+            holder.checkBtn.setOnClickListener {
+                val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
+                holder.itemView.context.startActivity(intentToOrder)
+            }
+        }else{
+            holder.checkBtn.setText(R.string.edit)
         }
+
+
     }
 
     override fun getItemCount(): Int {

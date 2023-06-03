@@ -14,6 +14,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[USERNAME_KEY] = user.username
             preferences[TOKEN_KEY] = user.access_token
             preferences[USERID_KEY] = user.userid
+            preferences[USER_ACCESS] = user.user_access
         }
     }
 
@@ -23,6 +24,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[USERNAME_KEY] ?: "",
                 preferences[USERID_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
+                preferences[USER_ACCESS] ?: ""
             )
         }
     }
@@ -32,6 +34,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[USERNAME_KEY] = ""
             preferences[TOKEN_KEY] = ""
             preferences[USERID_KEY] = ""
+            preferences[USER_ACCESS] = ""
         }
     }
 
@@ -42,6 +45,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         val TOKEN_KEY = stringPreferencesKey("access_token")
         private val USERNAME_KEY = stringPreferencesKey("username")
         private val USERID_KEY = stringPreferencesKey("userid")
+        private val USER_ACCESS = stringPreferencesKey("user_type")
 
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

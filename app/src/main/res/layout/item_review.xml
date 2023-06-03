@@ -6,16 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardCornerRadius="8dp">
 
         <TableLayout
             android:layout_width="match_parent"
             android:padding="20dp"
             android:layout_height="wrap_content">
-
-            <TableRow android:layout_height="match_parent">
+            <LinearLayout android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/profilePic"
@@ -24,6 +21,8 @@
                     android:src="@drawable/profilepic" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/company_name"
                     android:text="@string/company_name"
                     android:layout_gravity="center"
@@ -31,19 +30,24 @@
                     />
 
                 <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/verif"
                     android:layout_marginStart="2dp"
                     android:src="@drawable/baseline_verified_24"
                     android:layout_gravity="center"/>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/review_date"
                     android:text="@string/review_date"
                     android:layout_gravity="center"
                     android:gravity="end"
+                    android:textSize="11sp"
                     android:layout_weight="1"/>
 
-            </TableRow>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/comment_title"
@@ -54,6 +58,7 @@
 
             <TextView
                 android:id="@+id/comment_desc"
+                android:layout_width="match_parent"
                 android:text="@string/desc"
                 android:layout_marginTop="4dp"
                 />

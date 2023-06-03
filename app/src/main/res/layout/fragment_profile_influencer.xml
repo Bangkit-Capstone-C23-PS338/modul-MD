@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.company.mainCompany.ui.order.OrderActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_theme_light_onPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="16dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_bold"
+                android:text="@string/profile_head"
+                android:textColor="@color/md_theme_dark_background"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/views_after_appbar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Scrollable content -->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow
+                android:paddingLeft="20dp">
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/profilepic" />
+
+                <TableLayout
+                    android:layout_marginStart="8dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/influencer_name"
+                        android:text="@string/influencer_name"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/email_influencer"
+                        android:text="@string/email_influencer"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/telp_com"
+                        android:text="@string/telp_infuencer"
+                        android:textSize="15sp"/>
+
+                </TableLayout>
+
+                <ImageView
+                    android:src="@drawable/baseline_edit_24"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    />
+
+            </TableRow>
+
+            <TextView
+                android:text="@string/acc_title"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingStart="20dp"/>
+
+            <TextView
+                android:text="@string/other_title"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingStart="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/logout"
+                android:layout_marginTop="10dp"
+                android:paddingTop="15dp"
+                android:background="@drawable/border"
+                android:paddingBottom="15dp"
+                >
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_logout_24" />
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logout" />
+            </LinearLayout>
+
+
+
+
+        </TableLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

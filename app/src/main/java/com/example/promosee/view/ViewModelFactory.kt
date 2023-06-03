@@ -8,10 +8,14 @@ import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
 import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
+import com.example.promosee.model.repository.InfluencerRepository
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailViewModel
 import com.example.promosee.view.company.mainCompany.ui.order.OrderViewModel
 import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
+import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewsViewModel
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
+import com.example.promosee.view.influencer.mainInflu.ui.home.HomeInfluencerViewModel
+import com.example.promosee.view.influencer.mainInflu.ui.profile.ProfileInfluencerViewModel
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
 import com.example.promosee.view.splash.SplashViewModel
@@ -19,7 +23,8 @@ import com.example.promosee.view.splash.SplashViewModel
 class ViewModelFactory(
     private val authRepository: AuthRepository,
     private val preference: UserPreference,
-    private val companyRepository: CompanyRepository
+    private val companyRepository: CompanyRepository,
+    private val influencerRepository: InfluencerRepository
 ) : ViewModelProvider.NewInstanceFactory() {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -37,6 +42,12 @@ class ViewModelFactory(
                 return InfluencerDetailViewModel(companyRepository) as T
             }else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
                 return ProfileViewModel(authRepository) as T
+            }else if (modelClass.isAssignableFrom(ProfileInfluencerViewModel::class.java)) {
+                return ProfileInfluencerViewModel(authRepository,influencerRepository) as T
+            }else if (modelClass.isAssignableFrom(ReviewsViewModel::class.java)) {
+                return ReviewsViewModel(companyRepository) as T
+            }else if (modelClass.isAssignableFrom(HomeInfluencerViewModel::class.java)) {
+                return HomeInfluencerViewModel(influencerRepository) as T
             }else if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
                 return OrderViewModel(preference, companyRepository) as T
             }
@@ -51,7 +62,8 @@ class ViewModelFactory(
                 instance ?: ViewModelFactory(
                     Injection.authRepository(context),
                     Injection.providePreferences(context),
-                    Injection.companyRepository(context)
+                    Injection.companyRepository(context),
+                    Injection.influencerRepository(context)
                 )
             }.also { instance = it }
     }

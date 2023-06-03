@@ -132,8 +132,12 @@
     <string name="acc_title">Account</string>
     <string name="other_title">Other</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_main_influencer">MainInfluencer</string>
+    <string name="email_influencer">bensim@gmail.com</string>
+    <string name="telp_infuencer">+6266188108</string>
+    <string name="my_product">My Product</string>
+    <string name="edit">Edit</string>
     <string name="briefing">Briefing</string>
     <string name="enter_briefing_for_influencer">Enter briefing for influencer</string>
     <string name="choose_your_payment_method">Choose your payment method</string>
-
 </resources>

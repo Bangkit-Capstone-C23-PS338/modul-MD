@@ -30,7 +30,8 @@ class AuthRepository(
                 val userInfo = UserModel(
                     username = response.username ?: "",
                     access_token = response.accessToken ?: "",
-                    userid = response.userid ?: ""
+                    userid = response.userid ?: "",
+                    user_access = response.userType ?: ""
                 )
                 // menyimpan data ke data-store
                 pref.saveUser(userInfo)

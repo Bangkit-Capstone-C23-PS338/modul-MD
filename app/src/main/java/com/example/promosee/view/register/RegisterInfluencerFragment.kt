@@ -115,30 +115,31 @@ class RegisterInfluencerFragment : Fragment() {
     }
 
     private fun runValidation() {
+        isValidated = true
         binding.apply {
             if(editTextTextUsername.text?.isEmpty() as Boolean){
                 usernameEditTextLayout.error = getString(R.string.username_empty)
                 isValidated = false
-            }
-            if(editTextTextPassword.text?.isEmpty() as Boolean){
-                passwordEditTextLayout.error = getString(R.string.pass_empty)
-                isValidated = false
+            } else{
+                usernameEditTextLayout.error = null
             }
             if(editTextTextEmailAddress3.text?.isEmpty() as Boolean){
                 emailEditTextLayout.error = getString(R.string.email_empty)
                 isValidated = false
-            }
-            if(editTextTextPasswordConfirmation.text?.isEmpty() as Boolean){
-                passwordConfirmationEditTextLayout.error = getString(R.string.pass_empty)
-                isValidated = false
+            } else{
+                emailEditTextLayout.error = null
             }
             if(editTextTextPassword.text.toString() != editTextTextPasswordConfirmation.text.toString()){
                 passwordConfirmationEditTextLayout.error = getString(R.string.pass_must_match)
                 isValidated = false
+            } else{
+                passwordConfirmationEditTextLayout.error = null
             }
             if(editTextTextPassword.text.toString().length < 8){
                 passwordEditTextLayout.error = getString(R.string.minimum_of_8_characters)
                 isValidated = false
+            } else{
+                passwordEditTextLayout.error = null
             }
         }
     }

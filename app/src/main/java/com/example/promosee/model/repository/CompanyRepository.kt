@@ -12,6 +12,7 @@ import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.retrofit.ApiConfig

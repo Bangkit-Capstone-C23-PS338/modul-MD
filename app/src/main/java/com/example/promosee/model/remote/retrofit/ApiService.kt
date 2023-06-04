@@ -7,6 +7,7 @@ import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
@@ -69,7 +70,7 @@ interface ApiService {
     @POST("add_influencer_order/{influencer_username}")
     suspend fun createOrder(
         @Header("Authorization") token: String,
-        @Body order: OrderModel,
+        @Body order: OrderItem,
         @Path("influencer_username") influencerUsername: String
     ): OrderResponse
 

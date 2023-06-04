@@ -21,6 +21,8 @@ import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
+import com.example.promosee.view.company.mainCompany.ui.search.SearchFragment
+import com.example.promosee.view.register.RegisterCompanyFragment
 
 class HomeFragment : Fragment() {
 
@@ -51,6 +53,15 @@ class HomeFragment : Fragment() {
 
     private fun setupAction() {
 
+        binding.fullReccomendation.setOnClickListener {
+            val searchFragment = SearchFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.frame_container, searchFragment, SearchFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+        }
         homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
             binding.helloUser.text = getString(R.string.hello_user, user.username)
         }

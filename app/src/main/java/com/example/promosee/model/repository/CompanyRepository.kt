@@ -12,6 +12,7 @@ import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.retrofit.ApiConfig
@@ -89,26 +90,26 @@ class CompanyRepository(
         }
     }
 
-    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
-        emit(Result.Loading)
-        val token = "Bearer ${ApiConfig.TOKEN}"
-        try {
-            val response = apiService.createOrder(token, order, username)
-            if (response == null) {
-                emit(Result.Error("Order gagal"))
-            } else {
-                Log.d("Cek Order", response.message)
-                emit(Result.Success(response))
-            }
-        } catch (e: Exception) {
-            Log.d("CompanyRepository", " ${e.message.toString()}")
-            val message = e.message.toString()
-            if (message == "") {
-                emit(Result.Error("Whoops, Something went wrong"))
-            } else {
-                emit(Result.Error(message))
-            }
-        }
+    fun createOrder(order: OrderItem, username: String) : LiveData<Result<OrderResponse>> = liveData {
+//        emit(Result.Loading)
+//        val token = "Bearer ${ApiConfig.TOKEN}"
+//        try {
+//            val response = apiService.createOrder(token, order, username)
+//            if (response == null) {
+//                emit(Result.Error("Order gagal"))
+//            } else {
+//                Log.d("Cek Order", response.message)
+//                emit(Result.Success(response))
+//            }
+//        } catch (e: Exception) {
+//            Log.d("CompanyRepository", " ${e.message.toString()}")
+//            val message = e.message.toString()
+//            if (message == "") {
+//                emit(Result.Error("Whoops, Something went wrong"))
+//            } else {
+//                emit(Result.Error(message))
+//            }
+//        }
     }
 
 

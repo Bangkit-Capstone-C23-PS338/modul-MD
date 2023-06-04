@@ -55,6 +55,8 @@ class LoginActivity : AppCompatActivity() {
                     binding.passwordEditTextLayout.error = getString(R.string.pass_empty)
                 }
                 valid -> {
+                    binding.usernameEditTextLayout.error = null
+                    binding.passwordEditTextLayout.error = null
                     binding.progressBar.visibility = View.VISIBLE
                     loginViewModel.setLoginInfo(tvEmail,tvPassword)
                     loginViewModel.login().observe(this){result ->

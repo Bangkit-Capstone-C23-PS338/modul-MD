@@ -7,7 +7,10 @@ import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
+import com.example.promosee.model.remote.reponse.PostProductResponse
+import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
+import com.example.promosee.model.remote.request.PostProductRequest
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
 
@@ -61,6 +64,49 @@ class InfluencerRepository(
                 emit(Result.Error(message))
             }
         }
+    }
+
+    fun postInfluencerProduct(
+        socialMediaType: String,
+        price: String,
+        name: String,
+        description: String,
+        todo: String
+    ): LiveData<Result<PostRes>> = liveData {
+        emit(Result.Loading)
+        try{
+            val token = "Bearer ${ApiConfig.TOKEN}"
+            val username = ApiConfig.USERNAME
+            val influencerProduct = PostProductRequest(
+                socialMediaType = socialMediaType,
+                price = price.toInt(),
+                name = name,
+                description = description,
+                toDo = convertStringToList(todo),
+                postingDate = "2023-06-04T10:30:15.123+0530"
+            )
+            val response = apiService.createProduct(token,influencerProduct,username)
+            if(response == null){
+                emit(Result.Error("Failed to fetch influencer products "))
+            }else{
+                Log.e("test product", "data masuk")
+                Log.e("test product respon", response.message.toString())
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun convertStringToList(input: String): List<String> {
+        val list = input.split(",").map { it.trim() }
+        return list
     }
 
 

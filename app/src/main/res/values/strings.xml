@@ -140,7 +140,20 @@
     <string name="briefing">Briefing</string>
     <string name="enter_briefing_for_influencer">Enter briefing for influencer</string>
     <string name="choose_your_payment_method">Choose your payment method</string>
-
+    <string name="product_head">Product</string>
+    <string name="form_product_add">Add Product</string>
+    <string name="product_name_txt">Product Name</string>
+    <string name="product_desc_txt">Description</string>
+    <string name="product_info">Product Information</string>
+    <string name="product_todo">To Do ( seperated by coma, no space )</string>
+    <string name="enter_product_description">Enter Product Description</string>
+    <string name="enter_todo_list">enter todo list</string>
+    <string name="choose_sosmed">Choose Sosial Media</string>
+    <string name="choose_your_social_media">Choose your Social media</string>
+    <string name="addprodictsuccess">Product Created successfully</string>
+    <string name="productFailadd">failed to created product</string>
+    <string name="price_post">Add your price</string>
+    <string name="fieldEmpty">please fill all field</string>
     <string name="must_choose_a_date">Must choose a date</string>
     <string name="product_type_empty">Product type can\'t be empty</string>
     <string name="briefing_empty">Briefing must be filled</string>

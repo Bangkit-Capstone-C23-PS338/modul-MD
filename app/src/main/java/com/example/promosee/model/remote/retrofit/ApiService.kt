@@ -9,9 +9,12 @@ import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
+import com.example.promosee.model.remote.reponse.PostProductResponse
+import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
+import com.example.promosee.model.remote.request.PostProductRequest
 import com.example.promosee.model.remote.request.User
 import com.google.gson.annotations.SerializedName
 import retrofit2.http.Body
@@ -67,11 +70,19 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("username") username: String
     ): getInfleuncerProfileResponse
+
     @POST("add_influencer_order/{influencer_username}")
     suspend fun createOrder(
         @Header("Authorization") token: String,
         @Body order: OrderItem,
         @Path("influencer_username") influencerUsername: String
     ): OrderResponse
+
+    @POST("influencers/{username}/products")
+    suspend fun createProduct(
+        @Header("Authorization") token: String,
+        @Body product: PostProductRequest,
+        @Path("username") username: String
+    ): PostRes
 
 }

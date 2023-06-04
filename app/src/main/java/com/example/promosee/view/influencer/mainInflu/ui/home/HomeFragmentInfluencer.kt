@@ -16,6 +16,7 @@ import com.example.promosee.databinding.FragmentProfileInfluencerBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 import com.example.promosee.view.influencer.mainInflu.ui.profile.ProfileInfluencerViewModel
 import com.example.promosee.view.login.LoginActivity
 
@@ -68,6 +69,12 @@ class HomeFragmentInfluencer : Fragment() {
     }
 
     private fun setupAction() {
+
+        binding.fullProduct.setOnClickListener{
+            val moveIntent = Intent(requireContext(),ProductActivity::class.java)
+            startActivity(moveIntent)
+        }
+
         homeInfluencerViewModel.getInfluencrProducts().observe(viewLifecycleOwner){result ->
             when(result){
                 is Result.Loading -> {

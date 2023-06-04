@@ -90,7 +90,7 @@ class CompanyRepository(
         }
     }
 
-    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
+    fun createOrder(order: OrderItem, username: String) : LiveData<Result<OrderResponse>> = liveData {
         emit(Result.Loading)
         val token = "Bearer ${ApiConfig.TOKEN}"
         try {

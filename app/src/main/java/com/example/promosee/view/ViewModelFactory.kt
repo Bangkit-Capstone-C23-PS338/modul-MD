@@ -15,6 +15,7 @@ import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
 import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewsViewModel
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.influencer.mainInflu.ui.home.HomeInfluencerViewModel
+import com.example.promosee.view.influencer.mainInflu.ui.product.ProductViewModel
 import com.example.promosee.view.influencer.mainInflu.ui.profile.ProfileInfluencerViewModel
 import com.example.promosee.view.login.LoginViewModel
 import com.example.promosee.view.register.RegisterViewModel
@@ -50,6 +51,8 @@ class ViewModelFactory(
                 return HomeInfluencerViewModel(influencerRepository) as T
             }else if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
                 return OrderViewModel(preference, companyRepository) as T
+            }else if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
+                return ProductViewModel(influencerRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

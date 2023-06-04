@@ -11,6 +11,7 @@ import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.retrofit.ApiConfig
@@ -66,7 +67,7 @@ class CompanyRepository(
         }
     }
 
-    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
+    fun createOrder(order: OrderItem, username: String) : LiveData<Result<OrderResponse>> = liveData {
         emit(Result.Loading)
         val token = "Bearer ${ApiConfig.TOKEN}"
         try{

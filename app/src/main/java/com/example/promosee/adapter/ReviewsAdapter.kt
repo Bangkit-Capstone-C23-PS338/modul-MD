@@ -1,17 +1,25 @@
 package com.example.promosee.adapter
 
 import android.media.Image
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.model.remote.reponse.ReviewsItem
+import com.example.promosee.model.reviewDate
+import com.example.promosee.model.toShortDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-class ReviewsAdapter: RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
+
+class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_review, parent, false)
@@ -19,23 +27,91 @@ class ReviewsAdapter: RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return reviews.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun convertDateFormat(dateString: String): String {
+        val inputFormat = "dd/MM/yyyy HH:mm:ss"
+        val outputFormat = "dd MMM yyyy"
+
+        val inputFormatter = DateTimeFormatter.ofPattern(inputFormat)
+        val outputFormatter = DateTimeFormatter.ofPattern(outputFormat)
+
+        val dateTime = LocalDateTime.parse(dateString, inputFormatter)
+        return dateTime.format(outputFormatter)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ReviewsAdapter.ViewHolder, position: Int) {
         holder.profilePic.setImageResource(R.drawable.profilepic)
         holder.companyName.setText(R.string.company_name)
-        holder.postDate.setText(R.string.review_date)
-        holder.commentDesc.setText(R.string.desc)
+        holder.postDate.text = reviews[position].orderDate?.let { convertDateFormat(it) }
+        holder.commentDesc.text = reviews[position].comment
         holder.verifLogo.setImageResource(R.drawable.baseline_verified_24)
         holder.commentTitle.setText(R.string.komentar)
         holder.rateTitle.setText(R.string.rating_title)
 
-        holder.star_1.setImageResource(R.drawable.baseline_star_24)
-        holder.star_2.setImageResource(R.drawable.baseline_star_24)
-        holder.star_3.setImageResource(R.drawable.baseline_star_24)
-        holder.star_4.setImageResource(R.drawable.baseline_star_24)
-        holder.star_5.setImageResource(R.drawable.baseline_star_24)
+        val rate = reviews[position].rating?.toDouble()
+        if(rate != null){
+            if(rate == 5.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate < 5.0 && rate > 4.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_half_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate == 4.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate < 4.0 && rate > 3.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_half_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate == 3.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate < 3.0 && rate > 2.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_half_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate == 2.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }else if(rate < 2.0 && rate > 1.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_half_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+
+            }else if(rate == 1.0){
+                holder.star_1.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_2.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_3.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_4.setImageResource(R.drawable.baseline_star_border_24)
+                holder.star_5.setImageResource(R.drawable.baseline_star_24)
+            }
+        }
+
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -52,4 +128,5 @@ class ReviewsAdapter: RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
         val star_4 : ImageView = itemView.findViewById(R.id.star_4)
         val star_5 : ImageView = itemView.findViewById(R.id.star_5)
     }
+
 }

@@ -10,6 +10,9 @@ data class LoginResponse(
 	@field:SerializedName("token_type")
 	val tokenType: String? = null,
 
+	@field:SerializedName("user_type")
+	val userType: String? = null,
+
 	@field:SerializedName("userid")
 	val userid: String? = null,
 

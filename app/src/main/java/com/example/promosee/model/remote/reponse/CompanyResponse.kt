@@ -4,7 +4,6 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-
 data class GetInfluencersResponse(
 
 	@field:SerializedName("influencers")
@@ -95,4 +94,24 @@ data class ProductsItemInfluencer(
 
 	@field:SerializedName("id")
 	val id: Int? = null
-) : Parcelable
+): Parcelable
+
+data class ReviewsResponse(
+	@field:SerializedName("reviews")
+	val reviews: List<ReviewsItem?>? = null
+)
+
+data class ReviewsItem(
+
+	@field:SerializedName("order_date")
+	val orderDate: String? = null,
+
+	@field:SerializedName("rating")
+	val rating: Int? = null,
+
+	@field:SerializedName("comment")
+	val comment: String? = null,
+
+	@field:SerializedName("order_id")
+	val orderId: String? = null
+)

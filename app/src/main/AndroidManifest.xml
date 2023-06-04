@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Promosee"
         tools:targetApi="31">
         <activity
+            android:name=".view.influencer.mainInflu.ui.product.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.influencer.mainInflu.MainInfluencer"
+            android:exported="false"
+            android:label="@string/title_activity_main_influencer" />
+        <activity
             android:name=".view.company.mainCompany.ui.reviews.ReviewsActivity"
             android:exported="false" />
         <activity

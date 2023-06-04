@@ -17,7 +17,10 @@ import com.example.promosee.model.remote.reponse.ProductsItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 
-class ProductAdapter(private val products: List<ProductsItemInfluencer>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(
+    private val products: List<ProductsItemInfluencer>,
+    private val userType: String
+): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     private var username: String = ""
     fun setUsername(newUsername: String){
@@ -40,12 +43,19 @@ class ProductAdapter(private val products: List<ProductsItemInfluencer>): Recycl
         holder.criteriaDetail.text = todo
 
         holder.projectPrice.text = products[position].price.toString()
-        holder.checkBtn.setOnClickListener {
-            val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
-            intentToOrder.putExtra(OrderActivity.EXTRA_PRODUCT, products[position])
-            intentToOrder.putExtra(OrderActivity.EXTRA_USERNAME, username)
-            holder.itemView.context.startActivity(intentToOrder)
+
+        if(userType == "bussiness"){
+            holder.checkBtn.setOnClickListener {
+                val intentToOrder = Intent(holder.itemView.context, OrderActivity::class.java)
+                intentToOrder.putExtra(OrderActivity.EXTRA_PRODUCT, products[position])
+                intentToOrder.putExtra(OrderActivity.EXTRA_USERNAME, username)
+                holder.itemView.context.startActivity(intentToOrder)
+            }
+        }else{
+            holder.checkBtn.setText(R.string.edit)
         }
+
+
     }
 
     override fun getItemCount(): Int {

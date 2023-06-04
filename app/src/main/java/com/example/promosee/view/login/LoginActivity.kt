@@ -13,6 +13,7 @@ import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.model.Result
 import com.example.promosee.view.company.mainCompany.MainActivityCompany
 import com.example.promosee.view.company.mainCompany.MainCom
+import com.example.promosee.view.influencer.mainInflu.MainInfluencer
 import com.example.promosee.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -75,9 +76,16 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 // intent ke halaman utama, dan meriset intent
-                                val intent = Intent(this@LoginActivity, MainCom::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
+                                if(result.data.userType == "business_owner"){
+                                    val intent = Intent(this@LoginActivity, MainCom::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                }else{
+                                    val intent = Intent(this@LoginActivity, MainInfluencer::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                }
+
                             }
                             is Result.Error -> {
                                 binding.btnLogin.isEnabled = true

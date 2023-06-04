@@ -10,6 +10,7 @@ import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
+import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
@@ -67,18 +68,40 @@ class CompanyRepository(
         }
     }
 
-    fun createOrder(order: OrderItem, username: String) : LiveData<Result<OrderResponse>> = liveData {
+    fun getReviews(username: String): LiveData<Result<ReviewsResponse>> = liveData{
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        emit(Result.Loading)
+        try{
+            val response = apiService.getReviews(token,username)
+            if(response == null){
+                emit(Result.Error("Failed to fetch influencer reviews "))
+            }else{
+                Log.e("test product", "data masuk")
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception) {
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
         emit(Result.Loading)
         val token = "Bearer ${ApiConfig.TOKEN}"
-        try{
+        try {
             val response = apiService.createOrder(token, order, username)
-            if(response == null){
+            if (response == null) {
                 emit(Result.Error("Order gagal"))
-            }else{
+            } else {
                 Log.d("Cek Order", response.message)
                 emit(Result.Success(response))
             }
-        }catch (e : Exception){
+        } catch (e: Exception) {
             Log.d("CompanyRepository", " ${e.message.toString()}")
             val message = e.message.toString()
             if (message == "") {
@@ -89,11 +112,9 @@ class CompanyRepository(
         }
     }
 
+
+
 //    fun getInfluencerItem(username: String):
-
-
-
-
 
     companion object {
         private val TAG = CompanyRepository::class.java.simpleName

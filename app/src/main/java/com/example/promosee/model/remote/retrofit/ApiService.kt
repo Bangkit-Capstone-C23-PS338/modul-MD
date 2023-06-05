@@ -79,8 +79,8 @@ interface ApiService {
     @POST("add_influencer_order/{influencer_username}")
     suspend fun createOrder(
         @Header("Authorization") token: String,
-        @Body order: OrderItem,
-        @Path("influencer_username") influencerUsername: String
+        @Body order_data: OrderItem,
+        @Path("influencer_username") influencer_username: String
     ): OrderResponse
 
     @POST("influencers/{username}/products")

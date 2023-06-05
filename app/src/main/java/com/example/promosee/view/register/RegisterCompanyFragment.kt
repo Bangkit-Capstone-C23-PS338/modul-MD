@@ -55,16 +55,28 @@ class RegisterCompanyFragment : Fragment() {
                 if (isValidated){
                     val listCategories: MutableList<String> = mutableListOf()
                     if(checkboxFood.isChecked){
-                        listCategories.add("food")
+                        listCategories.add(getString(R.string.food))
                     }
                     if(checkboxHealth.isChecked){
-                        listCategories.add("health")
+                        listCategories.add(getString(R.string.health))
                     }
                     if(checkboxSports.isChecked){
-                        listCategories.add("sports")
+                        listCategories.add(getString(R.string.sports))
                     }
                     if(checkboxTech.isChecked){
-                        listCategories.add("technology")
+                        listCategories.add(getString(R.string.technology))
+                    }
+                    if(checkboxFashion.isChecked){
+                        listCategories.add(getString(R.string.beauty_and_fashion))
+                    }
+                    if(checkboxTravel.isChecked){
+                        listCategories.add(getString(R.string.travel))
+                    }
+                    if(checkboxGame.isChecked){
+                        listCategories.add(getString(R.string.gaming))
+                    }
+                    if(checkboxEntertainment.isChecked){
+                        listCategories.add(getString(R.string.entertainment))
                     }
                     val listFixCategories: List<String> = listCategories
 

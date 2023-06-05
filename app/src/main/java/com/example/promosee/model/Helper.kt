@@ -37,6 +37,28 @@ fun String.withNumberingFormat(): String {
     return NumberFormat.getNumberInstance().format(this.toDouble())
 }
 
+fun String.withCurrencyFormat(): String {
+    val rupiahExchangeRate = 12495.95
+    val euroExchangeRate = 0.88
+
+    var priceOnDollar = this.toDouble() / rupiahExchangeRate
+
+    var mCurrencyFormat = NumberFormat.getCurrencyInstance()
+    val deviceLocale = Locale.getDefault().country
+    when {
+        deviceLocale.equals("ES") -> {
+            priceOnDollar *= euroExchangeRate
+        }
+        deviceLocale.equals("ID") -> {
+            priceOnDollar *= rupiahExchangeRate
+        }
+        else -> {
+            mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
+        }
+    }
+    return mCurrencyFormat.format(priceOnDollar)
+}
+
 fun setStarRating(rate: Double, activity: Activity){
     if(rate == 5.0){
         activity.findViewById<ImageView>(R.id.star_1).setImageResource(R.drawable.baseline_star_24)

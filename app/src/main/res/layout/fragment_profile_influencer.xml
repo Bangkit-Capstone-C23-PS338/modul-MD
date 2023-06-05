@@ -6,13 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.company.mainCompany.ui.order.OrderActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/md_theme_light_onPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingBottom="16dp">
@@ -29,7 +29,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/josefinsans_bold"
                 android:text="@string/profile_head"
-                android:textColor="@color/md_theme_dark_background"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 

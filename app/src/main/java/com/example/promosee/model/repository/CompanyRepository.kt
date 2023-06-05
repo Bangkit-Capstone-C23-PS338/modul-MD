@@ -98,7 +98,7 @@ class CompanyRepository(
             if (response == null) {
                 emit(Result.Error("Order gagal"))
             } else {
-                Log.d("Cek Order", response.message)
+                Log.d("Cek Order", response.order.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {

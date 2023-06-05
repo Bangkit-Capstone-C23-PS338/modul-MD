@@ -28,7 +28,7 @@
     <string name="username">Username</string>
     <string name="enter_username">Enter username</string>
     <string name="categories">Categories</string>
-    <string name="food">Food</string>
+    <string name="food">Food and Drinks</string>
     <string name="sports">Sports</string>
     <string name="health">Health</string>
     <string name="technology">Technology</string>
@@ -164,11 +164,29 @@
     <string name="courier_service_empty">Must choose a courier service</string>
     <string name="payment_method_empty">Must choose a payment method</string>
     <string name="failed_to_order">Failed to order</string>
+
+    <string name="promotion_detail">Promotion Detail</string>
+    <string name="promotion">Promotion</string>
+    <string name="posting_date">Posting Date</string>
+    <string name="promotion_link">Promotion Link</string>
+    <string name="promotion_content_hint">Enter the link to the promotion content</string>
+    <string name="pending">Pending</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="beauty_and_fashion">Beauty and Fashion</string>
+    <string name="gaming">Gaming</string>
+    <string name="travel">Travel</string>
+    <string name="casual">Casual</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="notifications">Notifications</string>
+    <string name="no_news_for_you">No news for you</string>
+
     <string name="update_product">Update Product</string>
     <string name="fetchFailproduct">Failed to Fetch Product data</string>
     <string name="productUpdated">Product Updated Succesfully</string>
     <string name="delete">Delete</string>
     <string name="deleteSuccess">Product Deleted Succesfully</string>
     <string name="failDelete">Product Failed to delete</string>
+
 
 </resources>

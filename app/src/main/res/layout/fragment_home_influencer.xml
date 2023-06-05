@@ -80,7 +80,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/full_order"
+                android:id="@+id/full_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="184dp"
@@ -96,8 +96,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_product"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:layout_marginStart="24dp"
+                android:maxHeight="300dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="96dp"
                 app:layout_constraintBottom_toBottomOf="parent"

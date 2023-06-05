@@ -1,12 +1,78 @@
 package com.example.promosee.view.influencer.mainInflu.ui.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
+import com.example.promosee.adapter.ProductAdapter
+import com.example.promosee.databinding.ActivityLoginBinding
+import com.example.promosee.databinding.ActivityProductBinding
+import com.example.promosee.model.Result
+import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.login.LoginViewModel
 
 class ProductActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityProductBinding
+    private lateinit var productViewModel: ProductViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product)
+        binding = ActivityProductBinding.inflate(layoutInflater)
+
+        setupViewmodel()
+        setupAction()
+
+        setContentView(binding.root)
+    }
+
+    private fun setupAction() {
+
+        binding.backButton.setOnClickListener{finish()}
+        binding.addProduct.setOnClickListener{
+            val moveIntent = Intent(this,ProductFormActivity::class.java)
+            moveIntent.putExtra("form_type", "create")
+            startActivity(moveIntent)
+        }
+
+        productViewModel.getProduct().observe(this){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val allInfluencerProduct: List<ProductsItemInfluencer> = result.data.products as List<ProductsItemInfluencer>
+                    if(allInfluencerProduct.isNotEmpty()){
+                        addInfluencerProduct(allInfluencerProduct)
+                    }
+                }
+                is Result.Error -> {
+                    Log.e("error msg", result.error)
+                    if(result.error.trim() == "HTTP 401"){
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+
+    private fun addInfluencerProduct(products: List<ProductsItemInfluencer>) {
+        // sambungan ke adapter
+        binding.rvProduct.layoutManager = LinearLayoutManager(this)
+        val adapter = ProductAdapter(products,"influencer")
+        binding.rvProduct.adapter = adapter
+
+    }
+
+    private fun setupViewmodel() {
+        productViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.getInstance(application)
+        )[ProductViewModel::class.java]
     }
 }

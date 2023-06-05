@@ -18,6 +18,9 @@
             android:name=".view.company.mainCompany.ui.order.OrderDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".view.influencer.mainInflu.ui.product.ProductFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.influencer.mainInflu.ui.product.ProductActivity"
             android:exported="false" />
         <activity

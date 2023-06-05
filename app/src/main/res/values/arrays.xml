@@ -14,4 +14,9 @@
         <item>DANA</item>
         <item>OVO</item>
     </string-array>
+    <string-array name="social_media_list">
+        <item>Instagram</item>
+        <item>Tiktok</item>
+        <item>Youtube</item>
+    </string-array>
 </resources>

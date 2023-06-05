@@ -36,6 +36,7 @@ class AuthRepository(
                 // menyimpan data ke data-store
                 pref.saveUser(userInfo)
                 ApiConfig.TOKEN = response.accessToken ?: ""
+                ApiConfig.USERNAME = response.username ?: ""
                 emit(Result.Success(response))
             }
         }catch (e : Exception){

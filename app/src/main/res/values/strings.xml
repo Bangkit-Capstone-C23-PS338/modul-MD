@@ -164,5 +164,7 @@
     <string name="travel">Travel</string>
     <string name="casual">Casual</string>
     <string name="entertainment">Entertainment</string>
+    <string name="notifications">Notifications</string>
+    <string name="no_news_for_you">No news for you</string>
 
 </resources>

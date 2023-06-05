@@ -9,5 +9,5 @@ class HomeInfluencerViewModel(
 ) : ViewModel() {
 
     fun getInfluencrProducts() = influencerRepository.getInfluencerProduct()
-
+    fun getProfile() = influencerRepository.getInfluencer()
 }

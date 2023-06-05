@@ -21,17 +21,12 @@
 
             <TableRow
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="25dp">
                 <ImageView
                     android:id="@+id/sosmed_logo"
-                    android:layout_width="12dp"
-                    android:layout_weight="1"
-                    android:layout_height="22dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     tools:srcCompat="@drawable/full_insta_logo"/>
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_weight="3"
-                    android:layout_height="22dp"/>
             </TableRow>
 
 
@@ -95,6 +90,7 @@
                     android:layout_weight="1"
                     android:text="@string/check_acc"
                     android:textSize="12sp" />
+
 
             </TableRow>
 

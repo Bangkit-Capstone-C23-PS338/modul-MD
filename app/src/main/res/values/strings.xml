@@ -164,5 +164,11 @@
     <string name="courier_service_empty">Must choose a courier service</string>
     <string name="payment_method_empty">Must choose a payment method</string>
     <string name="failed_to_order">Failed to order</string>
+    <string name="update_product">Update Product</string>
+    <string name="fetchFailproduct">Failed to Fetch Product data</string>
+    <string name="productUpdated">Product Updated Succesfully</string>
+    <string name="delete">Delete</string>
+    <string name="deleteSuccess">Product Deleted Succesfully</string>
+    <string name="failDelete">Product Failed to delete</string>
 
 </resources>

@@ -288,6 +288,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/technology"/>
 
+            <CheckBox
+                android:id="@+id/checkbox_fashion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/beauty_and_fashion"/>
+
+            <CheckBox
+                android:id="@+id/checkbox_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gaming"/>
+
+            <CheckBox
+                android:id="@+id/checkbox_travel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/travel"/>
+
+            <CheckBox
+                android:id="@+id/checkbox_entertainment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entertainment"/>
+
         </LinearLayout>
 
 

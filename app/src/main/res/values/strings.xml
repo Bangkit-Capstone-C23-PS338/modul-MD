@@ -28,7 +28,7 @@
     <string name="username">Username</string>
     <string name="enter_username">Enter username</string>
     <string name="categories">Categories</string>
-    <string name="food">Food</string>
+    <string name="food">Food and Drinks</string>
     <string name="sports">Sports</string>
     <string name="health">Health</string>
     <string name="technology">Technology</string>
@@ -159,5 +159,10 @@
     <string name="pending">Pending</string>
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
+    <string name="beauty_and_fashion">Beauty and Fashion</string>
+    <string name="gaming">Gaming</string>
+    <string name="travel">Travel</string>
+    <string name="casual">Casual</string>
+    <string name="entertainment">Entertainment</string>
 
 </resources>

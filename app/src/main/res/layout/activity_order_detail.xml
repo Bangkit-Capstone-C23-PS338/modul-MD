@@ -449,44 +449,59 @@
                 app:layout_constraintTop_toBottomOf="@id/label_receiver_address"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-            <TextView
-                android:id="@+id/label_courier"
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:id="@+id/table_bottom"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/courier"
-                android:textSize="12sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toBottomOf="@id/receiver_address"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/receiver_address">
 
-            <ImageView
-                android:id="@+id/logo_courier"
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_courier"/>
-            <TextView
-                android:id="@+id/label_payment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/payment"
-                android:textSize="12sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toBottomOf="@id/logo_courier"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <TableRow
+                    android:weightSum="2">
+                    <TextView
+                        android:id="@+id/label_courier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/courier"
+                        android:textSize="12sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/receiver_address"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView
+                        android:id="@+id/label_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment"
+                        android:textSize="12sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/logo_courier"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                </TableRow>
 
-            <ImageView
-                android:id="@+id/logo_payment"
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_payment"/>
+                <TableRow
+                    android:weightSum="2">
+                    <ImageView
+                        android:id="@+id/logo_courier"
+                        android:layout_width="150dp"
+                        android:src="@drawable/logo_sicepat"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp" />
 
 
+                    <ImageView
+                        android:id="@+id/logo_payment"
+                        android:layout_width="150dp"
+                        android:src="@drawable/logo_bca"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp" />
+                </TableRow>
+
+            </TableLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -495,6 +510,7 @@
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_gravity="bottom"
         style="@style/Widget.Material3.BottomAppBar">
         <TableLayout

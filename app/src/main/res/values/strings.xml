@@ -151,5 +151,13 @@
     <string name="courier_service_empty">Must choose a courier service</string>
     <string name="payment_method_empty">Must choose a payment method</string>
     <string name="failed_to_order">Failed to order</string>
+    <string name="promotion_detail">Promotion Detail</string>
+    <string name="promotion">Promotion</string>
+    <string name="posting_date">Posting Date</string>
+    <string name="promotion_link">Promotion Link</string>
+    <string name="promotion_content_hint">Enter the link to the promotion content</string>
+    <string name="pending">Pending</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
 
 </resources>

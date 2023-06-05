@@ -46,8 +46,8 @@ data class OrderItem(
     @field:SerializedName("payment_method")
     val payment_method: String,
 
-    @field:SerializedName("payment_status")
-    val payment_status: String? = " ",
+    @field:SerializedName("status")
+    val status: String? = " ",
 
     @field:SerializedName("brief")
     val brief: String,
@@ -57,5 +57,11 @@ data class OrderItem(
 
     @field:SerializedName("selected_package")
     val selected_package: ProductsItemInfluencer,
+
+    @field:SerializedName("posting_date")
+    val posting_date: String,
+
+    @field:SerializedName("content_link")
+    val content_link: String? = "",
 )
 

@@ -90,7 +90,7 @@ class CompanyRepository(
         }
     }
 
-    fun createOrder(order: OrderModel, username: String) : LiveData<Result<OrderResponse>> = liveData {
+    fun createOrder(order: OrderItem, username: String) : LiveData<Result<OrderResponse>> = liveData {
         emit(Result.Loading)
         val token = "Bearer ${ApiConfig.TOKEN}"
         try {
@@ -98,7 +98,7 @@ class CompanyRepository(
             if (response == null) {
                 emit(Result.Error("Order gagal"))
             } else {
-                Log.d("Cek Order", response.message)
+                Log.d("Cek Order", response.order.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {

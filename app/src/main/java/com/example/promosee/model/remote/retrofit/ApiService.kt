@@ -13,16 +13,21 @@ import com.example.promosee.model.remote.reponse.PostProductResponse
 import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
+import com.example.promosee.model.remote.reponse.deleteProductResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
+import com.example.promosee.model.remote.reponse.getProductItemResponse
 import com.example.promosee.model.remote.request.PostProductRequest
+import com.example.promosee.model.remote.request.UpdateProductRequest
 import com.example.promosee.model.remote.request.User
 import com.google.gson.annotations.SerializedName
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -59,7 +64,7 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): LogoutResponse
 
-    @GET("review_influencer/{username}")
+    @GET("influencer_reviews/{username}")
     suspend fun getReviews(
         @Header("Authorization") token: String,
         @Path("username") username: String
@@ -84,5 +89,27 @@ interface ApiService {
         @Body product: PostProductRequest,
         @Path("username") username: String
     ): PostRes
+
+    @GET("influencers/{username}/products/{product_id}")
+    suspend fun getProductItem(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("product_id") product_id: String
+    ): getProductItemResponse
+
+    @PUT("influencers/{username}/products/{product_id}")
+    suspend fun UpdateProductItem(
+        @Header("Authorization") token: String,
+        @Body product: UpdateProductRequest,
+        @Path("username") username: String,
+        @Path("product_id") product_id: String
+    ): UpdateProductRequest
+
+    @DELETE("influencers/{username}/products/{product_id}")
+    suspend fun deleteProductItem(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("product_id") product_id: String
+    ): deleteProductResponse
 
 }

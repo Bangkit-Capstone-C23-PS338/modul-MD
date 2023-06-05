@@ -75,6 +75,24 @@ class HomeFragmentInfluencer : Fragment() {
             startActivity(moveIntent)
         }
 
+        homeInfluencerViewModel.getProfile().observe(viewLifecycleOwner){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.helloUser.text = getString(R.string.hello_user, result.data.influencers?.get(0)?.username)
+                }
+                is Result.Error -> {
+                    Log.e("error msg", result.error)
+                    if(result.error.trim() == "HTTP 401"){
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+            }
+        }
+
         homeInfluencerViewModel.getInfluencrProducts().observe(viewLifecycleOwner){result ->
             when(result){
                 is Result.Loading -> {

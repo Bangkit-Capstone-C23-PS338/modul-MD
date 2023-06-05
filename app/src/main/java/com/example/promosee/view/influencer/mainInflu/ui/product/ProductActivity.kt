@@ -35,6 +35,7 @@ class ProductActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener{finish()}
         binding.addProduct.setOnClickListener{
             val moveIntent = Intent(this,ProductFormActivity::class.java)
+            moveIntent.putExtra("form_type", "create")
             startActivity(moveIntent)
         }
 

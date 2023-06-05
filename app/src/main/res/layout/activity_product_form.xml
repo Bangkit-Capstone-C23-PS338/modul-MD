@@ -31,6 +31,7 @@
                 android:contentDescription="@string/back_arrow" />
 
             <TextView
+                android:id="@+id/header_form"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/josefinsans_bold"
@@ -245,12 +246,23 @@
                 android:id="@+id/formbtn"
                 android:layout_width="match_parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Add Product"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textFieldPrice" />
+
+            <Button
+                android:id="@+id/deleteBtn"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/delete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/formbtn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

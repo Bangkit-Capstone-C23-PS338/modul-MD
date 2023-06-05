@@ -16,6 +16,7 @@ import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.ProductsItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
+import com.example.promosee.view.influencer.mainInflu.ui.product.ProductFormActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.Locale
@@ -58,6 +59,13 @@ class ProductAdapter(
             }
         }else{
             holder.checkBtn.setText(R.string.edit)
+            val id = products[position].productId.toString()
+            holder.checkBtn.setOnClickListener {
+                val moveIntent = Intent(holder.itemView.context, ProductFormActivity::class.java)
+                moveIntent.putExtra("form_type", "update")
+                moveIntent.putExtra("id", id)
+                holder.itemView.context.startActivity(moveIntent)
+            }
         }
 
 

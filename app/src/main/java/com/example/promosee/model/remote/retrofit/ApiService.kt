@@ -5,6 +5,7 @@ import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
+import com.example.promosee.model.remote.reponse.GetOrderResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
@@ -17,6 +18,7 @@ import com.example.promosee.model.remote.reponse.deleteProductResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
 import com.example.promosee.model.remote.reponse.getProductItemResponse
 import com.example.promosee.model.remote.request.PostProductRequest
+import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.remote.request.UpdateProductRequest
 import com.example.promosee.model.remote.request.User
 import com.google.gson.annotations.SerializedName
@@ -82,6 +84,31 @@ interface ApiService {
         @Body order_data: OrderItem,
         @Path("influencer_username") influencer_username: String
     ): OrderResponse
+
+    @PUT("update_order/{order_id}")
+    suspend fun updateOrder(
+        @Header("Authorization") token: String,
+        @Body update_data: UpdateOrderRequest,
+        @Path("order_id") order_id: String
+    ): PostRes
+
+    @GET("orders_business_owner/{business_owner}")
+    suspend fun getCompanyOrders(
+        @Header("Authorization") token: String,
+        @Path("business_owner") business_owner: String
+    ): GetOrderResponse
+
+    @GET("influencer_orders/{influencer}}")
+    suspend fun getInfluencerOrders(
+        @Header("Authorization") token: String,
+        @Path("influencer") influencer: String
+    ): GetOrderResponse
+
+    @GET("get_order_details/{order_id}")
+    suspend fun getOrderDetail(
+        @Header("Authorization") token: String,
+        @Path("order_id") order_id: String
+    ): OrderItem
 
     @POST("influencers/{username}/products")
     suspend fun createProduct(

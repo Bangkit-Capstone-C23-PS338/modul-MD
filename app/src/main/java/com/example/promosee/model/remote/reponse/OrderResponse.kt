@@ -1,9 +1,12 @@
 package com.example.promosee.model.remote.reponse
 
-import com.example.promosee.model.local.preference.CompanyModel
-import com.example.promosee.model.local.preference.OrderModel
 import com.google.gson.annotations.SerializedName
 
+
+data class GetOrderResponse(
+    @field:SerializedName("orders")
+    val orders: List<OrderItem>,
+)
 data class OrderResponse(
     @field:SerializedName("message")
     val message: String,

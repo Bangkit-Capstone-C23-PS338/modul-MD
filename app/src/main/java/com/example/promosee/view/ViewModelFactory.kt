@@ -10,6 +10,7 @@ import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
 import com.example.promosee.model.repository.InfluencerRepository
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailViewModel
+import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsViewModel
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailViewModel
 import com.example.promosee.view.company.mainCompany.ui.order.OrderViewModel
 import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
@@ -53,9 +54,13 @@ class ViewModelFactory(
             }else if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
                 return OrderViewModel(companyRepository) as T
             }else if (modelClass.isAssignableFrom(OrderDetailViewModel::class.java)) {
-                return OrderDetailViewModel(companyRepository, influencerRepository) as T
+                return OrderDetailViewModel(companyRepository) as T
             }else if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
                 return ProductViewModel(influencerRepository) as T
+            }else if (modelClass.isAssignableFrom(NotificationsViewModel::class.java)) {
+                return NotificationsViewModel(preference, companyRepository) as T
+            } else if (modelClass.isAssignableFrom(com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsViewModel::class.java)) {
+                return com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsViewModel(preference, influencerRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -10,11 +10,14 @@ import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
+import com.example.promosee.model.remote.reponse.GetOrderResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
+import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.RegisterResponse
+import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
 
@@ -99,6 +102,72 @@ class CompanyRepository(
                 emit(Result.Error("Order gagal"))
             } else {
                 Log.d("Cek Order", response.order.toString())
+                emit(Result.Success(response))
+            }
+        } catch (e: Exception) {
+            Log.d("CompanyRepository", " ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun getOrder(username: String) : LiveData<Result<GetOrderResponse>> = liveData {
+        emit(Result.Loading)
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        try {
+            val response = apiService.getCompanyOrders(token, username)
+            if (response == null) {
+                emit(Result.Error("Order gagal"))
+            } else {
+                Log.d("Cek Order", response.orders.toString())
+                emit(Result.Success(response))
+            }
+        } catch (e: Exception) {
+            Log.d("CompanyRepository", " ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun updateOrder(update_data: UpdateOrderRequest, order_id: String) : LiveData<Result<PostRes>> = liveData {
+        emit(Result.Loading)
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        try {
+            val response = apiService.updateOrder(token, update_data, order_id)
+            if (response == null) {
+                emit(Result.Error("Order gagal"))
+            } else {
+                Log.d("Cek Order", response.message.toString())
+                emit(Result.Success(response))
+            }
+        } catch (e: Exception) {
+            Log.d("CompanyRepository", " ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun getOrderDetail(order_id: String) : LiveData<Result<OrderItem>> = liveData {
+        emit(Result.Loading)
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        try {
+            val response = apiService.getOrderDetail(token, order_id)
+            if (response == null) {
+                emit(Result.Error("Order gagal"))
+            } else {
+                Log.d("Cek Order", response.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {

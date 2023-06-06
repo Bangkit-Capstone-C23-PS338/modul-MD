@@ -1,13 +1,9 @@
 package com.example.promosee.view.company.mainCompany.ui.notifications
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.promosee.model.local.preference.UserPreference
+import com.example.promosee.model.repository.CompanyRepository
 
-class NotificationsViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+class NotificationsViewModel(private val pref: UserPreference, private val companyRepository: CompanyRepository) : ViewModel() {
+    fun getCompanyOrders(username: String) = companyRepository.getOrder(username)
 }

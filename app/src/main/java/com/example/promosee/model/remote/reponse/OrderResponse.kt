@@ -58,8 +58,8 @@ data class OrderItem(
     @field:SerializedName("payment_date")
     val payment_date: Any? = "",
 
-    @field:SerializedName("selected_package")
-    val selected_package: ProductsItemInfluencer,
+    @field:SerializedName("selected_product")
+    val selected_product: ProductsItemInfluencer,
 
     @field:SerializedName("posting_date")
     val posting_date: String,

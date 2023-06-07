@@ -9,13 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
 import com.example.promosee.model.local.preference.OrderModel
+import com.example.promosee.model.remote.reponse.OrderItem
+import com.example.promosee.model.toLongDateFormat
 
-class OrderAdapter(private val dataList: List<OrderModel>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+
+    private var isTokenCompany = true
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
+    fun checkTokenCompany(check: Boolean){
+        isTokenCompany = check
+    }
+
     interface OnItemClickCallback {
-        fun onItemClicked(username: OrderModel)
+        fun onItemClicked(order: OrderItem)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -31,13 +39,21 @@ class OrderAdapter(private val dataList: List<OrderModel>) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val order = dataList[position]
-        Log.d("Cek adapter", order.toString())
         holder.binding.imgAvatar.setImageResource(R.drawable.iu)
-        holder.binding.productName.text = order.productName
-        holder.binding.socmedName.text = order.influencerUsername
-        holder.binding.username.text = order.influencerUsername
-        holder.binding.orderDate.text = order.postingDate
+        holder.binding.productName.text = order.product_name
+        holder.binding.username.text = if (isTokenCompany) order.influencer_username else order.business_owner
+        holder.binding.orderDate.text = order.posting_date.toLongDateFormat()
         when(order.status){
+            "pending" -> {
+                holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#FFAD7E"))
+                holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#A73200")))
+                holder.binding.statusChip.setText(R.string.pending)
+            }
+            "processing" -> {
+                holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#FFE08D"))
+                holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#A77800")))
+                holder.binding.statusChip.setText(R.string.processing)
+            }
             "waiting" -> {
                 holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#FFAD7E"))
                 holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#A73200")))
@@ -53,13 +69,10 @@ class OrderAdapter(private val dataList: List<OrderModel>) : RecyclerView.Adapte
                 holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#E31B1B")))
                 holder.binding.statusChip.setText(R.string.failed)
             }
-            "processing" -> {
-                holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#FFE08D"))
-                holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#A77800")))
-                holder.binding.statusChip.setText(R.string.processing)
-            }
         }
-        Log.d("Cek adapter", order.toString())
+        holder.itemView.setOnClickListener{
+            onItemClickCallback.onItemClicked(dataList[position])
+        }
     }
 
     override fun getItemCount(): Int = dataList.size

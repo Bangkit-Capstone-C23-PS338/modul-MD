@@ -193,5 +193,7 @@
     <string name="enter_your_comment">Enter your comment here</string>
     <string name="add_review">Add Review</string>
 
+    <string name="company">Company</string>
+
 
 </resources>

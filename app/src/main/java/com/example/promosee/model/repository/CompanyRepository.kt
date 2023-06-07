@@ -124,7 +124,6 @@ class CompanyRepository(
             if (response == null) {
                 emit(Result.Error("Order gagal"))
             } else {
-                Log.d("Cek Order", response.orders.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {
@@ -146,7 +145,6 @@ class CompanyRepository(
             if (response == null) {
                 emit(Result.Error("Order gagal"))
             } else {
-                Log.d("Cek Order", response.message.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {
@@ -168,7 +166,6 @@ class CompanyRepository(
             if (response == null) {
                 emit(Result.Error("Order gagal"))
             } else {
-                Log.d("Cek Order", response.toString())
                 emit(Result.Success(response))
             }
         } catch (e: Exception) {

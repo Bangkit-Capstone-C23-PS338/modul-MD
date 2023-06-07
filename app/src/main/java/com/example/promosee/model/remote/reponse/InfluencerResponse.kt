@@ -54,7 +54,6 @@ data class getInfluencerItem(
 	val username: String? = null
 )
 
-
 data class PostProductResponse(
 
 	@field:SerializedName("detail")

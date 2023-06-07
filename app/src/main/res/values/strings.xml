@@ -187,6 +187,11 @@
     <string name="delete">Delete</string>
     <string name="deleteSuccess">Product Deleted Succesfully</string>
     <string name="failDelete">Product Failed to delete</string>
+    <string name="add_review_head">Add Review</string>
+    <string name="review_rating">Rating</string>
+    <string name="review_comment">Review Comment</string>
+    <string name="enter_your_comment">Enter your comment here</string>
+    <string name="add_review">Add Review</string>
 
 
 </resources>

@@ -16,6 +16,7 @@ import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
+import com.example.promosee.view.influencer.mainInflu.ui.review.ReviewFormActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,6 +90,11 @@ class HomeFragmentInfluencer : Fragment() {
     }
 
     fun setupAction() {
+
+        binding.testrev.setOnClickListener{
+            val intent = Intent(requireContext(), ReviewFormActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.fullProduct.setOnClickListener{
             val moveIntent = Intent(requireContext(),ProductActivity::class.java)

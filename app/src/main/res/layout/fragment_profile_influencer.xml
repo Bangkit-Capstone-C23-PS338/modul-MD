@@ -6,8 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.company.mainCompany.ui.order.OrderActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"

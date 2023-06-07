@@ -53,8 +53,34 @@ class SearchFragment : Fragment() {
         searchInfluencer.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 binding.recyclerViewRecom.adapter = null
-
-
+                Log.e("query test", "masuk bang")
+                    searchViewModel.setUsername(query)
+                    searchViewModel.getInfluencersSearch().observe(requireActivity()){result ->
+                        when(result){
+                            is Result.Loading -> {
+                                binding.progressBar.visibility = View.VISIBLE
+                                binding.expired.visibility = View.GONE
+                            }
+                            is Result.Success -> {
+                                binding.progressBar.visibility = View.GONE
+                                binding.expired.visibility = View.GONE
+                                Log.e("test data", result.data.influencers.toString())
+                                val allInfluencer: InfluencersItem = InfluencersItem(
+                                    username = result.data.influencers?.get(0)?.username,
+                                    igFollowers = 1234
+                                )
+                                val allData = listOf(allInfluencer)
+                                addInfluencerData(allData)
+                            }
+                            is Result.Error -> {
+                                Log.e("error msg", result.error)
+                                if(result.error.trim() == "HTTP 401"){
+                                    binding.progressBar.visibility = View.GONE
+                                    binding.expired.visibility = View.VISIBLE
+                                }
+                            }
+                        }
+                    }
 //                addInfluencerData
                 return true
             }

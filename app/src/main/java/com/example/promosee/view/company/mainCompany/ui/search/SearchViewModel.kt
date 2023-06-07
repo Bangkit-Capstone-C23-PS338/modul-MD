@@ -9,4 +9,11 @@ class SearchViewModel(private val companyRepository: CompanyRepository) : ViewMo
 
     fun getInfluencrs() =  companyRepository.getInfluencers()
 
+    private lateinit var username : String
+
+    fun setUsername(Username : String){
+        username = Username
+    }
+    fun getInfluencersSearch() = companyRepository.getInfluencerSearch(username)
+
 }

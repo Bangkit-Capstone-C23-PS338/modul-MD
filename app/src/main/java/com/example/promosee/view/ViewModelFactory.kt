@@ -52,9 +52,9 @@ class ViewModelFactory(
             }else if (modelClass.isAssignableFrom(HomeInfluencerViewModel::class.java)) {
                 return HomeInfluencerViewModel(influencerRepository) as T
             }else if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
-                return OrderViewModel(companyRepository) as T
+                return OrderViewModel(preference, companyRepository) as T
             }else if (modelClass.isAssignableFrom(OrderDetailViewModel::class.java)) {
-                return OrderDetailViewModel(companyRepository) as T
+                return OrderDetailViewModel(preference, companyRepository) as T
             }else if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
                 return ProductViewModel(influencerRepository) as T
             }else if (modelClass.isAssignableFrom(NotificationsViewModel::class.java)) {

@@ -56,17 +56,17 @@ class NotificationsFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvOrder.layoutManager = linearLayoutManager
 
-        // memasukkan data ke adapter
-        val orderAdapter = OrderAdapter(allOrders)
-        binding.rvOrder.adapter = orderAdapter
-
-        Log.d("Count", orderAdapter.itemCount.toString())
-
-        orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
-            override fun onItemClicked(orderData: OrderModel) {
-                Log.e("test item", orderData.toString())
-            }
-        })
+//        // memasukkan data ke adapter
+//        val orderAdapter = OrderAdapter(allOrders)
+//        binding.rvOrder.adapter = orderAdapter
+//
+//        Log.d("Count", orderAdapter.itemCount.toString())
+//
+//        orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
+//            override fun onItemClicked(orderData: OrderModel) {
+//                Log.e("test item", orderData.toString())
+//            }
+//        })
 
         binding.progressBar.visibility = View.GONE
     }

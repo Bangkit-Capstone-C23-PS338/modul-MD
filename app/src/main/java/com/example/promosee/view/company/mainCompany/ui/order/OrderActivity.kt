@@ -1,25 +1,22 @@
 package com.example.promosee.view.company.mainCompany.ui.order
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
 import com.example.promosee.databinding.ActivityOrderBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.toShortDateFormat
 import com.example.promosee.model.withCurrencyFormat
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -70,6 +67,10 @@ class OrderActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        var businessOwner = ""
+        orderViewModel.getUser().observe(this){
+            businessOwner = it.username
+        }
         binding.btnDetail.setOnClickListener {
             val intentToDetail = Intent(this@OrderActivity, InfluencerDetailActivity::class.java)
             intentToDetail.putExtra("username", binding.username.text.toString())
@@ -97,11 +98,13 @@ class OrderActivity : AppCompatActivity() {
             }
         }
         binding.btnOrder.setOnClickListener {
+            Log.d("Cek kurir", binding.listCourier.text.toString())
             runValidation()
             if (isValidated){
                 val dateNew = binding.postingDate.text.toString().toShortDateFormat()
                 val order = OrderItem(
                     influencer_username = binding.username.text.toString(),
+                    business_owner = businessOwner,
                     posting_date = dateNew,
                     product_name = binding.edtName.text.toString(),
                     product_link = binding.edtLink.text.toString(),
@@ -109,7 +112,7 @@ class OrderActivity : AppCompatActivity() {
                     brief = binding.edtBrief.text.toString(),
                     order_courier = binding.listCourier.text.toString(),
                     payment_method = binding.listPayment.text.toString(),
-                    selected_package = if (Build.VERSION.SDK_INT >= 33) {
+                    selected_product = if (Build.VERSION.SDK_INT >= 33) {
                         intent.getParcelableExtra(EXTRA_PRODUCT, ProductsItemInfluencer::class.java)!!
                     } else {
                         @Suppress("DEPRECATION")
@@ -125,8 +128,9 @@ class OrderActivity : AppCompatActivity() {
                         }
                         is Result.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            val returnedOrder: OrderItem = result.data.order
-                            Log.d("Order Returned:", returnedOrder.toString())
+                            val intentToMain = Intent(this@OrderActivity, MainCom::class.java)
+                            startActivity(intentToMain)
+                            finish()
                         }
                         is Result.Error -> {
                             binding.progressBar.visibility = View.GONE

@@ -14,6 +14,7 @@ import com.example.promosee.databinding.ActivityProductBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.influencer.mainInflu.ui.home.HomeFragmentInfluencer
 import com.example.promosee.view.login.LoginViewModel
 
 class ProductActivity : AppCompatActivity() {
@@ -28,6 +29,22 @@ class ProductActivity : AppCompatActivity() {
         setupAction()
 
         setContentView(binding.root)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+    }
+
+    override fun onBackPressed() {
+        val fragment = supportFragmentManager.findFragmentByTag("HomeFragmentInfluencer")
+        if (fragment != null && fragment is HomeFragmentInfluencer) {
+            fragment.setupAction()
+        }
+        super.onBackPressed()
     }
 
     private fun setupAction() {

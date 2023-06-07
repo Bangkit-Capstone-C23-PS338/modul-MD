@@ -158,6 +158,8 @@ class SearchFragment : Fragment() {
     private fun showSelectedInfluencer(influencerData: InfluencersItem) {
         val moveIntent = Intent(requireContext(), InfluencerDetailActivity::class.java)
         moveIntent.putExtra("username",influencerData.username)
+        Log.e("test rate", influencerData.rating.toString())
+        moveIntent.putExtra("rating",influencerData.rating.toString())
         startActivity(moveIntent)
     }
 

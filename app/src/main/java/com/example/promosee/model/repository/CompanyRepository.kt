@@ -202,6 +202,29 @@ class CompanyRepository(
         }
     }
 
+    fun getInfluencerProfile(username: String): LiveData<Result<getInfleuncerProfileResponse>> = liveData {
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        emit(Result.Loading)
+        try{
+            val response = apiService.getInfluencerProfile(token,username)
+            Log.e("test repo", "setelah masuk try")
+            if(response == null){
+                emit(Result.Error("Failed to fetch influencer data "))
+            }else{
+                Log.e("test repo", "data masuk")
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
 
 
 //    fun getInfluencerItem(username: String):

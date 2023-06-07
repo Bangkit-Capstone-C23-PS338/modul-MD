@@ -15,6 +15,8 @@ class InfluencerDetailViewModel(
 
     fun getInfluencrProducts() =  companyRepository.getInfluencerProduct(username)
 
+    fun getInfluencerProfile() = companyRepository.getInfluencerProfile(username)
+
 
 
 }

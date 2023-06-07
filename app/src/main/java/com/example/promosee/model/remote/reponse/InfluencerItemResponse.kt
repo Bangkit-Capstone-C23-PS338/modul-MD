@@ -14,7 +14,7 @@ data class ProductsItemResponse(
 	val socialMediaType: String? = null,
 
 	@field:SerializedName("price")
-	val price: Any? = null,
+	val price: Int? = null,
 
 	@field:SerializedName("product_id")
 	val productId: Int? = null,

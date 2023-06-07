@@ -51,7 +51,10 @@ data class getInfluencerItem(
 	val igUsername: String? = null,
 
 	@field:SerializedName("username")
-	val username: String? = null
+	val username: String? = null,
+
+	@field:SerializedName("rating")
+	val rating: String? = null
 )
 
 data class PostProductResponse(

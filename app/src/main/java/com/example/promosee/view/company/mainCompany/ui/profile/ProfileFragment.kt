@@ -13,6 +13,7 @@ import com.example.promosee.databinding.FragmentProfileBinding
 import com.example.promosee.databinding.FragmentSearchBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.InfluencersItem
+import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginActivity
@@ -50,6 +51,7 @@ class ProfileFragment : Fragment() {
         binding.logout.setOnClickListener{
             logout()
         }
+        binding.companyName.text = ApiConfig.USERNAME
         val root: View = binding.root
         return root
     }

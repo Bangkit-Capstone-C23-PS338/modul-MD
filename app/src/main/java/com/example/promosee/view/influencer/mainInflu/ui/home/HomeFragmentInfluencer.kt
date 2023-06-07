@@ -3,22 +3,20 @@ package com.example.promosee.view.influencer.mainInflu.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
 import com.example.promosee.adapter.ProductAdapter
 import com.example.promosee.databinding.FragmentHomeInfluencerBinding
-import com.example.promosee.databinding.FragmentProfileInfluencerBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
-import com.example.promosee.view.influencer.mainInflu.ui.profile.ProfileInfluencerViewModel
-import com.example.promosee.view.login.LoginActivity
+import com.example.promosee.view.influencer.mainInflu.ui.review.ReviewFormActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,12 +37,35 @@ class HomeFragmentInfluencer : Fragment() {
     private var _binding: FragmentHomeInfluencerBinding? = null
 
     private val binding get() = _binding!!
+    private var isFragmentVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isFragmentVisible) {
+            setupViewmodel()
+            setupAction()
+        }
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            isFragmentVisible = true
+            if (isResumed) {
+                setupViewmodel()
+                setupAction()
+            }
+        } else {
+            isFragmentVisible = false
         }
     }
 
@@ -68,7 +89,12 @@ class HomeFragmentInfluencer : Fragment() {
         )[HomeInfluencerViewModel::class.java]
     }
 
-    private fun setupAction() {
+    fun setupAction() {
+
+        binding.testrev.setOnClickListener{
+            val intent = Intent(requireContext(), ReviewFormActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.fullProduct.setOnClickListener{
             val moveIntent = Intent(requireContext(),ProductActivity::class.java)
@@ -115,6 +141,7 @@ class HomeFragmentInfluencer : Fragment() {
         }
     }
 
+
     private fun addInfluencerProduct(products: List<ProductsItemInfluencer>) {
 
         // sambungan ke adapter
@@ -123,6 +150,7 @@ class HomeFragmentInfluencer : Fragment() {
         binding.rvProduct.adapter = adapter
 
     }
+
 
     companion object {
         @JvmStatic

@@ -33,7 +33,7 @@ class ProductFormActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.backButton.setOnClickListener{finish()}
+        binding.backButton.setOnClickListener{ finish() }
 
         val intent = intent
         val formType = intent.getStringExtra("form_type") as String

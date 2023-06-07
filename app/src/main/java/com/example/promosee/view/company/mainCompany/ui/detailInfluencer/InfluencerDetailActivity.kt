@@ -35,9 +35,9 @@ class InfluencerDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         setViewModel()
         setUpAction()
-        val rating = 4.8
-        setStarRating(rating,this)
-        binding.ratingNumber.text = rating.toString()
+
+
+
         binding.backButton.setOnClickListener{ finish() }
         binding.btnReview.setOnClickListener{
             val moveIntent = Intent(this@InfluencerDetailActivity,ReviewsActivity::class.java)
@@ -58,13 +58,47 @@ class InfluencerDetailActivity : AppCompatActivity() {
     private fun setUpAction() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
+
         if(username != null){
             binding.usernameHead.text = username
             binding.usernameTitle.text = username
 
             binding.progressBar.visibility = View.VISIBLE
             binding.noProd.visibility = View.GONE
+
             influencerDetailViewModel.setUsername(username)
+
+            influencerDetailViewModel.getInfluencerProfile().observe(this){result ->
+                when(result){
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.noProd.visibility = View.GONE
+                    }
+                    is Result.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.noProd.visibility = View.GONE
+
+                        // set rating
+                        val rating: String = result.data.influencers?.get(0)?.rating as String
+                        setStarRating(rating.toDouble(),this)
+                        binding.ratingNumber.text = rating.toString()
+
+
+                    }
+                    is Result.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.noProd.visibility = View.GONE
+                        val msg: String = getString(R.string.productFail)
+                        Toast.makeText(
+                            this@InfluencerDetailActivity,
+                            msg,
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                }
+            }
+
             influencerDetailViewModel.getInfluencrProducts().observe(this){result ->
                 when(result){
                     is Result.Loading -> {
@@ -94,6 +128,8 @@ class InfluencerDetailActivity : AppCompatActivity() {
 
                     }
                 }
+
+
 
             }
         }

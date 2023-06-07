@@ -6,6 +6,7 @@ import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.GetOrderResponse
+import com.example.promosee.model.remote.reponse.InfluencerItemResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
@@ -74,6 +75,12 @@ interface ApiService {
 
     @GET("getinfluencer/{username}")
     suspend fun getInfluencerProfile(
+        @Header("Authorization") token: String,
+        @Path("username") username: String
+    ): getInfleuncerProfileResponse
+
+    @GET("getinfluencer/{username}")
+    suspend fun getInfluencerSearchResponse(
         @Header("Authorization") token: String,
         @Path("username") username: String
     ): getInfleuncerProfileResponse

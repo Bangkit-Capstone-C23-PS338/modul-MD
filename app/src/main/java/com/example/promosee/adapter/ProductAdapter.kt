@@ -15,6 +15,7 @@ import com.example.promosee.databinding.ItemOrderBinding
 import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.ProductsItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.model.withCurrencyFormat
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductFormActivity
 import java.text.DecimalFormat
@@ -37,7 +38,13 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
-        holder.logo.setImageResource(R.drawable.full_insta_logo)
+        if(products[position].socialMediaType == "Tiktok"){
+            holder.logo.setImageResource(R.drawable.tiktok_logo)
+        }else if(products[position].socialMediaType == "Instagram"){
+            holder.logo.setImageResource(R.drawable.full_insta_logo)
+        }else{
+            holder.logo.setImageResource(R.drawable.youtubelogo)
+        }
         holder.infoAcc.setImageResource(R.drawable.baseline_info_24)
         holder.title.text = products[position].name
         holder.desc.text = products[position].description
@@ -46,7 +53,7 @@ class ProductAdapter(
         products[position].toDo?.forEach {todo+="- $it\n"}
         holder.criteriaDetail.text = todo
 
-        val price = products[position].price?.let { formatRupiah(it) }
+        val price = products[position].price?.toString()?.withCurrencyFormat()
 
         holder.projectPrice.text = price.toString()
 
@@ -69,27 +76,6 @@ class ProductAdapter(
         }
 
 
-    }
-
-    fun formatRupiah(amount: Int): String {
-        // Create a NumberFormat instance for the Indonesian locale
-        val rupiahFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-
-        // Set the currency symbol to "Rp "
-        val decimalFormat = rupiahFormat as DecimalFormat
-        decimalFormat.negativePrefix = "(Rp "
-        decimalFormat.negativeSuffix = ")"
-
-        // Format the amount
-        var formattedAmount = rupiahFormat.format(amount.toLong())
-
-        // Remove the currency symbol and replace it with "Rp "
-        formattedAmount = formattedAmount.replace("IDR", "Rp ")
-
-        // Remove any decimal places if present
-        formattedAmount = formattedAmount.replace(".00", "")
-
-        return formattedAmount
     }
 
     override fun getItemCount(): Int {

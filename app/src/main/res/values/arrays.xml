@@ -3,7 +3,6 @@
     <string-array name="courier_items">
         <item>SiCepat</item>
         <item>JNE</item>
-        <item>Promosee Express</item>
         <item>AnterAja</item>
     </string-array>
 
@@ -12,7 +11,6 @@
         <item>BRI</item>
         <item>BNI</item>
         <item>GoPay</item>
-        <item>ShopeePay</item>
         <item>DANA</item>
         <item>OVO</item>
     </string-array>

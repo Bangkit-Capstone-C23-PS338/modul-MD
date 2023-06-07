@@ -1,9 +1,12 @@
 package com.example.promosee.model.remote.reponse
 
-import com.example.promosee.model.local.preference.CompanyModel
-import com.example.promosee.model.local.preference.OrderModel
 import com.google.gson.annotations.SerializedName
 
+
+data class GetOrderResponse(
+    @field:SerializedName("orders")
+    val orders: List<OrderItem>,
+)
 data class OrderResponse(
     @field:SerializedName("message")
     val message: String,
@@ -46,8 +49,8 @@ data class OrderItem(
     @field:SerializedName("payment_method")
     val payment_method: String,
 
-    @field:SerializedName("payment_status")
-    val payment_status: String? = " ",
+    @field:SerializedName("status")
+    val status: String? = " ",
 
     @field:SerializedName("brief")
     val brief: String,
@@ -57,5 +60,11 @@ data class OrderItem(
 
     @field:SerializedName("selected_package")
     val selected_package: ProductsItemInfluencer,
+
+    @field:SerializedName("posting_date")
+    val posting_date: String,
+
+    @field:SerializedName("content_link")
+    val content_link: String? = "",
 )
 

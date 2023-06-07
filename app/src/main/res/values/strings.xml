@@ -188,5 +188,7 @@
     <string name="deleteSuccess">Product Deleted Succesfully</string>
     <string name="failDelete">Product Failed to delete</string>
 
+    <string name="company">Company</string>
+
 
 </resources>

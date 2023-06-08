@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.BoardingActivity
-import com.example.promosee.view.company.mainCompany.MainActivityCompany
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.influencer.mainInflu.MainInfluencer

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavHostController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
@@ -16,19 +18,22 @@ import com.example.promosee.adapter.GridSpacingItemDecoration
 import com.example.promosee.adapter.OrderAdapter
 import com.example.promosee.databinding.FragmentHomeBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.local.preference.DummyOrders
-import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
+import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
+import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
 import com.example.promosee.view.company.mainCompany.ui.search.SearchFragment
-import com.example.promosee.view.register.RegisterCompanyFragment
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
+
+    private var type: String = ""
+    private var username: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,16 +62,41 @@ class HomeFragment : Fragment() {
             val searchFragment = SearchFragment()
             val fragmentManager = parentFragmentManager
             fragmentManager.beginTransaction().apply {
-                replace(R.id.frame_container, searchFragment, SearchFragment::class.java.simpleName)
+                replace(R.id.nav_host_fragment_activity_main_com, searchFragment, SearchFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
             }
         }
+        binding.fullOrder.setOnClickListener {
+            val notificationsFragment = NotificationsFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_activity_main_com, notificationsFragment, NotificationsFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
         homeViewModel.getUser().observe(viewLifecycleOwner){ user ->
+            username = user.username
+            type = user.user_access
+            homeViewModel.getCompanyOrders(username).observe(viewLifecycleOwner){result ->
+                when(result){
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is Result.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        val allOrders: List<OrderItem> = result.data.orders.take(5)
+                        addOrdersData(allOrders)
+                    }
+                    is Result.Error -> {}
+                    else -> {}
+                }
+            }
             binding.helloUser.text = getString(R.string.hello_user, user.username)
         }
 
-        addOrdersData(DummyOrders.listOrders)
         homeViewModel.getInfluencers().observe(viewLifecycleOwner){result ->
             when(result){
                 is Result.Loading -> {
@@ -75,7 +105,7 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
                     Log.e("test data", result.data.influencers.toString())
-                    val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
+                    val allInfluencer: List<InfluencersItem> = result.data.influencers?.take(5) as List<InfluencersItem>
                     addInfluencerData(allInfluencer)
                 }
                 is Result.Error -> {}
@@ -116,26 +146,22 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun addOrdersData(allOrders: List<OrderModel>) {
-        Log.d("hai", allOrders.size.toString())
-
+    private fun addOrdersData(allOrders: List<OrderItem>) {
         // membuat jumlah kolom dalam grid
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvOrder.layoutManager = linearLayoutManager
 
-//        // memasukkan data ke adapter
-//        val orderAdapter = OrderAdapter(allOrders)
-//        binding.rvOrder.adapter = orderAdapter
-//
-//        Log.d("Count", orderAdapter.itemCount.toString())
-//
-//        orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
-//            override fun onItemClicked(orderData: OrderModel) {
-//                Log.e("test item", orderData.toString())
-//            }
-//        })
-
-        binding.progressBar.visibility = View.GONE
+        // memasukkan data ke adapter
+        val orderAdapter = OrderAdapter(allOrders)
+        orderAdapter.checkTokenCompany(true)
+        binding.rvOrder.adapter = orderAdapter
+        orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
+            override fun onItemClicked(order: OrderItem) {
+                val intentToDetail = Intent(requireContext(), OrderDetailActivity::class.java)
+                intentToDetail.putExtra(OrderDetailActivity.EXTRA_ORDER_ID, order.order_id)
+                startActivity(intentToDetail)
+            }
+        })
     }
 
     private fun showSelectedInfluencer(influencerData: InfluencersItem) {

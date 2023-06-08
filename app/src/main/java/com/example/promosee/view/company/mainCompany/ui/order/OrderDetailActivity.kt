@@ -109,37 +109,37 @@ class OrderDetailActivity : AppCompatActivity() {
                 receiverAddress.text = order.receiver_address
 //                Log.d("Cek kurir", order.order_courier)
 //                Log.d("Cek payment", order.payment_method)
-//                when(order.order_courier){
-//                    "JNE" -> {
-//                        logoCourier.setImageResource(R.drawable.logo_jne)
-//                    }
-//                    "AnterAja" -> {
-//                        logoCourier.setImageResource(R.drawable.logo_anter_aja)
-//                    }
-//                    "SiCepat" -> {
-//                        logoCourier.setImageResource(R.drawable.logo_sicepat)
-//                    }
-//                }
-//                when(order.payment_method){
-//                    "BCA" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_bca)
-//                    }
-//                    "BNI" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_bni)
-//                    }
-//                    "BRI" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_bri)
-//                    }
-//                    "GoPay" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_gopay)
-//                    }
-//                    "DANA" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_dana)
-//                    }
-//                    "OVO" -> {
-//                        logoPayment.setImageResource(R.drawable.logo_ovo)
-//                    }
-//                }
+                when(order.order_courier){
+                    "JNE" -> {
+                        logoCourier.setImageResource(R.drawable.logo_jne)
+                    }
+                    "AnterAja" -> {
+                        logoCourier.setImageResource(R.drawable.logo_anter_aja)
+                    }
+                    "SiCepat" -> {
+                        logoCourier.setImageResource(R.drawable.logo_sicepat)
+                    }
+                }
+                when(order.payment_method){
+                    "BCA" -> {
+                        logoPayment.setImageResource(R.drawable.logo_bca)
+                    }
+                    "BNI" -> {
+                        logoPayment.setImageResource(R.drawable.logo_bni)
+                    }
+                    "BRI" -> {
+                        logoPayment.setImageResource(R.drawable.logo_bri)
+                    }
+                    "GoPay" -> {
+                        logoPayment.setImageResource(R.drawable.logo_gopay)
+                    }
+                    "DANA" -> {
+                        logoPayment.setImageResource(R.drawable.logo_dana)
+                    }
+                    "OVO" -> {
+                        logoPayment.setImageResource(R.drawable.logo_ovo)
+                    }
+                }
             }
         }
     }

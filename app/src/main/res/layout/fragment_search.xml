@@ -36,8 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
-            android:paddingBottom="20dp"
-            app:menu="@menu/home_app_bar">
+            android:paddingBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,12 +79,10 @@
 
         <!-- Scrollable content -->
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_gravity="center_horizontal"
             android:id="@+id/recyclerViewRecom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="96dp"/>
 
     </androidx.core.widget.NestedScrollView>
 

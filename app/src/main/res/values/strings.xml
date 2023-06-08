@@ -47,7 +47,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
-    <string name="title_search">search</string>
+    <string name="title_search">Search</string>
     <string name="enter_company_name">Enter company name</string>
     <string name="name">Name</string>
     <string name="empty_name">Name can\'t be empty</string>

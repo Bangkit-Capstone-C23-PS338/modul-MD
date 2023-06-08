@@ -119,7 +119,6 @@ class OrderActivity : AppCompatActivity() {
                         intent.getParcelableExtra(EXTRA_PRODUCT)!!
                     },
                     sender_address = binding.edtSenderAddress.text.toString(),
-                    receiver_address = binding.edtReceiverAddress.text.toString(),
                 )
                 orderViewModel.createOrder(order, binding.username.text.toString()).observe(this){ result ->
                     when(result){
@@ -175,12 +174,6 @@ class OrderActivity : AppCompatActivity() {
                 isValidated = false
             } else{
                 textFieldSenderAddress.error = null
-            }
-            if(edtReceiverAddress.text?.isEmpty() as Boolean){
-                textFieldReceiverAddress.error = getString(R.string.receiver_address_empty)
-                isValidated = false
-            } else{
-                textFieldReceiverAddress.error = null
             }
             if(edtName.text?.isEmpty() as Boolean){
                 textFieldProductName.error = getString(R.string.product_name_empty)

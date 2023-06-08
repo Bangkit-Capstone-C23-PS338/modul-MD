@@ -11,7 +11,6 @@ import com.example.promosee.R
 import com.example.promosee.databinding.ActivityLoginBinding
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.model.Result
-import com.example.promosee.view.company.mainCompany.MainActivityCompany
 import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.influencer.mainInflu.MainInfluencer
 import com.example.promosee.view.register.RegisterActivity

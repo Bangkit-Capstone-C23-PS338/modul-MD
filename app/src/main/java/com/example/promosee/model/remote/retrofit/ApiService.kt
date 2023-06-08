@@ -98,7 +98,7 @@ interface ApiService {
         @Path("business_owner") business_owner: String
     ): GetOrderResponse
 
-    @GET("influencer_orders/{influencer}}")
+    @GET("influencer_orders/{influencer}")
     suspend fun getInfluencerOrders(
         @Header("Authorization") token: String,
         @Path("influencer") influencer: String

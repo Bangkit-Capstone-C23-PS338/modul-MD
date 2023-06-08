@@ -10,14 +10,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:background="@color/md_theme_light_onPrimary">
+        android:padding="8dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/home_app_bar" >
+            android:layout_height="?attr/actionBarSize">
 
             <ImageView
                 android:id="@+id/back_button"
@@ -30,7 +28,6 @@
             <TextView
                 android:id="@+id/usernameHead"
                 android:text="@string/influencer_name"
-                android:textColor="@color/cardview_dark_background"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/josefinsans_bold"

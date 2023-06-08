@@ -20,6 +20,7 @@ import com.example.promosee.databinding.FragmentSearchBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
+import com.example.promosee.model.remote.reponse.ProductsItemResponse
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
 import com.example.promosee.view.login.LoginViewModel
@@ -67,7 +68,10 @@ class SearchFragment : Fragment() {
                                 Log.e("test data", result.data.influencers.toString())
                                 val allInfluencer: InfluencersItem = InfluencersItem(
                                     username = result.data.influencers?.get(0)?.username,
-                                    igFollowers = 1234
+                                    igFollowers = result.data.influencers?.get(0)?.igFollowers,
+                                    ttFollowers = result.data.influencers?.get(0)?.ttFollowers,
+                                    ytFollowers = result.data.influencers?.get(0)?.ytFollowers,
+                                    products = result.data.influencers?.get(0)?.products
                                 )
                                 val allData = listOf(allInfluencer)
                                 addInfluencerData(allData)

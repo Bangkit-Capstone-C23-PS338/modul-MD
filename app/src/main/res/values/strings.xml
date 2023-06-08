@@ -194,6 +194,11 @@
     <string name="add_review">Add Review</string>
 
     <string name="company">Company</string>
+    <string name="Follower">Follower</string>
+    <string name="tiktok">TikTok</string>
+    <string name="youtube">Youtube</string>
+    <string name="address">Address</string>
+    <string name="enter_your_address">Enter your address</string>
 
 
 </resources>

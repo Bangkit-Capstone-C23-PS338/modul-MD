@@ -44,7 +44,7 @@ data class InfluencersItem(
 	val userid: String? = null,
 
 	@field:SerializedName("products")
-	val products: List<ProductsItemResponse?>? = null,
+	val products: List<ProductsItemInfluencer?>? = null,
 
 	@field:SerializedName("tt_followers")
 	val ttFollowers: Int? = null,

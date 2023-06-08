@@ -11,5 +11,7 @@ data class InfluencerModel (
     val tt_followers: Int = 0,
     val yt_username: String = "",
     val yt_followers: Int = 0,
+    val address: String = "",
+    val photo_profile_url: String = "https://nextluxury.com/wp-content/uploads/funny-profile-pictures-4.jpg"
 )
 

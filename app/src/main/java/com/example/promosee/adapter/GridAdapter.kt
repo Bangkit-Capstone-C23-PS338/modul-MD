@@ -38,6 +38,8 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
         holder.nameItem.text = data.username
 
         // set min dan max follower
+//        val minFollower = 0
+//        val maxFollower = 100
         val minFollower = min(min(data.igFollowers as Int,data.ttFollowers as Int),data.ytFollowers as Int)
         val maxFollower = max(max(data.igFollowers as Int,data.ttFollowers as Int),data.ytFollowers as Int)
         holder.Follower.text = if(minFollower == maxFollower){

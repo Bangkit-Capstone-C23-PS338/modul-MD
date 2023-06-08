@@ -91,10 +91,10 @@ class HomeFragmentInfluencer : Fragment() {
 
     fun setupAction() {
 
-        binding.testrev.setOnClickListener{
-            val intent = Intent(requireContext(), ReviewFormActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.testrev.setOnClickListener{
+//            val intent = Intent(requireContext(), ReviewFormActivity::class.java)
+//            startActivity(intent)
+//        }
 
         binding.fullProduct.setOnClickListener{
             val moveIntent = Intent(requireContext(),ProductActivity::class.java)

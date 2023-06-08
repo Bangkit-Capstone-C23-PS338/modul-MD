@@ -7,7 +7,7 @@ import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.InfluencerRepository
 
-class NotificationsViewModel(private val pref: UserPreference, private val influencerRepository: InfluencerRepository) : ViewModel() {
+class NotificationsInfluencerViewModel(private val pref: UserPreference, private val influencerRepository: InfluencerRepository) : ViewModel() {
 
     fun getUser(): LiveData<UserModel> = pref.getUser().asLiveData()
     fun getInfluencerOrders(username: String) = influencerRepository.getOrder(username)

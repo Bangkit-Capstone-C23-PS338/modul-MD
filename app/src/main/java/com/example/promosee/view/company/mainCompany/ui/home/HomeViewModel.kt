@@ -23,4 +23,6 @@ class HomeViewModel(private val pref: UserPreference, private val companyReposit
 
     fun getInfluencers() =  companyRepository.getInfluencers()
 
+    fun getCompanyOrders(username: String) = companyRepository.getOrder(username)
+
 }

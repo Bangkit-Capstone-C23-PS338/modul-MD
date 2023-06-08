@@ -41,7 +41,7 @@ data class OrderItem(
     val sender_address: String,
 
     @field:SerializedName("receiver_address")
-    val receiver_address: String,
+    val receiver_address: String? = "",
 
     @field:SerializedName("order_courier")
     val order_courier: String,

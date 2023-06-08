@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications_influencer"
-        android:name="com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsFragment"
+        android:name="com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsInfluencerFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 

@@ -13,14 +13,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:contentDescription="@string/userphoto"
                 android:id="@+id/avatar_card"
-                android:layout_width="200dp"
-                android:layout_height="190dp"
+                android:layout_width="150dp"
+                android:layout_height="180dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@drawable/iu" />

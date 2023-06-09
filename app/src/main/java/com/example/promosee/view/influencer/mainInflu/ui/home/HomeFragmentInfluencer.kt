@@ -10,11 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
+import com.example.promosee.adapter.OrderAdapter
 import com.example.promosee.adapter.ProductAdapter
 import com.example.promosee.databinding.FragmentHomeInfluencerBinding
 import com.example.promosee.model.Result
+import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 import com.example.promosee.view.influencer.mainInflu.ui.review.ReviewFormActivity
 
@@ -91,11 +95,6 @@ class HomeFragmentInfluencer : Fragment() {
 
     fun setupAction() {
 
-//        binding.testrev.setOnClickListener{
-//            val intent = Intent(requireContext(), ReviewFormActivity::class.java)
-//            startActivity(intent)
-//        }
-
         binding.fullProduct.setOnClickListener{
             val moveIntent = Intent(requireContext(),ProductActivity::class.java)
             startActivity(moveIntent)
@@ -108,7 +107,7 @@ class HomeFragmentInfluencer : Fragment() {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.helloUser.text = getString(R.string.hello_user, result.data.influencers?.get(0)?.username)
+                    binding.helloUser.text = getString(R.string.hello_user, result.data.influencers?.username)
                 }
                 is Result.Error -> {
                     Log.e("error msg", result.error)
@@ -139,6 +138,39 @@ class HomeFragmentInfluencer : Fragment() {
                 }
             }
         }
+
+        homeInfluencerViewModel.getInfluencerOrders(ApiConfig.USERNAME).observe(viewLifecycleOwner){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val allOrders: List<OrderItem> = result.data.orders
+                    addOrdersData(allOrders)
+                }
+                is Result.Error -> {}
+                else -> {}
+            }
+        }
+    }
+
+    private fun addOrdersData(allOrders: List<OrderItem>) {
+        // membuat jumlah kolom dalam grid
+        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvOrder.layoutManager = linearLayoutManager
+
+        // memasukkan data ke adapter
+        val orderAdapter = OrderAdapter(allOrders)
+        orderAdapter.checkTokenCompany(true)
+        binding.rvOrder.adapter = orderAdapter
+        orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
+            override fun onItemClicked(order: OrderItem) {
+                val intentToDetail = Intent(requireContext(), OrderDetailActivity::class.java)
+                intentToDetail.putExtra(OrderDetailActivity.EXTRA_ORDER_ID, order.order_id)
+                startActivity(intentToDetail)
+            }
+        })
     }
 
 

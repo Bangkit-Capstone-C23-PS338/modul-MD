@@ -79,7 +79,7 @@ class InfluencerDetailActivity : AppCompatActivity() {
                         binding.noProd.visibility = View.GONE
 
                         // set rating
-                        val rating: String = result.data.influencers?.get(0)?.rating as String
+                        val rating: String = result.data.influencers?.rating as String
                         setStarRating(rating.toDouble(),this)
                         binding.ratingNumber.text = rating.toString()
 

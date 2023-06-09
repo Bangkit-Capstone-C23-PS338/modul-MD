@@ -205,6 +205,7 @@
     <string name="youtube">Youtube</string>
     <string name="address">Address</string>
     <string name="enter_your_address">Enter your address</string>
+    <string name="no_influencer">No Influencer Found</string>
 
 
 </resources>

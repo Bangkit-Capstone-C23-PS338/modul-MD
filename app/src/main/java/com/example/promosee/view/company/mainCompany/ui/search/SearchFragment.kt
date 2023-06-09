@@ -42,9 +42,14 @@ class SearchFragment : Fragment() {
         // melakukan setup pada viewmodel
         setupViewModel()
 
+
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 //        searchViewModel.text.observe(viewLifecycleOwner) {}
+
+        binding.refreshBtn.setOnClickListener{
+            getAllInfluencer()
+        }
         return root
     }
 
@@ -54,33 +59,42 @@ class SearchFragment : Fragment() {
         searchInfluencer.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 binding.recyclerViewRecom.adapter = null
-                Log.e("query test", "masuk bang")
-                    searchViewModel.setUsername(query)
-                    searchViewModel.getInfluencersSearch().observe(requireActivity()){result ->
-                        when(result){
-                            is Result.Loading -> {
-                                binding.progressBar.visibility = View.VISIBLE
-                                binding.expired.visibility = View.GONE
-                            }
-                            is Result.Success -> {
-                                binding.progressBar.visibility = View.GONE
-                                binding.expired.visibility = View.GONE
-                                Log.e("test data", result.data.influencers.toString())
-                                val allInfluencer: InfluencersItem = InfluencersItem(
-                                    username = result.data.influencers?.get(0)?.username,
-                                    igFollowers = result.data.influencers?.get(0)?.igFollowers,
-                                    ttFollowers = result.data.influencers?.get(0)?.ttFollowers,
-                                    ytFollowers = result.data.influencers?.get(0)?.ytFollowers,
-                                    products = result.data.influencers?.get(0)?.products
-                                )
-                                val allData = listOf(allInfluencer)
-                                addInfluencerData(allData)
-                            }
-                            is Result.Error -> {
-                                Log.e("error msg", result.error)
-                                if(result.error.trim() == "HTTP 401"){
+                    if(query.isEmpty()){
+                        getAllInfluencer()
+                    }else{
+                        searchViewModel.setUsername(query)
+                        searchViewModel.getInfluencersSearch().observe(requireActivity()){result ->
+                            when(result){
+                                is Result.Loading -> {
+                                    binding.progressBar.visibility = View.VISIBLE
+                                    binding.warningCont.visibility = View.GONE
+                                }
+                                is Result.Success -> {
                                     binding.progressBar.visibility = View.GONE
-                                    binding.expired.visibility = View.VISIBLE
+                                    binding.warningCont.visibility = View.GONE
+                                    Log.e("test data", result.data.influencers.toString())
+                                    val allInfluencer: InfluencersItem = InfluencersItem(
+                                        username = result.data.influencers?.username,
+                                        igFollowers = result.data.influencers?.igFollowers,
+                                        ttFollowers = result.data.influencers?.ttFollowers,
+                                        ytFollowers = result.data.influencers?.ytFollowers,
+                                        products = result.data.influencers?.products
+                                    )
+                                    val allData = listOf(allInfluencer)
+                                    addInfluencerData(allData)
+                                }
+                                is Result.Error -> {
+                                    Log.e("error msg", result.error)
+                                    binding.progressBar.visibility = View.GONE
+                                    binding.warningCont.visibility = View.VISIBLE
+                                    when{
+                                        result.error.trim() == "HTTP 401" -> {
+                                            binding.error.visibility = View.VISIBLE
+                                        }
+                                        result.error.trim() == "HTTP 404" -> {
+                                            binding.error.setText(R.string.no_influencer)
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -105,31 +119,42 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.refreshBtn.setOnClickListener{
+            getAllInfluencer()
+        }
 
         searchQueue()
+        getAllInfluencer()
+    }
 
+    private fun getAllInfluencer(){
         searchViewModel.getInfluencrs().observe(viewLifecycleOwner){result ->
             when(result){
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.expired.visibility = View.GONE
+                    binding.warningCont.visibility = View.GONE
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.expired.visibility = View.GONE
+                    binding.warningCont.visibility = View.GONE
                     Log.e("test data", result.data.influencers.toString())
                     val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
                     addInfluencerData(allInfluencer)
                 }
                 is Result.Error -> {
                     Log.e("error msg", result.error)
-                    if(result.error.trim() == "HTTP 401"){
-                        binding.progressBar.visibility = View.GONE
-                        binding.expired.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+                    binding.warningCont.visibility = View.VISIBLE
+                    when{
+                        result.error.trim() == "HTTP 401" -> {
+                            binding.error.visibility = View.VISIBLE
+                        }
+                        result.error.trim() == "HTTP 404" -> {
+                            binding.error.setText(R.string.no_influencer)
+                        }
                     }
                 }
             }
-
         }
     }
 

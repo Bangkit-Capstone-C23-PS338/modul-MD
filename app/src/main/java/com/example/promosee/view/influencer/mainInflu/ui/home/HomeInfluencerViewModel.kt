@@ -10,4 +10,5 @@ class HomeInfluencerViewModel(
 
     fun getInfluencrProducts() = influencerRepository.getInfluencerProduct()
     fun getProfile() = influencerRepository.getInfluencer()
+    fun getInfluencerOrders(username: String) = influencerRepository.getOrder(username)
 }

@@ -1,32 +1,47 @@
 package com.example.promosee.model.remote.reponse
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-data class GetInfluencersResponse(
+data class InfluencerItemResponse(
 
 	@field:SerializedName("influencers")
-	val influencers: List<InfluencersItem?>? = null
+	val influencers: List<InfluencersItemResponse?>? = null
 )
 
-
-data class ProductsItem(
+data class ProductsItemResponse(
 
 	@field:SerializedName("social_media_type")
 	val socialMediaType: String? = null,
 
 	@field:SerializedName("price")
-	val price: Any? = null,
+	val price: Int? = null,
+
+	@field:SerializedName("product_id")
+	val productId: Int? = null,
 
 	@field:SerializedName("name")
 	val name: String? = null,
+
+	@field:SerializedName("description")
+	val description: String? = null,
 
 	@field:SerializedName("to_do")
 	val toDo: List<String?>? = null
 )
 
-data class InfluencersItem(
+data class ReviewsItemResponse(
+
+	@field:SerializedName("rating")
+	val rating: Int? = null,
+
+	@field:SerializedName("comment")
+	val comment: String? = null,
+
+	@field:SerializedName("order_id")
+	val orderId: String? = null
+)
+
+data class InfluencersItemResponse(
 
 	@field:SerializedName("photo_profile_url")
 	val photoProfileUrl: String? = null,
@@ -44,7 +59,7 @@ data class InfluencersItem(
 	val userid: String? = null,
 
 	@field:SerializedName("products")
-	val products: List<ProductsItemInfluencer?>? = null,
+	val products: List<ProductsItemResponse?>? = null,
 
 	@field:SerializedName("tt_followers")
 	val ttFollowers: Int? = null,
@@ -75,55 +90,4 @@ data class InfluencersItem(
 
 	@field:SerializedName("ig_username")
 	val igUsername: String? = null
-)
-
-data class GetInfluencerProductReponse(
-
-	@field:SerializedName("products")
-	val products: List<ProductsItemInfluencer?>? = null
-)
-
-@Parcelize
-data class ProductsItemInfluencer(
-
-	@field:SerializedName("social_media_type")
-	val socialMediaType: String? = null,
-
-	@field:SerializedName("price")
-	val price: Int? = null,
-
-	@field:SerializedName("product_id")
-	val productId: Int? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("description")
-	val description: String? = null,
-
-	@field:SerializedName("to_do")
-	val toDo: List<String?>? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null
-): Parcelable
-
-data class ReviewsResponse(
-	@field:SerializedName("reviews")
-	val reviews: List<ReviewsItem?>? = null
-)
-
-data class ReviewsItem(
-
-	@field:SerializedName("order_date")
-	val orderDate: String? = null,
-
-	@field:SerializedName("rating")
-	val rating: Int? = null,
-
-	@field:SerializedName("comment")
-	val comment: String? = null,
-
-	@field:SerializedName("order_id")
-	val orderId: String? = null
 )

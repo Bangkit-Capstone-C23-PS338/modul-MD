@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
+import com.example.promosee.model.withCurrencyFormat
+import java.lang.Integer.MAX_VALUE
+import java.lang.Math.min
+import java.lang.StrictMath.max
 
 class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
 
@@ -32,8 +36,33 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
         val data = dataList[position]
         holder.avatarItem.setImageResource(R.drawable.nanami_mami)
         holder.nameItem.text = data.username
-        holder.Follower.text = data.igFollowers.toString()
-        holder.price.text = "500ribu - 1juta"
+
+        // set min dan max follower
+//        val minFollower = 0
+//        val maxFollower = 100
+        val minFollower = min(min(data.igFollowers as Int,data.ttFollowers as Int),data.ytFollowers as Int)
+        val maxFollower = max(max(data.igFollowers as Int,data.ttFollowers as Int),data.ytFollowers as Int)
+        holder.Follower.text = if(minFollower == maxFollower){
+            "$minFollower"
+        } else {
+            "$minFollower - $maxFollower"
+        }
+
+        //set min and max price
+        var minPrice = MAX_VALUE
+        var maxPrice = 0
+        data.products?.forEach { data ->
+            minPrice = min(minPrice,data?.price as Int)
+        }
+        data.products?.forEach { data ->
+            maxPrice = max(maxPrice,data?.price as Int)
+        }
+
+        holder.price.text = if(minPrice == maxPrice){
+            "${minPrice.toString().withCurrencyFormat()}"
+        } else {
+            "${minPrice.toString().withCurrencyFormat()} - ${maxPrice.toString().withCurrencyFormat()}"
+        }
         holder.verifId.setImageResource(R.drawable.baseline_verified_24)
         holder.itemView.setOnClickListener{
             onItemClickCallback.onItemClicked(dataList[position])

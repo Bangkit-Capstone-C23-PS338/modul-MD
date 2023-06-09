@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Promosee"
         tools:targetApi="31">
         <activity
+            android:name=".view.influencer.mainInflu.ui.review.ReviewFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.company.mainCompany.ui.order.OrderDetailActivity"
             android:exported="false" />
         <activity

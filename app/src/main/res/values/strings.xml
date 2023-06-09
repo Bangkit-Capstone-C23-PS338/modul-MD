@@ -187,12 +187,24 @@
     <string name="delete">Delete</string>
     <string name="deleteSuccess">Product Deleted Succesfully</string>
     <string name="failDelete">Product Failed to delete</string>
+    <string name="add_review_head">Add Review</string>
+    <string name="review_rating">Rating</string>
+    <string name="review_comment">Review Comment</string>
+    <string name="enter_your_comment">Enter your comment here</string>
+    <string name="add_review">Add Review</string>
 
     <string name="company">Company</string>
+
     <string name="failed_to_update">Failed to update</string>
     <string name="failed_to_fetch_data">Failed to fetch data</string>
     <string name="submit">Submit</string>
     <string name="finish">Finish</string>
+
+    <string name="Follower">Follower</string>
+    <string name="tiktok">TikTok</string>
+    <string name="youtube">Youtube</string>
+    <string name="address">Address</string>
+    <string name="enter_your_address">Enter your address</string>
 
 
 </resources>

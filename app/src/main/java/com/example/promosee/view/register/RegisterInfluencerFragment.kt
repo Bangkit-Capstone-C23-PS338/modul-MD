@@ -79,12 +79,18 @@ class RegisterInfluencerFragment : Fragment() {
                         listCategories.add(getString(R.string.entertainment))
                     }
                     val listFixCategories: List<String> = listCategories
-
                     val influencer = InfluencerModel(
                         editTextTextUsername.text.toString(),
                         editTextTextEmailAddress3.text.toString(),
                         editTextTextPassword.text.toString(),
-                        listFixCategories
+                        listFixCategories,
+                        ig_username = instagramSosmedEdt.text.toString(),
+                        yt_username = youtubeSosmedEdt.text.toString(),
+                        tt_username = tiktokSosmedEdt.text.toString(),
+                        address = addressTextedt.text.toString(),
+                        ig_followers = instagramFollowerEdt.text.toString().toInt(),
+                        yt_followers = youtubeFollowerEdt.text.toString().toInt(),
+                        tt_followers = tiktokFollowerEdt.text.toString().toInt()
                     )
                     registerViewModel.setInfluencer(influencer)
                     registerViewModel.registerInfluencer().observe(viewLifecycleOwner){result ->

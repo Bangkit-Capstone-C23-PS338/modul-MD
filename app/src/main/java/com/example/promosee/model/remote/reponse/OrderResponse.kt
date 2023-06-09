@@ -17,10 +17,10 @@ data class OrderResponse(
 
 data class OrderItem(
     @field:SerializedName("order_id")
-    val order_id: String? = "",
+    val order_id: String = "",
 
     @field:SerializedName("order_date")
-    val order_date: Any? = "",
+    val order_date: Any = "",
 
     @field:SerializedName("influencer_username")
     val influencer_username: String,
@@ -41,7 +41,7 @@ data class OrderItem(
     val sender_address: String,
 
     @field:SerializedName("receiver_address")
-    val receiver_address: String? = "",
+    val receiver_address: String = "",
 
     @field:SerializedName("order_courier")
     val order_courier: String,
@@ -50,7 +50,7 @@ data class OrderItem(
     val payment_method: String,
 
     @field:SerializedName("status")
-    val status: String? = " ",
+    val status: String = " ",
 
     @field:SerializedName("brief")
     val brief: String,

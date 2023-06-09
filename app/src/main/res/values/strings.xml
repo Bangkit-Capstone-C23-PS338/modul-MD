@@ -194,6 +194,12 @@
     <string name="add_review">Add Review</string>
 
     <string name="company">Company</string>
+
+    <string name="failed_to_update">Failed to update</string>
+    <string name="failed_to_fetch_data">Failed to fetch data</string>
+    <string name="submit">Submit</string>
+    <string name="finish">Finish</string>
+
     <string name="Follower">Follower</string>
     <string name="tiktok">TikTok</string>
     <string name="youtube">Youtube</string>

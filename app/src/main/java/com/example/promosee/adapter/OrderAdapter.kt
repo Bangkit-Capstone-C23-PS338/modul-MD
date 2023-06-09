@@ -45,8 +45,8 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
         holder.binding.orderDate.text = order.posting_date.toLongDateFormat()
         when(order.status){
             "pending" -> {
-                holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#FFAD7E"))
-                holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#A73200")))
+                holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#423E3C"))
+                holder.binding.statusChip.setTextColor(ColorStateList.valueOf(Color.parseColor("#F6E8E3")))
                 holder.binding.statusChip.setText(R.string.pending)
             }
             "processing" -> {

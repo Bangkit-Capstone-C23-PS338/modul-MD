@@ -88,14 +88,16 @@
                 android:text="@string/acc_title"
                 android:layout_marginTop="30dp"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/josefinsans_bold"
                 android:paddingStart="20dp"/>
 
             <TextView
                 android:text="@string/other_title"
                 android:layout_marginTop="30dp"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/josefinsans_bold"
                 android:paddingStart="20dp"/>
 
             <LinearLayout
@@ -117,14 +119,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/logout" />
             </LinearLayout>
-
-
-
-
         </TableLayout>
-
-
-
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar

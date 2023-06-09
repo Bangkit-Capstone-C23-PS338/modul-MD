@@ -11,11 +11,13 @@ import com.example.promosee.R
 import com.example.promosee.databinding.ActivityOrderDetailBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.OrderItem
+import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.toLongDateFormat
 import com.example.promosee.model.withCurrencyFormat
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
+import com.example.promosee.view.influencer.mainInflu.MainInfluencer
 
 class OrderDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderDetailBinding
@@ -49,7 +51,7 @@ class OrderDetailActivity : AppCompatActivity() {
                 }
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    val msg: String = getString(R.string.failed_to_order)
+                    val msg: String = getString(R.string.failed_to_fetch_data)
                     Toast.makeText(
                         applicationContext,
                         msg,
@@ -63,7 +65,6 @@ class OrderDetailActivity : AppCompatActivity() {
 
     private fun setupAction(order: OrderItem) {
         orderDetailViewModel.getUser().observe(this){ user ->
-            Log.d("Cek akses", user.user_access)
             if (user.user_access == "business_owner"){
                 binding.username.text = order.influencer_username
                 binding.btnDetail.setOnClickListener {
@@ -76,23 +77,91 @@ class OrderDetailActivity : AppCompatActivity() {
                 binding.labelInfluencer.text = getString(R.string.company)
                 binding.btnDetail.visibility = View.GONE
             }
+            // change button visibility and behavior depend on the order status
+            val intentToMainCom = Intent(this@OrderDetailActivity, MainCom::class.java)
+            val intentToMainInfluencer = Intent(this@OrderDetailActivity, MainInfluencer::class.java)
             when(order.status){
                 "pending" -> {
+                    if(user.user_access == "influencer"){
+                        binding.apply {
+                            bottomAppBar.visibility = View.VISIBLE
+                            btnActionLeft.setOnClickListener {
+                                updateOrder(status = "failed", order_id = order.order_id)
+                                startActivity(intentToMainInfluencer)
+                            }
+                            btnActionRight.setOnClickListener {
+                                updateOrder(status = "processing", order_id = order.order_id)
+                                startActivity(intentToMainInfluencer)
+                            }
+                        }
 
+                    }
                 }
-                "process" -> {
+                "processing" -> {
+                    if(user.user_access == "influencer"){
+                        binding.apply {
+                            labelPromotion.visibility = View.VISIBLE
+                            labelPromotionLink.visibility = View.VISIBLE
+                            textFieldPromotionLink.visibility = View.VISIBLE
 
+                            bottomAppBar.visibility = View.VISIBLE
+                            btnActionLeft.visibility = View.INVISIBLE
+                            btnActionRight.text = getString(R.string.submit)
+                            btnActionRight.setOnClickListener {
+                                if(edtPromotionLink.text?.isEmpty() as Boolean){
+                                    textFieldPromotionLink.error = "Content link must be filled"
+                                } else{
+                                    textFieldPromotionLink.error = null
+                                    updateOrder(
+                                        content_link = edtPromotionLink.text.toString(),
+                                        status = "waiting",
+                                        order_id = order.order_id
+                                    )
+                                    startActivity(intentToMainInfluencer)
+                                }
+                            }
+                        }
+                    }
                 }
                 "waiting" -> {
+                    binding.apply {
+                        labelPromotion.visibility = View.VISIBLE
+                        labelPromotionLink.visibility = View.VISIBLE
+                        promotionLink.visibility = View.VISIBLE
+                        promotionLink.text = order.content_link
+
+                        if(user.user_access == "business_owner"){
+                            bottomAppBar.visibility = View.VISIBLE
+                            btnActionLeft.visibility = View.INVISIBLE
+                            btnActionRight.text = getString(R.string.finish)
+                            btnActionRight.setOnClickListener {
+                                if(edtPromotionLink.text?.isEmpty() as Boolean){
+                                    textFieldPromotionLink.error = "Content link must be filled"
+                                } else{
+                                    textFieldPromotionLink.error = null
+                                    updateOrder(
+                                        content_link = promotionLink.text.toString(),
+                                        status = "done",
+                                        order_id = order.order_id
+                                    )
+                                    startActivity(intentToMainCom)
+                                }
+                            }
+                        }
+                    }
 
                 }
                 "done" -> {
-
-                }
-                "failed" -> {
-
+                    binding.apply {
+                        labelPromotion.visibility = View.VISIBLE
+                        labelPromotionLink.visibility = View.VISIBLE
+                        promotionLink.visibility = View.VISIBLE
+                        promotionLink.text = order.content_link
+                    }
                 }
             }
+
+            // apply all order detail to view and change courier and payment method image depend on the order detail
             binding.apply {
                 backButton.setOnClickListener {
                     finish()
@@ -107,8 +176,6 @@ class OrderDetailActivity : AppCompatActivity() {
                 productLink.text = order.product_link
                 senderAddress.text = order.sender_address
                 receiverAddress.text = order.receiver_address
-//                Log.d("Cek kurir", order.order_courier)
-//                Log.d("Cek payment", order.payment_method)
                 when(order.order_courier){
                     "JNE" -> {
                         logoCourier.setImageResource(R.drawable.logo_jne)
@@ -139,6 +206,31 @@ class OrderDetailActivity : AppCompatActivity() {
                     "OVO" -> {
                         logoPayment.setImageResource(R.drawable.logo_ovo)
                     }
+                }
+            }
+        }
+    }
+
+    fun updateOrder(content_link:String = "", status: String, order_id: String){
+        val update_data = UpdateOrderRequest(content_link, status)
+        orderDetailViewModel.updateOrder(update_data, order_id).observe(this@OrderDetailActivity){ result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.d("Cek Update", result.data.message.toString())
+                }
+                is Result.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    val msg: String = getString(R.string.failed_to_update)
+                    Toast.makeText(
+                        applicationContext,
+                        msg,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
                 }
             }
         }

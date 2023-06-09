@@ -8,5 +8,5 @@ data class UpdateOrderRequest(
     val content_link: String? = "",
 
     @field:SerializedName("status")
-    val price: String,
+    val status: String,
 )

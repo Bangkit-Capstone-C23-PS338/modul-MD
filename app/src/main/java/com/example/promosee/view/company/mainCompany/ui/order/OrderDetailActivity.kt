@@ -88,10 +88,12 @@ class OrderDetailActivity : AppCompatActivity() {
                             btnActionLeft.setOnClickListener {
                                 updateOrder(status = "failed", order_id = order.order_id)
                                 startActivity(intentToMainInfluencer)
+                                finish()
                             }
                             btnActionRight.setOnClickListener {
                                 updateOrder(status = "processing", order_id = order.order_id)
                                 startActivity(intentToMainInfluencer)
+                                finish()
                             }
                         }
 
@@ -118,6 +120,7 @@ class OrderDetailActivity : AppCompatActivity() {
                                         order_id = order.order_id
                                     )
                                     startActivity(intentToMainInfluencer)
+                                    finish()
                                 }
                             }
                         }
@@ -135,17 +138,13 @@ class OrderDetailActivity : AppCompatActivity() {
                             btnActionLeft.visibility = View.INVISIBLE
                             btnActionRight.text = getString(R.string.finish)
                             btnActionRight.setOnClickListener {
-                                if(edtPromotionLink.text?.isEmpty() as Boolean){
-                                    textFieldPromotionLink.error = "Content link must be filled"
-                                } else{
-                                    textFieldPromotionLink.error = null
-                                    updateOrder(
-                                        content_link = promotionLink.text.toString(),
-                                        status = "done",
-                                        order_id = order.order_id
-                                    )
-                                    startActivity(intentToMainCom)
-                                }
+                                updateOrder(
+                                    content_link = promotionLink.text.toString(),
+                                    status = "done",
+                                    order_id = order.order_id
+                                )
+                                startActivity(intentToMainCom)
+                                finish()
                             }
                         }
                     }

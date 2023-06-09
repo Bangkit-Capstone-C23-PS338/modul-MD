@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/josefinsans_bold"
+                android:paddingStart="16dp"
                 android:text="@string/profile_head"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -87,8 +88,9 @@
                 android:text="@string/acc_title"
                 android:layout_marginTop="30dp"
                 android:textStyle="bold"
-                android:textSize="25sp"
-                android:paddingStart="20dp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/josefinsans_bold"
+                android:paddingStart="24dp"/>
 
             <LinearLayout
                 android:id="@+id/pesanan_saya"
@@ -114,8 +116,9 @@
                 android:text="@string/other_title"
                 android:layout_marginTop="30dp"
                 android:textStyle="bold"
-                android:textSize="25sp"
-                android:paddingStart="20dp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/josefinsans_bold"
+                android:paddingStart="24dp"/>
 
             <LinearLayout
                 android:id="@+id/logout"

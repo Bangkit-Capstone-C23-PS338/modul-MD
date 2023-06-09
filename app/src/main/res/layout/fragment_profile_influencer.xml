@@ -90,6 +90,26 @@
                 android:textSize="25sp"
                 android:paddingStart="20dp"/>
 
+            <LinearLayout
+                android:id="@+id/pesanan_saya"
+                android:layout_marginTop="10dp"
+                android:paddingTop="15dp"
+                android:background="@drawable/border"
+                android:paddingBottom="15dp"
+                >
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_format_list_bulleted_24" />
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_product" />
+            </LinearLayout>
+
             <TextView
                 android:text="@string/other_title"
                 android:layout_marginTop="30dp"

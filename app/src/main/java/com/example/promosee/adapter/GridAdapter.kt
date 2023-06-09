@@ -49,20 +49,25 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
         }
 
         //set min and max price
-        var minPrice = MAX_VALUE
-        var maxPrice = 0
-        data.products?.forEach { data ->
-            minPrice = min(minPrice,data?.price as Int)
-        }
-        data.products?.forEach { data ->
-            maxPrice = max(maxPrice,data?.price as Int)
+        if(data.products?.size != 0){
+            var minPrice = MAX_VALUE
+            var maxPrice = 0
+            data.products?.forEach { data ->
+                minPrice = min(minPrice,data?.price as Int)
+            }
+            data.products?.forEach { data ->
+                maxPrice = max(maxPrice,data?.price as Int)
+            }
+
+            holder.price.text = if(minPrice == maxPrice){
+                "${minPrice.toString().withCurrencyFormat()}"
+            } else {
+                "${minPrice.toString().withCurrencyFormat()} - ${maxPrice.toString().withCurrencyFormat()}"
+            }
+        }else{
+            holder.price.text = "0".withCurrencyFormat()
         }
 
-        holder.price.text = if(minPrice == maxPrice){
-            "${minPrice.toString().withCurrencyFormat()}"
-        } else {
-            "${minPrice.toString().withCurrencyFormat()} - ${maxPrice.toString().withCurrencyFormat()}"
-        }
         holder.verifId.setImageResource(R.drawable.baseline_verified_24)
         holder.itemView.setOnClickListener{
             onItemClickCallback.onItemClicked(dataList[position])

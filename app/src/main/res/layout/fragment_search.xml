@@ -15,13 +15,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/expired"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
+    <TableLayout
+        android:id="@+id/warning_cont"
         android:layout_gravity="center"
-        android:text="@string/expired"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/expired"/>
+
+        <ImageView
+            android:id="@+id/refresh_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_refresh_24"
+            app:layout_anchor="@+id/progress_bar"
+            app:layout_anchorGravity="bottom|center" />
+    </TableLayout>
+
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -40,7 +57,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:paddingStart="16dp"
+                android:paddingHorizontal="16dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/josefinsans_bold"
                 android:text="@string/search_page_title"
@@ -80,9 +97,10 @@
         <!-- Scrollable content -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecom"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="96dp"/>
+            android:paddingBottom="96dp" />
 
     </androidx.core.widget.NestedScrollView>
 

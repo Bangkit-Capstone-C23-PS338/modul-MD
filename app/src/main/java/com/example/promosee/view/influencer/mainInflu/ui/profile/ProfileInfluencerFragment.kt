@@ -71,8 +71,8 @@ class ProfileInfluencerFragment : Fragment() {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.influencerName.text = result.data.influencers?.get(0)?.username ?: ""
-                    binding.emailInfluencer.text = result.data.influencers?.get(0)?.email ?: ""
+                    binding.influencerName.text = result.data.influencers?.username ?: ""
+                    binding.emailInfluencer.text = result.data.influencers?.email ?: ""
                 }
                 is Result.Error -> {
                     Log.e("error msg", result.error)

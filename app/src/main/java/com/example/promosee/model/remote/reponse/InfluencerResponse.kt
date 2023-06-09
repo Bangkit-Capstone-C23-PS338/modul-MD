@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class getInfleuncerProfileResponse(
 
 	@field:SerializedName("influencers")
-	val influencers: List<getInfluencerItem?>? = null
+	val influencers: getInfluencerItem? = null
 )
 
 data class getInfluencerItem(

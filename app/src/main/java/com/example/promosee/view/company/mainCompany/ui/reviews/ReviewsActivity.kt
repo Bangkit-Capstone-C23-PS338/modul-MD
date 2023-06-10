@@ -47,6 +47,7 @@ class ReviewsActivity : AppCompatActivity() {
     private fun setupAction() {
         val intent: Intent = intent
         val username = intent.getStringExtra("username") as String
+
         // get data from view Model -- API still not finish --
         // connect to adapter
         reviewsViewModel.setUsername(username)

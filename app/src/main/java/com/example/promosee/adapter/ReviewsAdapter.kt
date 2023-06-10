@@ -14,6 +14,7 @@ import com.example.promosee.R
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.reponse.ReviewsItem
 import com.example.promosee.model.reviewDate
+import com.example.promosee.model.toLongDateFormat
 import com.example.promosee.model.toShortDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -32,7 +33,7 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun convertDateFormat(dateString: String): String {
-        val inputFormat = "dd/MM/yyyy HH:mm:ss"
+        val inputFormat = "YYYY-MM-DDTHH:mm:ss.ssssss+/-HH:mm"
         val outputFormat = "dd MMM yyyy"
 
         val inputFormatter = DateTimeFormatter.ofPattern(inputFormat)
@@ -45,8 +46,8 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ReviewsAdapter.ViewHolder, position: Int) {
         holder.profilePic.setImageResource(R.drawable.profilepic)
-        holder.companyName.setText(R.string.company_name)
-        holder.postDate.text = reviews[position].orderDate?.let { convertDateFormat(it) }
+        holder.companyName.text = reviews[position].companyName
+        holder.postDate.text = reviews[position].timeReviewed?.toLongDateFormat()
         holder.commentDesc.text = reviews[position].comment
         holder.verifLogo.setImageResource(R.drawable.baseline_verified_24)
         holder.commentTitle.setText(R.string.komentar)

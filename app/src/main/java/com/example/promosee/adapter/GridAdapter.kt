@@ -33,7 +33,8 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
-        val data = dataList[position]
+        val index = dataList.size-position-1
+        val data = dataList[index]
         holder.avatarItem.setImageResource(R.drawable.nanami_mami)
         holder.nameItem.text = data.username
 
@@ -70,10 +71,10 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
 
         holder.verifId.setImageResource(R.drawable.baseline_verified_24)
         holder.itemView.setOnClickListener{
-            onItemClickCallback.onItemClicked(dataList[position])
+            onItemClickCallback.onItemClicked(dataList[index])
         }
         holder.buttonBook.setOnClickListener{
-            onItemClickCallback.onItemClicked(dataList[position])
+            onItemClickCallback.onItemClicked(dataList[index])
         }
     }
 

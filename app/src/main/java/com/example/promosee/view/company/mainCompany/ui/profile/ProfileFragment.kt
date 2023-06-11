@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.promosee.R
 import com.example.promosee.databinding.FragmentProfileBinding
 import com.example.promosee.databinding.FragmentSearchBinding
@@ -15,6 +16,8 @@ import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.InfluencersItem
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
+import com.example.promosee.view.company.mainCompany.ui.search.SearchFragment
 import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginActivity
 
@@ -49,6 +52,15 @@ class ProfileFragment : Fragment() {
         setupViewModel()
         binding.logout.setOnClickListener{
             logout()
+        }
+        binding.pesananSaya.setOnClickListener {
+            val notificationsFragment = NotificationsFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_activity_main_com, notificationsFragment, NotificationsFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
         }
         binding.companyName.text = ApiConfig.USERNAME
         val root: View = binding.root

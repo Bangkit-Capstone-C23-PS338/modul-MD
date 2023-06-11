@@ -33,7 +33,7 @@ class GridAdapter(private val dataList: List<InfluencersItem>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
-        val index = dataList.size-position-1
+        val index = position
         val data = dataList[index]
         holder.avatarItem.setImageResource(R.drawable.nanami_mami)
         holder.nameItem.text = data.username

@@ -30,9 +30,10 @@ class CompanyRepository(
     // mengambil data untuk ditampilkan pada GRID list
     fun getInfluencers(): LiveData<Result<GetInfluencersResponse>> = liveData {
         val token = "Bearer ${ApiConfig.TOKEN}"
+        val username = ApiConfig.USERNAME
         emit(Result.Loading)
         try{
-            val response = apiService.getInfluencers(token)
+            val response = apiService.getInfluencersRank(token,username)
             Log.e("test repo", "setelah masuk try")
             if(response == null){
                 emit(Result.Error("Failed to fetch influencer data "))

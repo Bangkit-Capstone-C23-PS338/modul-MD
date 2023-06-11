@@ -58,6 +58,13 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): GetInfluencersResponse
 
+    @GET("get_BusinessOwner_influencerrank_detail/{username}")
+    suspend fun getInfluencersRank(
+        @Header("Authorization") token: String,
+        @Path("username") username: String
+    ): GetInfluencersResponse
+
+
     @GET("influencers/{username}/products")
     suspend fun getInfluencerProducts(
         @Header("Authorization") token: String,

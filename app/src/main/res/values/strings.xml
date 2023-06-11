@@ -208,6 +208,7 @@
     <string name="no_influencer">No Influencer Found</string>
     <string name="reviewAdded">Review Added Successfully</string>
     <string name="reviewFail">Review Failed to Add</string>
+    <string name="order_succes">Order Added Succesfully</string>
 
 
 </resources>

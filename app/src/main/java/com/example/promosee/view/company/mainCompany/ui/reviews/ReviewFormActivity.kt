@@ -86,6 +86,7 @@ class ReviewFormActivity : AppCompatActivity() {
                                         status = "done",
                                         order_id = order_id
                                     )
+                                    finish()
                                 }
                             }
                             is Result.Error -> {

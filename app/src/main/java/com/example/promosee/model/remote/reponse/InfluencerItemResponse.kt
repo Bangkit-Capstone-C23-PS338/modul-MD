@@ -37,8 +37,16 @@ data class ReviewsItemResponse(
 	@field:SerializedName("comment")
 	val comment: String? = null,
 
+	@field:SerializedName("company_name")
+	val companyName: String? = null,
+
 	@field:SerializedName("order_id")
-	val orderId: String? = null
+	val orderId: String? = null,
+
+	@field:SerializedName("time_reviewed")
+	val timeReviewed: String? = null,
+
+
 )
 
 data class InfluencersItemResponse(

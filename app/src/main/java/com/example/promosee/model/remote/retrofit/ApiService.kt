@@ -13,12 +13,14 @@ import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.PostProductResponse
 import com.example.promosee.model.remote.reponse.PostRes
+import com.example.promosee.model.remote.reponse.PostReviewResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.model.remote.reponse.deleteProductResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
 import com.example.promosee.model.remote.reponse.getProductItemResponse
 import com.example.promosee.model.remote.request.PostProductRequest
+import com.example.promosee.model.remote.request.ReviewRequest
 import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.remote.request.UpdateProductRequest
 import com.example.promosee.model.remote.request.User
@@ -55,6 +57,13 @@ interface ApiService {
     suspend fun getInfluencers(
         @Header("Authorization") token: String,
     ): GetInfluencersResponse
+
+    @GET("get_BusinessOwner_influencerrank_detail/{username}")
+    suspend fun getInfluencersRank(
+        @Header("Authorization") token: String,
+        @Path("username") username: String
+    ): GetInfluencersResponse
+
 
     @GET("influencers/{username}/products")
     suspend fun getInfluencerProducts(
@@ -145,5 +154,12 @@ interface ApiService {
         @Path("username") username: String,
         @Path("product_id") product_id: String
     ): deleteProductResponse
+
+    @POST("add_influencer_review/{product_id}")
+    suspend fun PostReview(
+        @Header("Authorization") token: String,
+        @Path("product_id") product_id: String,
+        @Body review: ReviewRequest,
+    ): PostReviewResponse
 
 }

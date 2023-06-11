@@ -41,6 +41,7 @@ class ProductFormActivity : AppCompatActivity() {
         // untuk create data ( POST endpoint )
         if(formType == "create"){
             binding.deleteBtn.visibility = View.GONE
+            binding.btnCont.weightSum = 1f
             binding.formbtn.setOnClickListener{
                 val productName = binding.productNameEdt.text.toString()
                 val description = binding.edtDesc.text.toString()

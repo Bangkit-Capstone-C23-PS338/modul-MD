@@ -10,6 +10,13 @@ data class GetInfluencersResponse(
 	val influencers: List<InfluencersItem?>? = null
 )
 
+data class PostReviewResponse(
+
+	@field:SerializedName("message")
+	val message: String? = null
+)
+
+
 
 data class ProductsItem(
 
@@ -124,6 +131,12 @@ data class ReviewsItem(
 	@field:SerializedName("comment")
 	val comment: String? = null,
 
+	@field:SerializedName("company_name")
+	val companyName: String? = null,
+
 	@field:SerializedName("order_id")
-	val orderId: String? = null
+	val orderId: String? = null,
+
+	@field:SerializedName("time_reviewed")
+	val timeReviewed: String? = null,
 )

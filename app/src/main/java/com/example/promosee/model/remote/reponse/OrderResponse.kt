@@ -19,6 +19,9 @@ data class OrderItem(
     @field:SerializedName("order_id")
     val order_id: String = "",
 
+    @field:SerializedName("name")
+    val name: String = "",
+
     @field:SerializedName("order_date")
     val order_date: Any = "",
 

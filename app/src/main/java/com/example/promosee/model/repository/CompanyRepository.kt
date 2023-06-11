@@ -16,8 +16,10 @@ import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
 import com.example.promosee.model.remote.reponse.PostRes
+import com.example.promosee.model.remote.reponse.PostReviewResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse
+import com.example.promosee.model.remote.request.ReviewRequest
 import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.model.remote.retrofit.ApiService
@@ -28,9 +30,10 @@ class CompanyRepository(
     // mengambil data untuk ditampilkan pada GRID list
     fun getInfluencers(): LiveData<Result<GetInfluencersResponse>> = liveData {
         val token = "Bearer ${ApiConfig.TOKEN}"
+        val username = ApiConfig.USERNAME
         emit(Result.Loading)
         try{
-            val response = apiService.getInfluencers(token)
+            val response = apiService.getInfluencersRank(token,username)
             Log.e("test repo", "setelah masuk try")
             if(response == null){
                 emit(Result.Error("Failed to fetch influencer data "))
@@ -210,6 +213,34 @@ class CompanyRepository(
             Log.e("test repo", "setelah masuk try")
             if(response == null){
                 emit(Result.Error("Failed to fetch influencer data "))
+            }else{
+                Log.e("test repo", "data masuk")
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun PostReview(rating : Int, comment: String, order_id: String): LiveData<Result<PostReviewResponse>> = liveData {
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        val ReviewData = ReviewRequest(
+            order_id = order_id,
+            rating = rating,
+            comment = comment
+        )
+        emit(Result.Loading)
+        try{
+            val response = apiService.PostReview(token,order_id,ReviewData)
+            Log.e("test repo", "setelah masuk try")
+            if(response == null){
+                emit(Result.Error("Failed to post review "))
             }else{
                 Log.e("test repo", "data masuk")
                 emit(Result.Success(response))

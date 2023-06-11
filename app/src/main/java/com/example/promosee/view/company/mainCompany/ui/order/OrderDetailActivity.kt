@@ -17,6 +17,7 @@ import com.example.promosee.model.withCurrencyFormat
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
+import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewFormActivity
 import com.example.promosee.view.influencer.mainInflu.MainInfluencer
 
 class OrderDetailActivity : AppCompatActivity() {
@@ -137,15 +138,23 @@ class OrderDetailActivity : AppCompatActivity() {
                             bottomAppBar.visibility = View.VISIBLE
                             btnActionLeft.visibility = View.INVISIBLE
                             btnActionRight.text = getString(R.string.finish)
-                            btnActionRight.setOnClickListener {
-                                updateOrder(
-                                    content_link = promotionLink.text.toString(),
-                                    status = "done",
-                                    order_id = order.order_id
-                                )
-                                startActivity(intentToMainCom)
-                                finish()
+
+                            btnActionRight.setOnClickListener{
+                                val moveIntent = Intent(this@OrderDetailActivity, ReviewFormActivity::class.java)
+                                moveIntent.putExtra("order_id",order.order_id)
+                                moveIntent.putExtra("influ_username", order.influencer_username)
+                                moveIntent.putExtra("link",promotionLink.text.toString())
+                                startActivity(moveIntent)
                             }
+//                            btnActionRight.setOnClickListener {
+//                                updateOrder(
+//                                    content_link = promotionLink.text.toString(),
+//                                    status = "done",
+//                                    order_id = order.order_id
+//                                )
+//                                startActivity(intentToMainCom)
+//                                finish()
+//                            }
                         }
                     }
 

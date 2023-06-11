@@ -97,6 +97,7 @@ class OrderActivity : AppCompatActivity() {
                 binding.postingDate.text = simpleDateFormat.format(Date(it).time)
             }
         }
+
         binding.btnOrder.setOnClickListener {
             Log.d("Cek kurir", binding.listCourier.text.toString())
             runValidation()
@@ -104,6 +105,7 @@ class OrderActivity : AppCompatActivity() {
                 val dateNew = binding.postingDate.text.toString().toShortDateFormat()
                 val order = OrderItem(
                     influencer_username = binding.username.text.toString(),
+                    name = binding.promotionPackage.text.toString(),
                     business_owner = businessOwner,
                     posting_date = dateNew,
                     product_name = binding.edtName.text.toString(),
@@ -128,6 +130,12 @@ class OrderActivity : AppCompatActivity() {
                         is Result.Success -> {
                             binding.progressBar.visibility = View.GONE
                             val intentToMain = Intent(this@OrderActivity, MainCom::class.java)
+                            val msg: String = getString(R.string.order_succes)
+                            Toast.makeText(
+                                this@OrderActivity,
+                                msg,
+                                Toast.LENGTH_SHORT
+                            ).show()
                             startActivity(intentToMain)
                             finish()
                         }

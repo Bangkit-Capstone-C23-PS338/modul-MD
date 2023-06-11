@@ -22,6 +22,7 @@ import com.example.promosee.view.company.mainCompany.MainCom
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewsActivity
 import com.example.promosee.view.login.LoginViewModel
+import java.text.DecimalFormat
 
 class InfluencerDetailActivity : AppCompatActivity() {
 
@@ -79,7 +80,10 @@ class InfluencerDetailActivity : AppCompatActivity() {
                         binding.noProd.visibility = View.GONE
 
                         // set rating
-                        val rating: String = result.data.influencers?.rating as String
+
+                        val decimalFormat = DecimalFormat("#.#")
+                        val formattedNumber = decimalFormat.format(result.data.influencers?.rating?.toDouble()).toString()
+                        val rating: String = formattedNumber
                         setStarRating(rating.toDouble(),this)
                         binding.ratingNumber.text = rating.toString()
 

@@ -161,7 +161,7 @@ class HomeFragmentInfluencer : Fragment() {
 
         // memasukkan data ke adapter
         val orderAdapter = OrderAdapter(allOrders)
-        orderAdapter.checkTokenCompany(true)
+        orderAdapter.checkTokenCompany(false)
         binding.rvOrder.adapter = orderAdapter
         orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
             override fun onItemClicked(order: OrderItem) {

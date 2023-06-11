@@ -18,7 +18,9 @@ import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
+import com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsInfluencerFragment
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -97,6 +99,16 @@ class HomeFragmentInfluencer : Fragment() {
         binding.fullProduct.setOnClickListener{
             val moveIntent = Intent(requireContext(),ProductActivity::class.java)
             startActivity(moveIntent)
+        }
+
+        binding.fullOrder.setOnClickListener {
+            val notificationsFragment = NotificationsInfluencerFragment()
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_activity_main_influencer, notificationsFragment, NotificationsInfluencerFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         homeInfluencerViewModel.getProfile().observe(viewLifecycleOwner){result ->

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
+import com.example.promosee.model.fromLongDateFormat
 import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.toLongDateFormat
@@ -45,7 +46,7 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
         holder.binding.imgAvatar.setImageResource(R.drawable.iu)
         holder.binding.productName.text = order.product_name
         holder.binding.username.text = if (isTokenCompany) order.influencer_username else order.business_owner
-        holder.binding.orderDate.text = order.posting_date.toLongDateFormat()
+        holder.binding.orderDate.text = order.order_date.toString().fromLongDateFormat()
         when(order.status){
             "pending" -> {
                 holder.binding.statusChip.chipBackgroundColor = ColorStateList.valueOf(Color.parseColor("#423E3C"))

@@ -6,10 +6,7 @@ import androidx.lifecycle.liveData
 import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
-import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.GetOrderResponse
-import com.example.promosee.model.remote.reponse.OrderItem
-import com.example.promosee.model.remote.reponse.PostProductResponse
 import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.deleteProductResponse
 import com.example.promosee.model.remote.reponse.getInfleuncerProfileResponse

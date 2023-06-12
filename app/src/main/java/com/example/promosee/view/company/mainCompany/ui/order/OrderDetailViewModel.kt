@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.promosee.model.local.preference.UserModel
 import com.example.promosee.model.local.preference.UserPreference
-import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.repository.CompanyRepository
-import com.example.promosee.model.repository.InfluencerRepository
 
 class OrderDetailViewModel(private val pref: UserPreference, private val companyRepository: CompanyRepository): ViewModel() {
 

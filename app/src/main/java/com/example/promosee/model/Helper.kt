@@ -7,8 +7,6 @@ import androidx.annotation.RequiresApi
 import com.example.promosee.R
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 fun String.toShortDateFormat(): String {
@@ -32,21 +30,13 @@ fun String.fromLongDateFormat(): String {
     return outputFormat.format(date?.time)
 }
 
-fun String.reviewDateFormat(): String {
-    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-    val simpleDateFormat2 = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-    val date = simpleDateFormat2.parse(this)
-    return simpleDateFormat.format(date?.time)
-}
 
-fun String.reviewDate(): String {
-    val inputFormat = "dd/MM/yyyy HH:mm:ss"
-    val outputFormat = "dd/MM/yyyy"
+fun String.fromReviewDateFormat(): String {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+    val date = inputFormat.parse(this)
+    return outputFormat.format(date?.time)
 
-    val simpleDateFormat = SimpleDateFormat(inputFormat, Locale.getDefault())
-    val simpleDateFormat2 = SimpleDateFormat(outputFormat, Locale.getDefault())
-    val date = simpleDateFormat2.parse(this)
-    return simpleDateFormat.format(date?.time)
 }
 
 

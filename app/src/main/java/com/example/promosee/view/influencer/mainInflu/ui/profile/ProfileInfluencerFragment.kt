@@ -3,18 +3,14 @@ package com.example.promosee.view.influencer.mainInflu.ui.profile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import com.example.promosee.R
-import com.example.promosee.databinding.FragmentProfileBinding
 import com.example.promosee.databinding.FragmentProfileInfluencerBinding
 import com.example.promosee.model.Result
 import com.example.promosee.view.ViewModelFactory
-import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 import com.example.promosee.view.login.LoginActivity
 

@@ -16,23 +16,6 @@ data class PostReviewResponse(
 	val message: String? = null
 )
 
-
-
-data class ProductsItem(
-
-	@field:SerializedName("social_media_type")
-	val socialMediaType: String? = null,
-
-	@field:SerializedName("price")
-	val price: Any? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("to_do")
-	val toDo: List<String?>? = null
-)
-
 data class InfluencersItem(
 
 	@field:SerializedName("photo_profile_url")

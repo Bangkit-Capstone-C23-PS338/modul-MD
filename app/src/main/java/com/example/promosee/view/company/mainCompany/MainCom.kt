@@ -1,12 +1,12 @@
 package com.example.promosee.view.company.mainCompany
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.promosee.R
 import com.example.promosee.databinding.ActivityMainComBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainCom : AppCompatActivity() {
 

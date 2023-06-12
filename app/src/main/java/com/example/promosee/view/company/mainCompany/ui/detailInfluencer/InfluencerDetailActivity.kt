@@ -1,27 +1,21 @@
 package com.example.promosee.view.company.mainCompany.ui.detailInfluencer
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
 import com.example.promosee.adapter.ProductAdapter
 import com.example.promosee.databinding.ActivityInfluencerDetailBinding
-import com.example.promosee.databinding.ActivityLoginBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.setStarRating
 import com.example.promosee.view.ViewModelFactory
-import com.example.promosee.view.company.mainCompany.MainCom
-import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewsActivity
-import com.example.promosee.view.login.LoginViewModel
 import java.text.DecimalFormat
 
 class InfluencerDetailActivity : AppCompatActivity() {

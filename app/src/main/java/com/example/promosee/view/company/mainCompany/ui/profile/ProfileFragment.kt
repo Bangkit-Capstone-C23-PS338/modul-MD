@@ -3,22 +3,17 @@ package com.example.promosee.view.company.mainCompany.ui.profile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.promosee.R
 import com.example.promosee.databinding.FragmentProfileBinding
-import com.example.promosee.databinding.FragmentSearchBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.remote.reponse.InfluencersItem
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
-import com.example.promosee.view.company.mainCompany.ui.search.SearchFragment
-import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 import com.example.promosee.view.login.LoginActivity
 
 private const val ARG_PARAM1 = "param1"

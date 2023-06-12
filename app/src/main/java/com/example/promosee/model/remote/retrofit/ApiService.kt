@@ -2,16 +2,13 @@ package com.example.promosee.model.remote.retrofit
 
 import com.example.promosee.model.local.preference.CompanyModel
 import com.example.promosee.model.local.preference.InfluencerModel
-import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.GetOrderResponse
-import com.example.promosee.model.remote.reponse.InfluencerItemResponse
 import com.example.promosee.model.remote.reponse.LoginResponse
 import com.example.promosee.model.remote.reponse.LogoutResponse
 import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.OrderResponse
-import com.example.promosee.model.remote.reponse.PostProductResponse
 import com.example.promosee.model.remote.reponse.PostRes
 import com.example.promosee.model.remote.reponse.PostReviewResponse
 import com.example.promosee.model.remote.reponse.RegisterResponse
@@ -24,18 +21,13 @@ import com.example.promosee.model.remote.request.ReviewRequest
 import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.remote.request.UpdateProductRequest
 import com.example.promosee.model.remote.request.User
-import com.google.gson.annotations.SerializedName
 import retrofit2.http.Body
 import retrofit2.http.DELETE
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import retrofit2.http.Query
-
 
 
 interface ApiService {

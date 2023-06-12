@@ -1,26 +1,18 @@
 package com.example.promosee.adapter
 
 import android.content.Intent
-import android.provider.Settings.Secure.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
-import com.example.promosee.databinding.ItemOrderBinding
-import com.example.promosee.model.local.preference.InfluencerModel
-import com.example.promosee.model.remote.reponse.ProductsItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.withCurrencyFormat
 import com.example.promosee.view.company.mainCompany.ui.order.OrderActivity
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductFormActivity
-import java.text.DecimalFormat
-import java.text.NumberFormat
-import java.util.Locale
 
 class ProductAdapter(
     private val products: List<ProductsItemInfluencer>,

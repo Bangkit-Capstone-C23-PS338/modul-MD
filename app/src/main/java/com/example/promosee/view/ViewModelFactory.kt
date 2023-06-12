@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.injection.Injection
 import com.example.promosee.model.local.preference.UserPreference
 import com.example.promosee.model.repository.AuthRepository
-import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.model.repository.CompanyRepository
 import com.example.promosee.model.repository.InfluencerRepository
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailViewModel
+import com.example.promosee.view.company.mainCompany.ui.home.HomeViewModel
 import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsViewModel
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailViewModel
 import com.example.promosee.view.company.mainCompany.ui.order.OrderViewModel

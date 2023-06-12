@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
 import com.example.promosee.databinding.FragmentRegisterInfluencerBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.local.preference.CompanyModel
 import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.login.LoginActivity

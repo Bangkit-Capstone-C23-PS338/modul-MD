@@ -1,21 +1,18 @@
 package com.example.promosee.view.influencer.mainInflu.ui.product
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.promosee.R
 import com.example.promosee.adapter.ProductAdapter
-import com.example.promosee.databinding.ActivityLoginBinding
 import com.example.promosee.databinding.ActivityProductBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.influencer.mainInflu.ui.home.HomeFragmentInfluencer
-import com.example.promosee.view.login.LoginViewModel
 
 class ProductActivity : AppCompatActivity() {
 

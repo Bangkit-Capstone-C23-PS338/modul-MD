@@ -1,22 +1,8 @@
 package com.example.promosee.view.company.mainCompany.ui.reviews
 
-import android.media.Rating
-import android.os.Bundle
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.viewModelScope
-import com.example.promosee.model.remote.reponse.ReviewsResponse
-import com.example.promosee.model.repository.CompanyRepository
-import com.example.promosee.model.repository.InfluencerRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import com.example.promosee.model.Result
 import com.example.promosee.model.remote.request.UpdateOrderRequest
-import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
-import org.w3c.dom.Comment
+import com.example.promosee.model.repository.CompanyRepository
 
 class ReviewsViewModel(
     private val companyRepository: CompanyRepository

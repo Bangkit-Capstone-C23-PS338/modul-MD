@@ -1,7 +1,5 @@
 package com.example.promosee.view.company.mainCompany.ui.search
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,13 +15,9 @@ import com.example.promosee.adapter.GridAdapter
 import com.example.promosee.adapter.GridSpacingItemDecoration
 import com.example.promosee.databinding.FragmentSearchBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
-import com.example.promosee.model.remote.reponse.ProductsItemResponse
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.InfluencerDetailActivity
-import com.example.promosee.view.login.LoginViewModel
-import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
 
 class SearchFragment : Fragment() {
 

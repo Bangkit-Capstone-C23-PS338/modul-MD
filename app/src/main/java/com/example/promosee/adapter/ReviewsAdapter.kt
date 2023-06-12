@@ -1,27 +1,15 @@
 package com.example.promosee.adapter
 
-import android.media.Image
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
-import com.example.promosee.model.fromLongDateFormat
-import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
+import com.example.promosee.model.fromReviewDateFormat
 import com.example.promosee.model.remote.reponse.ReviewsItem
-import com.example.promosee.model.reviewDate
-import com.example.promosee.model.reviewDateFormat
-import com.example.promosee.model.toLongDateFormat
-import com.example.promosee.model.toShortDateFormat
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
+
 
 
 class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
@@ -31,33 +19,23 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
         return ViewHolder(view)
     }
 
+    val reversedReviews = reviews.reversed()
+
     override fun getItemCount(): Int {
-        return reviews.size
+        return reversedReviews.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun convertDateFormat(inputDateTimeString: String): String {
-        val inputFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
-        val outputFormat = "dd MMMM yyyy"
 
-        val inputDateTime = OffsetDateTime.parse(inputDateTimeString, DateTimeFormatter.ofPattern(inputFormat))
-            .withOffsetSameInstant(ZoneOffset.UTC)
-            .toLocalDateTime()
-
-        return inputDateTime.format(DateTimeFormatter.ofPattern(outputFormat))
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ReviewsAdapter.ViewHolder, position: Int) {
         holder.profilePic.setImageResource(R.drawable.profilepic)
-        holder.companyName.text = reviews[position].companyName
-        holder.postDate.text = reviews[position].timeReviewed
-        holder.commentDesc.text = reviews[position].comment
+        holder.companyName.text = reversedReviews[position].companyName
+        holder.postDate.text = reversedReviews[position].timeReviewed?.fromReviewDateFormat()
+        holder.commentDesc.text = reversedReviews[position].comment
         holder.verifLogo.setImageResource(R.drawable.baseline_verified_24)
         holder.commentTitle.setText(R.string.komentar)
         holder.rateTitle.setText(R.string.rating_title)
 
-        val rate = reviews[position].rating?.toDouble()
+        val rate = reversedReviews[position].rating?.toDouble()
         if(rate != null){
             if(rate == 5.0){
                 holder.star_1.setImageResource(R.drawable.baseline_star_24)

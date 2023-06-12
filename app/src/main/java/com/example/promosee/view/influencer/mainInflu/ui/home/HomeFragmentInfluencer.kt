@@ -18,7 +18,6 @@ import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
-import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
 import com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsInfluencerFragment
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
@@ -83,8 +82,7 @@ class HomeFragmentInfluencer : Fragment() {
         setupAction()
 
         // Inflate the layout for this fragment
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     private fun setupViewmodel() {
@@ -174,6 +172,7 @@ class HomeFragmentInfluencer : Fragment() {
         // memasukkan data ke adapter
         val orderAdapter = OrderAdapter(allOrders)
         orderAdapter.checkTokenCompany(false)
+        orderAdapter.setHome(true)
         binding.rvOrder.adapter = orderAdapter
         orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
             override fun onItemClicked(order: OrderItem) {

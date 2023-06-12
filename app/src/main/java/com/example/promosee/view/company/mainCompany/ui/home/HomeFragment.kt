@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
                     }
                     is Result.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        val allOrders: List<OrderItem> = result.data.orders.take(5)
+                        val allOrders: List<OrderItem> = result.data.orders
                         addOrdersData(allOrders)
                     }
                     is Result.Error -> {}
@@ -152,6 +152,7 @@ class HomeFragment : Fragment() {
         // memasukkan data ke adapter
         val orderAdapter = OrderAdapter(allOrders)
         orderAdapter.checkTokenCompany(true)
+        orderAdapter.setHome(true)
         binding.rvOrder.adapter = orderAdapter
         orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
             override fun onItemClicked(order: OrderItem) {

@@ -19,13 +19,24 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
 
     private var isTokenCompany = true
     private lateinit var onItemClickCallback: OnItemClickCallback
+    private var isHome = false
 
     val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")
 
-    val inputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-    val sortedList = dataList.sortedByDescending {
-        //inputFormat.parse(it.order_date.toString())
-        LocalDate.parse(it.order_date.toString(), dateTimeFormatter)
+    val sortedList: List<OrderItem> = if (isHome){
+        dataList.sortedByDescending {
+            //inputFormat.parse(it.order_date.toString())
+            LocalDate.parse(it.order_date.toString(), dateTimeFormatter)
+        }
+    }else{
+        dataList.sortedByDescending {
+            //inputFormat.parse(it.order_date.toString())
+            LocalDate.parse(it.order_date.toString(), dateTimeFormatter)
+        }.take(5)
+    }
+
+    fun setHome(boolean: Boolean){
+        isHome = boolean
     }
 
     fun checkTokenCompany(check: Boolean){
@@ -86,6 +97,6 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
         }
     }
 
-    override fun getItemCount(): Int = dataList.size
+    override fun getItemCount(): Int = sortedList.size
 
 }

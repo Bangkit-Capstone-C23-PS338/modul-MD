@@ -82,8 +82,7 @@ class HomeFragmentInfluencer : Fragment() {
         setupAction()
 
         // Inflate the layout for this fragment
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     private fun setupViewmodel() {
@@ -173,6 +172,7 @@ class HomeFragmentInfluencer : Fragment() {
         // memasukkan data ke adapter
         val orderAdapter = OrderAdapter(allOrders)
         orderAdapter.checkTokenCompany(false)
+        orderAdapter.setHome(true)
         binding.rvOrder.adapter = orderAdapter
         orderAdapter.setOnItemClickCallback(object : OrderAdapter.OnItemClickCallback {
             override fun onItemClicked(order: OrderItem) {

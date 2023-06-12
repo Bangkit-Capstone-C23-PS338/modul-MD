@@ -21,7 +21,7 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
     val reversedReviews = reviews.reversed()
 
     override fun getItemCount(): Int {
-        return reviews.size
+        return reversedReviews.size
     }
 
 

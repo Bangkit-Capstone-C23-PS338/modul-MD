@@ -56,6 +56,19 @@ class InfluencerDetailActivity : AppCompatActivity() {
         )[InfluencerDetailViewModel::class.java]
     }
 
+    private fun formatNumber(number: Int): String {
+        val suffixes = listOf("", "k", "m", "b") // Suffixes for thousands, millions, and billions
+
+        val absNumber = Math.abs(number.toLong()) // Get the absolute value of the number
+        if (absNumber < 1000) {
+            return number.toString() // Return the number as it is if it's less than 1000
+        }
+
+        val exp = (Math.log10(absNumber.toDouble()) / 3).toInt() // Determine the exponent for the suffix
+        val formattedValue = String.format("%.1f%s", absNumber / Math.pow(1000.0, exp.toDouble()), suffixes[exp])
+        return if (number < 0) "-$formattedValue" else formattedValue // Add a negative sign if the number was negative
+    }
+
     private fun setUpAction() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
@@ -86,6 +99,14 @@ class InfluencerDetailActivity : AppCompatActivity() {
                         val rating: String = formattedNumber
                         setStarRating(rating.toDouble(),this)
                         binding.ratingNumber.text = rating.toString()
+                        binding.followInstas.text = getString(R.string.Follower_insta,
+                            result.data.influencers?.igFollowers?.let { formatNumber(it) })
+                        binding.followTiktoks.text = getString(R.string.Follower_insta,
+                            result.data.influencers?.ttFollowers?.let { formatNumber(it) })
+                        binding.followYoutubes.text = getString(R.string.Follower_insta,
+                            result.data.influencers?.ytFollowers?.let { formatNumber(it) })
+//                        binding.followTiktoks.text = getString(R.string.Follower_insta, result.data.influencers?.ttFollowers)
+//                        binding.followYoutubes.text = getString(R.string.Follower_insta, result.data.influencers?.ytFollowers)
 
 
                     }

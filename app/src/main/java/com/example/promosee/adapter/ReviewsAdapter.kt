@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
+import com.example.promosee.model.fromLongDateFormat
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.reponse.ReviewsItem
 import com.example.promosee.model.reviewDate
@@ -50,7 +51,7 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ReviewsAdapter.ViewHolder, position: Int) {
         holder.profilePic.setImageResource(R.drawable.profilepic)
         holder.companyName.text = reviews[position].companyName
-        holder.postDate.text = reviews[position].timeReviewed?.reviewDateFormat()
+        holder.postDate.text = reviews[position].timeReviewed
         holder.commentDesc.text = reviews[position].comment
         holder.verifLogo.setImageResource(R.drawable.baseline_verified_24)
         holder.commentTitle.setText(R.string.komentar)

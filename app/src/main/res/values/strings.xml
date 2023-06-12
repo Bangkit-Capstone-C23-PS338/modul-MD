@@ -209,6 +209,7 @@
     <string name="reviewAdded">Review Added Successfully</string>
     <string name="reviewFail">Review Failed to Add</string>
     <string name="order_succes">Order Added Succesfully</string>
+    <string name="Follower_insta">Follower : %s</string>
 
 
 </resources>

@@ -11,6 +11,7 @@ import com.example.promosee.model.fromReviewDateFormat
 import com.example.promosee.model.remote.reponse.ReviewsItem
 
 
+
 class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsAdapter.ViewHolder {

@@ -1,7 +1,9 @@
 package com.example.promosee.model
 
 import android.app.Activity
+import android.os.Build
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import com.example.promosee.R
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -28,11 +30,13 @@ fun String.fromLongDateFormat(): String {
     return outputFormat.format(date?.time)
 }
 
+
 fun String.fromReviewDateFormat(): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
     val date = inputFormat.parse(this)
     return outputFormat.format(date?.time)
+
 }
 
 

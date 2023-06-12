@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
-import com.example.promosee.model.local.preference.InfluencerModel
 import com.example.promosee.model.remote.reponse.InfluencersItem
 import com.example.promosee.model.withCurrencyFormat
 import java.lang.Integer.MAX_VALUE

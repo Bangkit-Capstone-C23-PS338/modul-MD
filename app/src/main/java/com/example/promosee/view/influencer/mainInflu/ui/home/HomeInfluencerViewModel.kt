@@ -1,7 +1,6 @@
 package com.example.promosee.view.influencer.mainInflu.ui.home
 
 import androidx.lifecycle.ViewModel
-import com.example.promosee.model.repository.CompanyRepository
 import com.example.promosee.model.repository.InfluencerRepository
 
 class HomeInfluencerViewModel(

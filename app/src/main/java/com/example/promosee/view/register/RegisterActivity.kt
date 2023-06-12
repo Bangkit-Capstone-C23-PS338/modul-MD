@@ -1,9 +1,8 @@
 package com.example.promosee.view.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.promosee.R
-import com.example.promosee.databinding.ActivityBoardingBinding
 import com.example.promosee.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {

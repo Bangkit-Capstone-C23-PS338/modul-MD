@@ -1,6 +1,5 @@
 package com.example.promosee.view.company.mainCompany.ui.home
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavHostController
-import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.promosee.R
@@ -28,7 +23,6 @@ import com.example.promosee.view.company.mainCompany.ui.detailInfluencer.Influen
 import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
 import com.example.promosee.view.company.mainCompany.ui.search.SearchFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 

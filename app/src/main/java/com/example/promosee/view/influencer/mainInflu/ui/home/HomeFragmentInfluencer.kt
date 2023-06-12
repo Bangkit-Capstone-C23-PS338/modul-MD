@@ -18,7 +18,6 @@ import com.example.promosee.model.remote.reponse.OrderItem
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.ViewModelFactory
-import com.example.promosee.view.company.mainCompany.ui.notifications.NotificationsFragment
 import com.example.promosee.view.company.mainCompany.ui.order.OrderDetailActivity
 import com.example.promosee.view.influencer.mainInflu.ui.notifications.NotificationsInfluencerFragment
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity

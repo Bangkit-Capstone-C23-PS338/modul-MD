@@ -9,18 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
 import com.example.promosee.databinding.ItemOrderBinding
 import com.example.promosee.model.fromLongDateFormat
-import com.example.promosee.model.local.preference.OrderModel
 import com.example.promosee.model.remote.reponse.OrderItem
-import com.example.promosee.model.toLongDateFormat
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
     private var isTokenCompany = true
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    val reversedList = dataList.reversed()
+    val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")
+
+    val inputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    val sortedList = dataList.sortedByDescending {
+        //inputFormat.parse(it.order_date.toString())
+        LocalDate.parse(it.order_date.toString(), dateTimeFormatter)
+    }
 
     fun checkTokenCompany(check: Boolean){
         isTokenCompany = check
@@ -42,7 +48,8 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val order = reversedList[position]
+        val order = sortedList[position]
+        Log.d("Sorted:", sortedList.toString())
         holder.binding.imgAvatar.setImageResource(R.drawable.iu)
         holder.binding.productName.text = order.product_name
         holder.binding.username.text = if (isTokenCompany) order.influencer_username else order.business_owner
@@ -75,7 +82,7 @@ class OrderAdapter(private val dataList: List<OrderItem>) : RecyclerView.Adapter
             }
         }
         holder.itemView.setOnClickListener{
-            onItemClickCallback.onItemClicked(reversedList[position])
+            onItemClickCallback.onItemClicked(sortedList[position])
         }
     }
 

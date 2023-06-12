@@ -1,11 +1,11 @@
 package com.example.promosee.view.splash
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
 import com.example.promosee.model.remote.retrofit.ApiConfig

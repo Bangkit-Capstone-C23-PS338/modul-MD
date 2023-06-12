@@ -1,23 +1,17 @@
 package com.example.promosee.view.company.mainCompany.ui.reviews
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.promosee.R
-import com.example.promosee.adapter.ProductAdapter
 import com.example.promosee.adapter.ReviewsAdapter
-import com.example.promosee.databinding.ActivityInfluencerDetailBinding
 import com.example.promosee.databinding.ActivityReviewsBinding
 import com.example.promosee.model.Result
 import com.example.promosee.model.remote.reponse.ReviewsItem
-import com.example.promosee.model.remote.reponse.ReviewsResponse
 import com.example.promosee.view.ViewModelFactory
-import com.example.promosee.view.company.mainCompany.ui.search.SearchViewModel
-import com.example.promosee.view.login.LoginActivity
 
 class ReviewsActivity : AppCompatActivity() {
 

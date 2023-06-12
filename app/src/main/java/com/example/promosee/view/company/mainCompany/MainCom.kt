@@ -31,6 +31,12 @@ class MainCom : AppCompatActivity() {
 //            )
 //        )
         //setupActionBarWithNavController(navController, appBarConfiguration)
+
+        navView.setOnItemReselectedListener { item ->
+            // Pop everything up to the reselected item
+            val reselectedDestinationId = item.itemId
+            navController.popBackStack(reselectedDestinationId, inclusive = false)
+        }
         navView.setupWithNavController(navController)
     }
 }

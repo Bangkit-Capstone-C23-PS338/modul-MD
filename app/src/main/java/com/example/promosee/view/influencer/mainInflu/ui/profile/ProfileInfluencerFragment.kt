@@ -15,6 +15,7 @@ import com.example.promosee.databinding.FragmentProfileInfluencerBinding
 import com.example.promosee.model.Result
 import com.example.promosee.view.ViewModelFactory
 import com.example.promosee.view.company.mainCompany.ui.profile.ProfileViewModel
+import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 import com.example.promosee.view.login.LoginActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,6 +58,10 @@ class ProfileInfluencerFragment : Fragment() {
         setupAction()
         binding.logout.setOnClickListener{
             logout()
+        }
+        binding.pesananSaya.setOnClickListener {
+            val moveIntent = Intent(requireContext(), ProductActivity::class.java)
+            startActivity(moveIntent)
         }
 
         val root: View = binding.root

@@ -1,20 +1,19 @@
 package com.example.promosee.view.company.mainCompany.ui.reviews
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
-import com.example.promosee.databinding.ActivityProductBinding
 import com.example.promosee.databinding.ActivityReviewFormBinding
-import com.example.promosee.databinding.ActivityReviewsBinding
 import com.example.promosee.model.Result
-import com.example.promosee.model.remote.reponse.ReviewsItem
 import com.example.promosee.model.remote.request.UpdateOrderRequest
 import com.example.promosee.model.setStarRating
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.MainCom
 
 class ReviewFormActivity : AppCompatActivity() {
 
@@ -86,6 +85,9 @@ class ReviewFormActivity : AppCompatActivity() {
                                         status = "done",
                                         order_id = order_id
                                     )
+                                    val intentToMainCom =  Intent(this@ReviewFormActivity, MainCom::class.java)
+                                    intentToMainCom.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intentToMainCom)
                                     finish()
                                 }
                             }

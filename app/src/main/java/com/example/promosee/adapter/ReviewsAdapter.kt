@@ -11,12 +11,16 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promosee.R
+import com.example.promosee.model.fromLongDateFormat
 import com.example.promosee.model.remote.reponse.ProductsItemInfluencer
 import com.example.promosee.model.remote.reponse.ReviewsItem
 import com.example.promosee.model.reviewDate
+import com.example.promosee.model.reviewDateFormat
 import com.example.promosee.model.toLongDateFormat
 import com.example.promosee.model.toShortDateFormat
 import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 
@@ -32,22 +36,22 @@ class ReviewsAdapter(private val reviews : List<ReviewsItem>): RecyclerView.Adap
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun convertDateFormat(dateString: String): String {
-        val inputFormat = "YYYY-MM-DDTHH:mm:ss.ssssss+/-HH:mm"
-        val outputFormat = "dd MMM yyyy"
+    fun convertDateFormat(inputDateTimeString: String): String {
+        val inputFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        val outputFormat = "dd MMMM yyyy"
 
-        val inputFormatter = DateTimeFormatter.ofPattern(inputFormat)
-        val outputFormatter = DateTimeFormatter.ofPattern(outputFormat)
+        val inputDateTime = OffsetDateTime.parse(inputDateTimeString, DateTimeFormatter.ofPattern(inputFormat))
+            .withOffsetSameInstant(ZoneOffset.UTC)
+            .toLocalDateTime()
 
-        val dateTime = LocalDateTime.parse(dateString, inputFormatter)
-        return dateTime.format(outputFormatter)
+        return inputDateTime.format(DateTimeFormatter.ofPattern(outputFormat))
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ReviewsAdapter.ViewHolder, position: Int) {
         holder.profilePic.setImageResource(R.drawable.profilepic)
         holder.companyName.text = reviews[position].companyName
-        holder.postDate.text = reviews[position].timeReviewed?.toLongDateFormat()
+        holder.postDate.text = reviews[position].timeReviewed
         holder.commentDesc.text = reviews[position].comment
         holder.verifLogo.setImageResource(R.drawable.baseline_verified_24)
         holder.commentTitle.setText(R.string.komentar)

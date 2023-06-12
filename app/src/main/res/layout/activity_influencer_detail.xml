@@ -85,6 +85,88 @@
                 android:paddingTop="20dp"
                 android:text="@string/influencer_name"/>
 
+            <LinearLayout
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:paddingEnd="15dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/insta"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/full_insta_logo"/>
+
+                    <TextView
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:id="@+id/follow_instas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Follower_insta"/>
+
+                </TableLayout>
+
+
+                <TableLayout
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:paddingEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/tiktok"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/tiktok_logos"/>
+
+                    <TextView
+                        android:id="@+id/follow_tiktoks"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Follower_insta" />
+
+                </TableLayout>
+
+
+                <TableLayout
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:paddingEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/youtube"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/youtubelogo"/>
+
+                    <TextView
+                        android:id="@+id/follow_youtubes"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Follower_insta" />
+
+                </TableLayout>
+
+            </LinearLayout>
+
             <TableRow
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
@@ -176,6 +258,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/influ_prod"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"

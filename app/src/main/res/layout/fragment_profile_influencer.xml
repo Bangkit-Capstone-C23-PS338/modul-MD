@@ -106,6 +106,25 @@
                     android:text="@string/my_product" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/review_saya"
+                android:paddingTop="15dp"
+                android:background="@drawable/border"
+                android:paddingBottom="15dp"
+                >
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_star_24" />
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_review" />
+            </LinearLayout>
+
             <TextView
                 android:text="@string/other_title"
                 android:layout_marginTop="30dp"

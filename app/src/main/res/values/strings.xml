@@ -212,6 +212,7 @@
     <string name="Follower_insta">Follower : %s</string>
     <string name="pleaseLogin">your session is expired please login</string>
     <string name="noReview">No Review</string>
+    <string name="my_review">My Review</string>
 
 
 </resources>

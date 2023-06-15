@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.databinding.FragmentProfileInfluencerBinding
 import com.example.promosee.model.Result
 import com.example.promosee.view.ViewModelFactory
+import com.example.promosee.view.company.mainCompany.ui.reviews.ReviewsActivity
 import com.example.promosee.view.influencer.mainInflu.ui.product.ProductActivity
 import com.example.promosee.view.login.LoginActivity
 
@@ -57,6 +58,11 @@ class ProfileInfluencerFragment : Fragment() {
         }
         binding.pesananSaya.setOnClickListener {
             val moveIntent = Intent(requireContext(), ProductActivity::class.java)
+            startActivity(moveIntent)
+        }
+        binding.reviewSaya.setOnClickListener {
+            val moveIntent = Intent(requireContext(), ReviewsActivity::class.java)
+            moveIntent.putExtra("username",binding.influencerName.text.toString())
             startActivity(moveIntent)
         }
 

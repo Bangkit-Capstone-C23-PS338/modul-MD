@@ -169,48 +169,88 @@ class OrderActivity : AppCompatActivity() {
             if(edtType.text?.isEmpty() as Boolean){
                 textFieldProductType.error = getString(R.string.product_type_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.product_type_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 textFieldProductType.error = null
             }
             if(edtBrief.text?.isEmpty() as Boolean){
                 textFieldBrief.error = getString(R.string.briefing_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.briefing_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 textFieldBrief.error = null
             }
             if(edtLink.text?.isEmpty() as Boolean){
                 textFieldProductLink.error = getString(R.string.product_link_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.product_link_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 textFieldProductLink.error = null
             }
             if(edtSenderAddress.text?.isEmpty() as Boolean){
                 textFieldSenderAddress.error = getString(R.string.sender_address_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.sender_address_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 textFieldSenderAddress.error = null
             }
             if(edtName.text?.isEmpty() as Boolean){
                 textFieldProductName.error = getString(R.string.product_name_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.product_name_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 textFieldProductName.error = null
             }
             if(binding.postingDate.text == getString(R.string.choose_a_date)){
                 postingDateError.visibility = View.VISIBLE
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.choose_a_date),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
               postingDateError.visibility = View.GONE
             }
             if(listCourier.text?.isEmpty() as Boolean){
                 dropdownCourier.error = getString(R.string.courier_service_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.courier_service_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 dropdownCourier.error = null
             }
             if(listPayment.text?.isEmpty() as Boolean){
                 dropdownPayment.error = getString(R.string.payment_method_empty)
                 isValidated = false
+                Toast.makeText(
+                    this@OrderActivity,
+                    getString(R.string.payment_method_empty),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else{
                 dropdownPayment.error = null
             }

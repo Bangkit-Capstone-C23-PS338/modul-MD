@@ -70,12 +70,6 @@
 
                 </TableLayout>
 
-                <ImageView
-                    android:src="@drawable/baseline_edit_24"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="20dp"
-                    />
-
             </TableRow>
 
             <TextView
@@ -104,6 +98,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/my_product" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/review_saya"
+                android:paddingTop="15dp"
+                android:background="@drawable/border"
+                android:paddingBottom="15dp"
+                >
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_star_24" />
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_review" />
             </LinearLayout>
 
             <TextView

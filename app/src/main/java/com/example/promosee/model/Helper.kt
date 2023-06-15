@@ -1,9 +1,7 @@
 package com.example.promosee.model
 
 import android.app.Activity
-import android.os.Build
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import com.example.promosee.R
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -49,13 +47,12 @@ fun String.withCurrencyFormat(): String {
         price /= 1000000
         return mCurrencyFormat.format(price) + "M"
     }
+
     else if(price >= 1000){
         price /= 1000
         return mCurrencyFormat.format(price) + "K"
     }
     return mCurrencyFormat.format(price)
-
-
 }
 
 fun setStarRating(rate: Double, activity: Activity){

@@ -15,12 +15,12 @@ class SplashViewModel(private val pref: UserPreference, private val authReposito
     private lateinit var username : String
     private lateinit var password : String
 
-    fun setLoginInfo(Username : String, Password : String){
+    fun setInformation(Username : String, Password : String){
         username = Username
         password = Password
     }
 
-    fun login() = authRepository.login(username,password)
+    fun generateToken() = authRepository.generateToken(username,password)
 
 
 

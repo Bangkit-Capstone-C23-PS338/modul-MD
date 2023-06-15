@@ -1,11 +1,14 @@
 # modul-MD
 how to use
-<br>
-<ol>
-  <li>clone repo</li>
-  <li>open cloned repo from android studio</li>
-  <li>make sure using the android studio version between (Dolphon - Flaminggo)</li>
-  <li>wait for all the instalation done</li>
-  <li>build the app</li>
-  <li>select device and run</li>
-</ol>
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Bangkit-Capstone-C23-PS338/modul-CC.git
+    cd repo
+    ```
+2. open cloned repo from android studio
+3. make sure using the android studio version between (Dolphon - Flaminggo)
+4. wait for all the instalation done
+5. build the app
+6. select device (android emulator) and run
+

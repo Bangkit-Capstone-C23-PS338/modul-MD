@@ -28,15 +28,12 @@ fun String.fromLongDateFormat(): String {
     return outputFormat.format(date?.time)
 }
 
-
 fun String.fromReviewDateFormat(): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
     val date = inputFormat.parse(this)
     return outputFormat.format(date?.time)
-
 }
-
 
 fun String.withCurrencyFormat(): String {
     val myIndonesianLocale = Locale("in", "ID")
@@ -50,6 +47,7 @@ fun String.withCurrencyFormat(): String {
         price /= 1000000
         return mCurrencyFormat.format(price) + "M"
     }
+
     else if(price >= 1000){
         price /= 1000
         return mCurrencyFormat.format(price) + "K"

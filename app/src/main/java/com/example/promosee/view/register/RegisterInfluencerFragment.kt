@@ -158,6 +158,51 @@ class RegisterInfluencerFragment : Fragment() {
             } else{
                 passwordEditTextLayout.error = null
             }
+            if(addressTextedt.text?.isEmpty() as Boolean){
+                addressTexttxt.error = getString(R.string.add_address)
+                isValidated = false
+            } else{
+                addressTexttxt.error = null
+            }
+            // instagram
+            if(instagramSosmedEdt.text?.isEmpty() as Boolean){
+                instagramSosmedTxt.error = getString(R.string.error_username_insta)
+                isValidated = false
+            } else{
+                instagramSosmedTxt.error = null
+            }
+            if(instagramFollowerEdt.text?.isEmpty() as Boolean){
+                instagramFollowerTxt.error = getString(R.string.error_follower_insta)
+                isValidated = false
+            } else{
+                instagramFollowerTxt.error = null
+            }
+            // youtube
+            if(youtubeSosmedEdt.text?.isEmpty() as Boolean){
+                youtubeSosmedTxt.error = getString(R.string.error_username_youtube)
+                isValidated = false
+            } else{
+                youtubeSosmedTxt.error = null
+            }
+            if(youtubeFollowerEdt.text?.isEmpty() as Boolean){
+                youtubeFollowerTxt.error = getString(R.string.error_follower_youtube)
+                isValidated = false
+            } else{
+                youtubeFollowerTxt.error = null
+            }
+            // tiktok
+            if(tiktokSosmedEdt.text?.isEmpty() as Boolean){
+                tiktokSosmedTxt.error = getString(R.string.error_username_tiktok)
+                isValidated = false
+            } else{
+                tiktokSosmedTxt.error = null
+            }
+            if(tiktokFollowerEdt.text?.isEmpty() as Boolean){
+                tiktokFollowerTxt.error = getString(R.string.error_follower_tiktok)
+                isValidated = false
+            } else{
+                tiktokFollowerTxt.error = null
+            }
         }
     }
 

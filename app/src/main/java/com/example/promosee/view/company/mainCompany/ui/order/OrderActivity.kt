@@ -151,6 +151,13 @@ class OrderActivity : AppCompatActivity() {
                         }
                     }
                 }
+            }else{
+                val msg: String = getString(R.string.fieldEmpty)
+                Toast.makeText(
+                    this@OrderActivity,
+                    msg,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }

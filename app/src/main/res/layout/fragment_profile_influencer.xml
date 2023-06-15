@@ -68,11 +68,6 @@
                         android:text="@string/email_influencer"
                         android:textSize="15sp"/>
 
-                    <TextView
-                        android:id="@+id/telp_com"
-                        android:text="@string/telp_infuencer"
-                        android:textSize="15sp"/>
-
                 </TableLayout>
 
                 <ImageView

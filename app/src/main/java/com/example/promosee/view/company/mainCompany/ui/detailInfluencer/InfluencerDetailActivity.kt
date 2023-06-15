@@ -66,8 +66,9 @@ class InfluencerDetailActivity : AppCompatActivity() {
     private fun setUpAction() {
         val intent: Intent = intent
         val username: String = intent.getStringExtra("username") as String
-
+        Log.e("foll", "sblm username")
         if(username != null){
+            Log.e("foll", "setelah username" + username)
             binding.usernameHead.text = username
             binding.usernameTitle.text = username
 
@@ -83,24 +84,39 @@ class InfluencerDetailActivity : AppCompatActivity() {
                         binding.noProd.visibility = View.GONE
                     }
                     is Result.Success -> {
+
+                        Log.e("foll", "setelah success" + result.data.toString())
                         binding.progressBar.visibility = View.GONE
                         binding.noProd.visibility = View.GONE
-
                         // set rating
+
+                        if(result.data.influencers?.igFollowers != null){
+                            binding.followInstas.text = getString(R.string.Follower_insta,
+                                result.data.influencers?.igFollowers?.let { formatNumber(it.toInt()) })
+                        }else{
+                            binding.followInstas.text = getString(R.string.Follower_insta,
+                                "0")
+                        }
+                        if(result.data.influencers?.ttFollowers != null){
+                            binding.followTiktoks.text = getString(R.string.Follower_insta,
+                                result.data.influencers?.ttFollowers?.let { formatNumber(it.toInt()) })
+                        }else{
+                            binding.followTiktoks.text = "0"
+                        }
+                        if(result.data.influencers?.ytFollowers != null){
+                            binding.followYoutubes.text = getString(R.string.Follower_insta,
+                                result.data.influencers?.ytFollowers?.let { formatNumber(it.toInt()) })
+                        }else{
+                            binding.followYoutubes.text = "0"
+                        }
+
 
                         val decimalFormat = DecimalFormat("#.#")
                         val formattedNumber = decimalFormat.format(result.data.influencers?.rating?.toDouble()).toString()
                         val rating: String = formattedNumber
                         setStarRating(rating.toDouble(),this)
                         binding.ratingNumber.text = rating.toString()
-                        binding.followInstas.text = getString(R.string.Follower_insta,
-                            result.data.influencers?.igFollowers?.let { formatNumber(it) })
-                        binding.followTiktoks.text = getString(R.string.Follower_insta,
-                            result.data.influencers?.ttFollowers?.let { formatNumber(it) })
-                        binding.followYoutubes.text = getString(R.string.Follower_insta,
-                            result.data.influencers?.ytFollowers?.let { formatNumber(it) })
-//                        binding.followTiktoks.text = getString(R.string.Follower_insta, result.data.influencers?.ttFollowers)
-//                        binding.followYoutubes.text = getString(R.string.Follower_insta, result.data.influencers?.ytFollowers)
+
 
 
                     }

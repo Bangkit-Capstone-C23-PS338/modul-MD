@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.promosee.model.Result
 import com.example.promosee.model.local.preference.UserPreference
+import com.example.promosee.model.remote.reponse.GetBussinessProfileResponse
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.GetOrderResponse
@@ -249,6 +250,31 @@ class CompanyRepository(
                 emit(Result.Error(message))
             }
         }
+    }
+
+    fun getCompanyProfile(): LiveData<Result<GetBussinessProfileResponse>> = liveData {
+        val token = "Bearer ${ApiConfig.TOKEN}"
+        val username = ApiConfig.USERNAME
+        emit(Result.Loading)
+        try{
+            val response = apiService.getBussinesProfile(token,username)
+            Log.e("test repo", "setelah masuk try")
+            if(response == null){
+                emit(Result.Error("Failed to fetch company data "))
+            }else{
+                Log.e("test repo", "data masuk")
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.d("CompanyRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+
     }
 
 

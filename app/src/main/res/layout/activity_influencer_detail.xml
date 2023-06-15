@@ -223,7 +223,6 @@
 
                 <Button
                     android:id="@+id/btn_review"
-
                     android:layout_height="40dp"
                     android:text="@string/comment"
                     android:textSize="11sp"

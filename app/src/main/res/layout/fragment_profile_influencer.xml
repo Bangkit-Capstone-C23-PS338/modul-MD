@@ -70,12 +70,6 @@
 
                 </TableLayout>
 
-                <ImageView
-                    android:src="@drawable/baseline_edit_24"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="20dp"
-                    />
-
             </TableRow>
 
             <TextView

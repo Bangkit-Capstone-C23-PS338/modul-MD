@@ -40,9 +40,6 @@ class SearchFragment : Fragment() {
         val root: View = binding.root
 //        searchViewModel.text.observe(viewLifecycleOwner) {}
 
-        binding.refreshBtn.setOnClickListener{
-            getAllInfluencer()
-        }
         return root
     }
 
@@ -112,10 +109,6 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.refreshBtn.setOnClickListener{
-            getAllInfluencer()
-        }
-
         searchQueue()
         getAllInfluencer()
     }
@@ -132,6 +125,9 @@ class SearchFragment : Fragment() {
                     binding.warningCont.visibility = View.GONE
                     Log.e("test data", result.data.influencers.toString())
                     val allInfluencer: List<InfluencersItem> = result.data.influencers as List<InfluencersItem>
+                    if(allInfluencer.isEmpty()){
+                        binding.error.setText(R.string.no_influencer)
+                    }
                     addInfluencerData(allInfluencer)
                 }
                 is Result.Error -> {

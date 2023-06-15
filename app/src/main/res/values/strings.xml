@@ -212,6 +212,13 @@
     <string name="Follower_insta">Follower : %s</string>
     <string name="pleaseLogin">your session is expired please login</string>
     <string name="noReview">No Review</string>
+    <string name="add_address">Please fill your address</string>
+    <string name="error_username_insta">Please fill your instagram, if dont have any put \"-\"</string>
+    <string name="error_follower_insta">please add your follower, add 0 if you don\'t have an account</string>
+    <string name="error_username_youtube">Please fill your instagram, if dont have any put \"-\"</string>
+    <string name="error_follower_youtube">please add your follower, add 0 if you don\'t have an account</string>
+    <string name="error_username_tiktok">Please fill your instagram, if dont have any put \"-\"</string>
+    <string name="error_follower_tiktok">please add your follower, add 0 if you don\'t have an account</string>
 
 
 </resources>

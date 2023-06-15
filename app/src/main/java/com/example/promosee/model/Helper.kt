@@ -30,36 +30,32 @@ fun String.fromLongDateFormat(): String {
     return outputFormat.format(date?.time)
 }
 
-
 fun String.fromReviewDateFormat(): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
     val date = inputFormat.parse(this)
     return outputFormat.format(date?.time)
-
 }
 
-
 fun String.withCurrencyFormat(): String {
-    val rupiahExchangeRate = 12495.95
-    val euroExchangeRate = 0.88
-
-    var priceOnDollar = this.toDouble() / rupiahExchangeRate
-
-    var mCurrencyFormat = NumberFormat.getCurrencyInstance()
-    val deviceLocale = Locale.getDefault().country
-    when {
-        deviceLocale.equals("ES") -> {
-            priceOnDollar *= euroExchangeRate
-        }
-        deviceLocale.equals("ID") -> {
-            priceOnDollar *= rupiahExchangeRate
-        }
-        else -> {
-            mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-        }
+    val myIndonesianLocale = Locale("in", "ID")
+    val mCurrencyFormat = NumberFormat.getCurrencyInstance(myIndonesianLocale)
+    var price = this.toDouble()
+    if (price >=1000000000){
+        price /= 1000000000
+        return mCurrencyFormat.format(price) + "B"
     }
-    return mCurrencyFormat.format(priceOnDollar)
+    else if (price >=1000000){
+        price /= 1000000
+        return mCurrencyFormat.format(price) + "M"
+    }
+    else if(price >= 1000){
+        price /= 1000
+        return mCurrencyFormat.format(price) + "K"
+    }
+    return mCurrencyFormat.format(price)
+
+
 }
 
 fun setStarRating(rate: Double, activity: Activity){

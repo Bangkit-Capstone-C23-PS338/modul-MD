@@ -62,7 +62,7 @@ class ReviewFormActivity : AppCompatActivity() {
             val comment = binding.edtDesc.text.toString()
             val link = intent.getStringExtra("link")
 
-            if(comment != ""){
+            if(comment != "" && rate != 0.0){
                 if (order_id != null) {
                     reviewsViewModel.setReview(rate.toInt().toString(),comment,order_id)
                     reviewsViewModel.postReview().observe(this){result ->

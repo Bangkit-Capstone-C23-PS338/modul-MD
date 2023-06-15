@@ -4,10 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.promosee.R
+import com.example.promosee.model.Result
 import com.example.promosee.model.remote.retrofit.ApiConfig
 import com.example.promosee.view.BoardingActivity
 import com.example.promosee.view.ViewModelFactory
@@ -40,22 +44,43 @@ class SplashActivity : AppCompatActivity() {
 
     private fun setupAction() {
         splashViewModel.getUser().observe(this){user ->
-            ApiConfig.TOKEN = user.access_token
-            ApiConfig.USERNAME = user.username
+
             // pengecekan token dan authorisasi
             if(user.userid.isNotEmpty()){
-                if(user.user_access.trim() == "business_owner"){
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        val intent = Intent(this@SplashActivity, MainCom::class.java)
-                        startActivity(intent)
-                        finish()
-                    }, DURATION)
-                }else{
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        val intent = Intent(this@SplashActivity, MainInfluencer::class.java)
-                        startActivity(intent)
-                        finish()
-                    }, DURATION)
+                // login ulang
+                splashViewModel.setInformation(user.username,user.password)
+                splashViewModel.generateToken().observe(this@SplashActivity){result ->
+                    when(result){
+                        is Result.Loading -> {}
+                        is Result.Success -> {
+                            if(user.user_access.trim() == "business_owner"){
+                                Handler(Looper.getMainLooper()).postDelayed({
+                                    val intent = Intent(this@SplashActivity, MainCom::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }, DURATION)
+                            }else{
+                                Handler(Looper.getMainLooper()).postDelayed({
+                                    val intent = Intent(this@SplashActivity, MainInfluencer::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }, DURATION)
+                            }
+                        }
+                        is Result.Error -> {
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                val intent = Intent(this@SplashActivity, BoardingActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }, DURATION)
+                            val msg: String = getString(R.string.pleaseLogin)
+                            Toast.makeText(
+                                this,
+                                msg,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             }else{
                 Handler(Looper.getMainLooper()).postDelayed({

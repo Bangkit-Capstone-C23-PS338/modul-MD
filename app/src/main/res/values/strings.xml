@@ -210,6 +210,7 @@
     <string name="reviewFail">Review Failed to Add</string>
     <string name="order_succes">Order Added Succesfully</string>
     <string name="Follower_insta">Follower : %s</string>
+    <string name="pleaseLogin">your session is expired please login</string>
 
 
 </resources>

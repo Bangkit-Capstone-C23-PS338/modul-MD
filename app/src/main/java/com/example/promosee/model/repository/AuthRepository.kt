@@ -31,10 +31,34 @@ class AuthRepository(
                     username = response.username ?: "",
                     access_token = response.accessToken ?: "",
                     userid = response.userid ?: "",
-                    user_access = response.userType ?: ""
+                    user_access = response.userType ?: "",
+                    password = password
                 )
                 // menyimpan data ke data-store
                 pref.saveUser(userInfo)
+                ApiConfig.TOKEN = response.accessToken ?: ""
+                ApiConfig.USERNAME = response.username ?: ""
+                emit(Result.Success(response))
+            }
+        }catch (e : Exception){
+            Log.e("AuthRepository", "findUser: ${e.message.toString()}")
+            val message = e.message.toString()
+            if (message == "") {
+                emit(Result.Error("Whoops, Something went wrong"))
+            } else {
+                emit(Result.Error(message))
+            }
+        }
+    }
+
+    fun generateToken(username: String, password: String) : LiveData<Result<LoginResponse>> = liveData {
+        emit(Result.Loading)
+        try{
+            val user = User(username = username, password)
+            val response = apiService.userLogin(user)
+            if(response == null){
+                emit(Result.Error("Login gagal"))
+            }else{
                 ApiConfig.TOKEN = response.accessToken ?: ""
                 ApiConfig.USERNAME = response.username ?: ""
                 emit(Result.Success(response))

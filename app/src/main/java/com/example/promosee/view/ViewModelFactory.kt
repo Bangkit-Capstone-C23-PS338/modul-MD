@@ -45,7 +45,7 @@ class ViewModelFactory(
             }else if (modelClass.isAssignableFrom(InfluencerDetailViewModel::class.java)) {
                 return InfluencerDetailViewModel(companyRepository) as T
             }else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-                return ProfileViewModel(authRepository) as T
+                return ProfileViewModel(authRepository,companyRepository) as T
             }else if (modelClass.isAssignableFrom(ProfileInfluencerViewModel::class.java)) {
                 return ProfileInfluencerViewModel(authRepository,influencerRepository) as T
             }else if (modelClass.isAssignableFrom(ReviewsViewModel::class.java)) {

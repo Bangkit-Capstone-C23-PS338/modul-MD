@@ -45,6 +45,7 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         setupViewModel()
+        setupAction()
         binding.logout.setOnClickListener{
             logout()
         }
@@ -60,6 +61,27 @@ class ProfileFragment : Fragment() {
         binding.companyName.text = ApiConfig.USERNAME
         val root: View = binding.root
         return root
+    }
+
+    private fun setupAction() {
+        profileViewModel.getProfile().observe(viewLifecycleOwner){result ->
+            when(result){
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.companyName.text = result.data.companyName ?: ""
+                    binding.emailCom.text = result.data.email ?: ""
+                }
+                is Result.Error -> {
+                    Log.e("error msg", result.error)
+                    if(result.error.trim() == "HTTP 401"){
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 
     private fun logout() {

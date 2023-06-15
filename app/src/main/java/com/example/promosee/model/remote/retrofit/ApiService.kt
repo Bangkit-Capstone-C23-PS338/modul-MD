@@ -2,6 +2,7 @@ package com.example.promosee.model.remote.retrofit
 
 import com.example.promosee.model.local.preference.CompanyModel
 import com.example.promosee.model.local.preference.InfluencerModel
+import com.example.promosee.model.remote.reponse.GetBussinessProfileResponse
 import com.example.promosee.model.remote.reponse.GetInfluencerProductReponse
 import com.example.promosee.model.remote.reponse.GetInfluencersResponse
 import com.example.promosee.model.remote.reponse.GetOrderResponse
@@ -153,5 +154,11 @@ interface ApiService {
         @Path("product_id") product_id: String,
         @Body review: ReviewRequest,
     ): PostReviewResponse
+
+    @GET("get_business_owner/{username}")
+    suspend fun getBussinesProfile(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+    ): GetBussinessProfileResponse
 
 }

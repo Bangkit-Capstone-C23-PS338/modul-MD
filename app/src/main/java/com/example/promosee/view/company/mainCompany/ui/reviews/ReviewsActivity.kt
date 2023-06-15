@@ -49,11 +49,16 @@ class ReviewsActivity : AppCompatActivity() {
             when(result) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.noReview.visibility = View.GONE
                 }
 
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.noReview.visibility = View.GONE
                     val reviews = result.data.reviews as List<ReviewsItem>
+                    if(reviews.isEmpty()){
+                        binding.noReview.visibility = View.VISIBLE
+                    }
                     addInfluencerReviews(reviews)
                 }
 

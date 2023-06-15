@@ -69,10 +69,6 @@
                         android:text="@string/email_com"
                         android:textSize="15sp"/>
 
-                    <TextView
-                        android:id="@+id/telp_com"
-                        android:text="@string/telp_com"
-                        android:textSize="15sp"/>
 
                 </TableLayout>
 
